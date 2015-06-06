@@ -1,4 +1,7 @@
 #include <iostream>
+#include <cstdio>
+#include <cstdlib>
+#include "funciones.h"
 
 using namespace std;
 
@@ -7,6 +10,8 @@ int main()
 
     bool continuar = true;
     bool opcinvalida = false;
+    int opcion;
+
 
     while(continuar == true)
     {
@@ -39,12 +44,12 @@ int main()
             sistemadevotacion();
             nuevatarea(continuar);
             break;
-        case 3: /*Monto total por zona*/
-            montoTotal(Datos, cantlibros);
+        case 3: /*Genera Informes de Votacion*/
+            //ACA Va la llamada al MODULO DE EDICION
             nuevatarea(continuar);
             break;
         case 0:
-            return;
+            return 0;
             break;
         default:
             opcinvalida=true ;

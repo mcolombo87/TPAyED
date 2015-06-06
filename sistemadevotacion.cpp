@@ -1,12 +1,16 @@
 #include <iostream>
+#include <cstdio>
+#include <cstdlib>
+#include "funciones.h"
 
 using namespace std;
 
-int main()
+void sistemadevotacion()
 {
 
     bool continuar = true;
     bool opcinvalida = false;
+    int opcion;
 
     while(continuar == true)
     {
@@ -45,7 +49,7 @@ int main()
             //ACA Va la llamada al modulo que finaliza la votacion
             break;
         case 0:
-            return 0;
+            return;
             break;
         default:
             opcinvalida=true ;
@@ -56,5 +60,5 @@ int main()
 
     }
     system("PAUSE");
-    return EXIT_SUCCESS;
+    return;
 }
