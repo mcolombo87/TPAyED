@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <cstdlib>
 #include <cstdio>
@@ -13,7 +12,7 @@ void nuevatarea(bool &contin )
     while(fail==1)
     {
         printf("Desea realizar otra tarea? 1:Si, 2:NO\n");
-        printf("**NO finalizará la ejecución**\n");
+        printf("**NO finalizara la ejecucion\n");
         scanf("%d", &respuesta);
         switch(respuesta)
         {
