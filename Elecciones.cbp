@@ -18,6 +18,8 @@
 		<Unit filename="Lista.h" />
 		<Unit filename="Pila.cpp" />
 		<Unit filename="Pila.h" />
+		<Unit filename="Test.cpp" />
+		<Unit filename="Test.h" />
 		<Unit filename="funciones.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="nuevatarea.cpp" />

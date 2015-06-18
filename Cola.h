@@ -1,6 +1,10 @@
 #ifndef COLA_H_INCLUDED
 #define COLA_H_INCLUDED
 
+#ifndef NULL
+#define NULL      0
+#endif
+
 /* Tipo de Informacion que esta contenida en los Nodos de la
    Cola, identificada como Dato. */
 typedef void* PtrDatoCola;
@@ -18,16 +22,18 @@ typedef NodoCola* PtrNodoCola;
 
 /* Tipo de Estructura de la Cola */
 struct Cola{
-    PtrNodoCola top;      // puntero al primer nodo de la cola
+    PtrNodoCola first;      // puntero al primer nodo de la cola
     PtrNodoCola last;
 };
 
 
-void crear(Cola& cola);
+void crearCola(Cola& cola);
 void destruir(Cola& cola);
 
-PtrDatoCola pop(Cola& cola);
-void push(Cola& cola, PtrDatoCola ptrDato);
+PtrDatoCola desencolar(Cola& cola);
+void encolar(Cola& cola, PtrDatoCola ptrDato);
 bool estaVacia(Cola& cola);
+PtrNodoCola finCola();
+
 
 #endif // COLA_H_INCLUDED

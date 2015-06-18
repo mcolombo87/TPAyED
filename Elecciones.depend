@@ -1,0 +1,46 @@
+# depslib dependency file v1.0
+1434122921 source:d:\users\romina\documents\git\ayed\lista.cpp
+	"Lista.h"
+
+1434596560 d:\users\romina\documents\git\ayed\lista.h
+
+1434123520 source:d:\users\romina\documents\git\ayed\nuevatarea.cpp
+	<iostream>
+	<cstdlib>
+	<cstdio>
+	"funciones.h"
+
+1434123267 d:\users\romina\documents\git\ayed\funciones.h
+
+1434122883 source:d:\users\romina\documents\git\ayed\pila.cpp
+	"Pila.h"
+
+1434600392 d:\users\romina\documents\git\ayed\pila.h
+
+1434123001 source:d:\users\romina\documents\git\ayed\sistemadevotacion.cpp
+	<iostream>
+	<cstdio>
+	<cstdlib>
+	"funciones.h"
+
+1434600392 source:d:\users\romina\documents\git\ayed\cola.cpp
+	"Cola.h"
+
+1434600392 d:\users\romina\documents\git\ayed\cola.h
+
+1434601730 source:d:\users\romina\documents\git\ayed\main.cpp
+	<iostream>
+	<cstdio>
+	<cstdlib>
+	"funciones.h"
+	"Test.h"
+
+1434601466 d:\users\romina\documents\git\ayed\test.h
+
+1434630238 source:d:\users\romina\documents\git\ayed\test.cpp
+	<iostream>
+	<cstdlib>
+	<cstdio>
+	"Test.h"
+	"Lista.h"
+

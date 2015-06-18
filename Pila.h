@@ -1,6 +1,10 @@
 #ifndef PILA_H_INCLUDED
 #define PILA_H_INCLUDED
 
+#ifndef NULL
+#define NULL      0
+#endif
+
 /* Tipo de Informacion que esta contenida en los Nodos de la
    Pila, identificada como Dato. */
 typedef void* PtrDatoPila;
@@ -22,7 +26,7 @@ struct Pila{
 };
 
 
-void crear(Pila& pila);
+void crearPila(Pila& pila);
 void destruir(Pila& pila);
 
 PtrDatoPila pop(Pila& pila);

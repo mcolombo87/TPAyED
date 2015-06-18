@@ -5,8 +5,8 @@ CPP  = g++.exe
 CC   = gcc.exe
 WINDRES = windres.exe
 RES  = 
-OBJ  = main.o nuevatarea.o Pila.o Lista.o Cola.o sistemadevotacion.o $(RES)
-LINKOBJ  = main.o nuevatarea.o Pila.o Lista.o Cola.o sistemadevotacion.o $(RES)
+OBJ  = main.o nuevatarea.o Pila.o Lista.o Cola.o sistemadevotacion.o Test.o $(RES)
+LINKOBJ  = main.o nuevatarea.o Pila.o Lista.o Cola.o sistemadevotacion.o Test.o $(RES)
 LIBS =  -L"C:/Dev-Cpp/lib"  
 INCS =  -I"C:/Dev-Cpp/include" 
 CXXINCS =  -I"C:/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"C:/Dev-Cpp/include/c++/3.4.2/backward"  -I"C:/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"C:/Dev-Cpp/include/c++/3.4.2"  -I"C:/Dev-Cpp/include" 
@@ -43,3 +43,6 @@ Cola.o: Cola.cpp
 
 sistemadevotacion.o: sistemadevotacion.cpp
 	$(CPP) -c sistemadevotacion.cpp -o sistemadevotacion.o $(CXXFLAGS)
+
+Test.o: Test.cpp
+	$(CPP) -c Test.cpp -o Test.o $(CXXFLAGS)

@@ -2,11 +2,17 @@
 #include <cstdio>
 #include <cstdlib>
 #include "funciones.h"
+#include "Test.h"
+
 
 using namespace std;
 
 int main()
 {
+    //INSERTAR ABAJO LLAMADOS A PRUEBAS
+    //PruebaDeCola();
+    PruebadeLista();
+    //INSERTAR ARRIBA LLAMADOS A PRUEBAS
 
     bool continuar = true;
     bool opcinvalida = false;

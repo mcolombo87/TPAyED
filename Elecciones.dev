@@ -1,7 +1,7 @@
 [Project]
 FileName=Elecciones.dev
 Name=Elecciones
-UnitCount=10
+UnitCount=12
 Type=1
 Ver=1
 ObjFiles=
@@ -146,4 +146,24 @@ OriginalFilename=
 ProductName=
 ProductVersion=
 AutoIncBuildNr=0
+
+[Unit11]
+FileName=Test.h
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit12]
+FileName=Test.cpp
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
 
