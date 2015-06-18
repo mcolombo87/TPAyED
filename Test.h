@@ -8,6 +8,7 @@
 void PruebaDeCola ();
 void PruebadeLista();
 void PruebadePila();
+void PruebaEstructuras();
 
 
 #endif // TEST_H_INCLUDED

@@ -1,10 +1,14 @@
 #include <iostream>
 #include <cstdlib>
 #include <cstdio>
+#include <string.h>
 #include "Test.h"
 #include "Lista.h"
 #include "Cola.h"
 #include "Pila.h"
+#include "Voto.h"
+#include "Urna.h"
+#include "Mesa.h"
 
 void PruebaDeCola()
 {
@@ -119,6 +123,45 @@ void PruebadePila()
     datoSacado = pop(miPila);
     printf("\nDato desde la Pila 3: %d\n", *(int*)datoSacado);
     if (estaVaciaPila(miPila)){puts("\nPila: Esta Vacia!!\n");}else{puts("\nPila: No esta vacia!\n");}
+
+    system("PAUSE");
+}
+
+void PruebaEstructuras()
+{
+    PtrDato miVoto;
+    miVoto = new Voto;
+
+    //Muestro
+    printf("\nId: %d", getIdVoto(*(Voto*)miVoto));
+    printf("\nIdCandidato: %d", getIdCandidatoVoto(*(Voto*)miVoto));
+    if(miVoto== NULL){puts("\nBorrado ok\n");} else {puts("\nSigue ahi\n");}
+
+    setIdVoto(*(Voto*)miVoto, 1);
+    setIdCandidatoVoto(*(Voto*)miVoto, 3);
+    printf("\nId: %d", getIdVoto(*(Voto*)miVoto));
+    printf("\nIdCandidato: %d", getIdCandidatoVoto(*(Voto*)miVoto));
+    //Cambio y muestro con get
+    if(miVoto == NULL){puts("\nBorrado ok\n");} else {puts("\nSigue ahi\n");}
+
+    setIdVoto(*(Voto*)miVoto, 3);
+    setIdCandidatoVoto(*(Voto*)miVoto, 5);
+    printf("\nId: %d", getIdVoto(*(Voto*)miVoto));
+    printf("\nIdCandidato: %d", getIdCandidatoVoto(*(Voto*)miVoto));
+    //destructorVoto(*(Voto*)miVoto);
+    //Ver COMPROBAR BORRADOS
+    if(miVoto == NULL){puts("\nBorrado ok\n");} else {puts("\nSigue ahi\n");}
+
+    puts("####################################");
+
+    PtrDato miUrna;
+    miUrna = new Urna;
+    char hora[5];
+    strcpy(hora, "10:05");
+    setIdUrna(*(Urna*)miUrna, 1);
+    setHoraAperturaUrna(*(Urna*)miUrna, hora);
+    printf("\nId de Urna: %d", getIdUrna(*(Urna*)miUrna));
+    printf("\nHora de Apertura: %s", (getHoraAperturaUrna(*(Urna*)miUrna)));
 
     system("PAUSE");
 }

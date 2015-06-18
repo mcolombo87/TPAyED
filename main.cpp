@@ -1,3 +1,10 @@
+/** Algoritmo y Estructura de Datos.
+ *
+ *  Trabajo Practico "Elecciones".
+ *
+ */
+
+
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
@@ -9,11 +16,13 @@ using namespace std;
 
 int main()
 {
-    //INSERTAR ABAJO LLAMADOS A PRUEBAS
-    //PruebaDeCola();
-    PruebadePila();
-    //PruebadeLista();
-    //INSERTAR ARRIBA LLAMADOS A PRUEBAS
+    /**Todas las Pruebas que quieran hacer por fuera del funcionamiento de la aplicacion**/
+    /**deben hacerse usando los Test. Llaman a las funciones aca cuando quieren probar algo**/
+//    PruebaDeCola();
+//    PruebadePila();
+//    PruebadeLista();
+//    PruebaEstructuras();
+    /**Fin del Bloque de pruebas**/
 
     bool continuar = true;
     bool opcinvalida = false;
