@@ -27,10 +27,11 @@ struct Pila{
 
 
 void crearPila(Pila& pila);
-void destruir(Pila& pila);
+void destruirPila(Pila& pila);
 
 PtrDatoPila pop(Pila& pila);
 void push(Pila& pila, PtrDatoPila ptrDato);
-bool estaVacia(Pila& pila);
+bool estaVaciaPila(Pila& pila);
+PtrNodoPila finPila();
 
 #endif // PILA_H_INCLUDED

@@ -7,6 +7,7 @@
 
 void PruebaDeCola ();
 void PruebadeLista();
+void PruebadePila();
 
 
 #endif // TEST_H_INCLUDED

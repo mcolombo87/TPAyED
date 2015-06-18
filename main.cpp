@@ -11,7 +11,8 @@ int main()
 {
     //INSERTAR ABAJO LLAMADOS A PRUEBAS
     //PruebaDeCola();
-    PruebadeLista();
+    PruebadePila();
+    //PruebadeLista();
     //INSERTAR ARRIBA LLAMADOS A PRUEBAS
 
     bool continuar = true;

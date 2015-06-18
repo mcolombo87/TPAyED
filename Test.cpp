@@ -3,10 +3,45 @@
 #include <cstdio>
 #include "Test.h"
 #include "Lista.h"
+#include "Cola.h"
+#include "Pila.h"
 
 void PruebaDeCola()
 {
     printf("Prueba de Cola\n");
+    Cola miCola;
+    PtrDatoCola dato;
+    PtrDatoCola datoSacado;
+    crearCola(miCola);
+    int A = 10;
+    dato = &A;
+    encolar(miCola,dato);
+    datoSacado = desencolar(miCola);
+    //Imprimo sacado de cola
+    printf("\nDato desde la cola: %d\n", *(int*)datoSacado);
+    //Meto varios y vemos que pasa
+    if (estaVacia(miCola)){puts("\nCOLA: Esta Vacia!!\n");}else{puts("\nCola: No esta vacia!\n");}
+    int B = 4;
+    int C = 2;
+    PtrDatoCola dato2;
+    PtrDatoCola dato3;
+    dato2 = &B;
+    dato3 = &C;
+    encolar(miCola, dato2);
+    encolar(miCola, dato3);
+    encolar(miCola, dato);
+    if (estaVacia(miCola)){puts("\nCOLA: Esta Vacia!!\n");}else{puts("\nCola: No esta vacia!\n");}
+    //Imprimo sacado de cola y Pruebo el esVacia
+    datoSacado = desencolar(miCola);
+    printf("\nDato desde la cola 1: %d", *(int*)datoSacado);
+    if (estaVacia(miCola)){puts("\nCOLA: Esta Vacia!!\n");}else{puts("\nCola: No esta vacia!\n");}
+    datoSacado = desencolar(miCola);
+    printf("\nDato desde la cola 2: %d", *(int*)datoSacado);
+    if (estaVacia(miCola)){puts("\nCOLA: Esta Vacia!!\n");}else{puts("\nCola: No esta vacia!\n");}
+    datoSacado = desencolar(miCola);
+    printf("\nDato desde la cola 3: %d\n", *(int*)datoSacado);
+    if (estaVacia(miCola)){puts("\nCOLA: Esta Vacia!!\n");}else{puts("\nCola: No esta vacia!\n");}
+
 
     system("PAUSE");
 }
@@ -45,6 +80,45 @@ void PruebadeLista()
     printf("\nDato guardado desde Lista: %d\n", *(int*)(siguienteElemento->ptrDato));
     siguienteElemento = siguiente(miLista,siguienteElemento);
     printf("\nDato guardado desde Lista: %d\n", *(int*)(siguienteElemento->ptrDato));
+
+    system("PAUSE");
+}
+
+void PruebadePila()
+{
+    printf("Prueba de Pila\n");
+    Pila miPila;
+    PtrDatoPila dato;
+    PtrDatoPila datoSacado;
+    crearPila(miPila);
+    int A = 10;
+    dato = &A;
+    push(miPila,dato);
+    datoSacado = pop(miPila);
+    //Imprimo sacado de pila
+    printf("\nDato desde la Pila: %d\n", *(int*)datoSacado);
+    //Meto varios y vemos que pasa
+    if (estaVaciaPila(miPila)){puts("\nPila: Esta Vacia!!\n");}else{puts("\nPila: No esta vacia!\n");}
+    int B = 4;
+    int C = 2;
+    PtrDatoPila dato2;
+    PtrDatoPila dato3;
+    dato2 = &B;
+    dato3 = &C;
+    push(miPila, dato2);
+    push(miPila, dato3);
+    push(miPila, dato);
+    if (estaVaciaPila(miPila)){puts("\nPila: Esta Vacia!!\n");}else{puts("\nPila: No esta vacia!\n");}
+    //Imprimo sacado de pila y Pruebo el esVacia
+    datoSacado = pop(miPila);
+    printf("\nDato desde la Pila 1: %d", *(int*)datoSacado);
+    if (estaVaciaPila(miPila)){puts("\nPila: Esta Vacia!!\n");}else{puts("\nPila: No esta vacia!\n");}
+    datoSacado = pop(miPila);
+    printf("\nDato desde la Pila 2: %d", *(int*)datoSacado);
+    if (estaVaciaPila(miPila)){puts("\nPila: Esta Vacia!!\n");}else{puts("\nPila: No esta vacia!\n");}
+    datoSacado = pop(miPila);
+    printf("\nDato desde la Pila 3: %d\n", *(int*)datoSacado);
+    if (estaVaciaPila(miPila)){puts("\nPila: Esta Vacia!!\n");}else{puts("\nPila: No esta vacia!\n");}
 
     system("PAUSE");
 }

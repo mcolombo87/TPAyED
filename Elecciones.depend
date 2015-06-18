@@ -12,10 +12,10 @@
 
 1434123267 d:\users\romina\documents\git\ayed\funciones.h
 
-1434122883 source:d:\users\romina\documents\git\ayed\pila.cpp
+1434650181 source:d:\users\romina\documents\git\ayed\pila.cpp
 	"Pila.h"
 
-1434600392 d:\users\romina\documents\git\ayed\pila.h
+1434650062 d:\users\romina\documents\git\ayed\pila.h
 
 1434123001 source:d:\users\romina\documents\git\ayed\sistemadevotacion.cpp
 	<iostream>
@@ -28,19 +28,20 @@
 
 1434600392 d:\users\romina\documents\git\ayed\cola.h
 
-1434601730 source:d:\users\romina\documents\git\ayed\main.cpp
+1434649981 source:d:\users\romina\documents\git\ayed\main.cpp
 	<iostream>
 	<cstdio>
 	<cstdlib>
 	"funciones.h"
 	"Test.h"
 
-1434601466 d:\users\romina\documents\git\ayed\test.h
+1434642491 d:\users\romina\documents\git\ayed\test.h
 
-1434630238 source:d:\users\romina\documents\git\ayed\test.cpp
+1434637524 source:d:\users\romina\documents\git\ayed\test.cpp
 	<iostream>
 	<cstdlib>
 	<cstdio>
 	"Test.h"
 	"Lista.h"
+	"Cola.h"
 
