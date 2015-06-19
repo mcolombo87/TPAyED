@@ -4,13 +4,16 @@
  *
  */
 
-
+/**
+CAMBIAR LOS TDA URNA Y MESA. AGREGAR TDA PROVINCIA (ID, LISTA MESAS, LISTA PARTIDOSXPROV, LISTA CANDIDATOSXPROV)
+CREAR TDA PARTIDOSXPROV (ID, CantVotosTotales)
+CREAR TDA CANDIDATOSXPROV (ID, CANTVOTOS)
+*/
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
 #include "funciones.h"
 #include "Test.h"
-
 
 using namespace std;
 
