@@ -28,7 +28,7 @@
 
 1434600392 d:\users\romina\documents\git\ayed\cola.h
 
-1434689049 source:d:\users\romina\documents\git\ayed\main.cpp
+1434741846 source:d:\users\romina\documents\git\ayed\main.cpp
 	<iostream>
 	<cstdio>
 	<cstdlib>
@@ -38,7 +38,7 @@
 1434689021 d:\users\romina\documents\git\ayed\test.h
 	"List.h"
 
-1434663896 source:d:\users\romina\documents\git\ayed\test.cpp
+1434690854 source:d:\users\romina\documents\git\ayed\test.cpp
 	<iostream>
 	<cstdlib>
 	<cstdio>
@@ -50,18 +50,21 @@
 	"Voto.h"
 	"Urna.h"
 	"Mesa.h"
+	"Candidato.h"
+	"Partido.h"
 
 1434662362 d:\users\romina\documents\git\ayed\voto.h
 
 1434659107 source:d:\users\romina\documents\git\ayed\voto.cpp
 	"Voto.h"
 
-1434656503 source:d:\users\romina\documents\git\ayed\mesa.cpp
+1434731398 source:d:\users\romina\documents\git\ayed\mesa.cpp
 	"Mesa.h"
 
-1434656133 d:\users\romina\documents\git\ayed\mesa.h
+1434741811 d:\users\romina\documents\git\ayed\mesa.h
 
-1434664340 d:\users\romina\documents\git\ayed\urna.h
+1434731464 d:\users\romina\documents\git\ayed\urna.h
+	"Pila.h"
 
 1434664340 source:d:\users\romina\documents\git\ayed\urna.cpp
 	"Urna.h"
@@ -78,5 +81,23 @@
 	<string.h>
 
 1434669555 d:\users\romina\documents\git\ayed\partido.h
+	"Lista.h"
+
+1434740477 source:d:\users\romina\documents\git\ayed\candidatosxprov.cpp
+	"CandidatosXProv.h"
+	<string.h>
+
+1434740135 d:\users\romina\documents\git\ayed\candidatosxprov.h
+
+1434741215 source:d:\users\romina\documents\git\ayed\partidosxprov.cpp
+	"PartidosXProv.h"
+	<string.h>
+
+1434740697 d:\users\romina\documents\git\ayed\partidosxprov.h
+
+1434739370 source:d:\users\romina\documents\git\ayed\provincia.cpp
+	"Provincia.h"
+
+1434739087 d:\users\romina\documents\git\ayed\provincia.h
 	"Lista.h"
 

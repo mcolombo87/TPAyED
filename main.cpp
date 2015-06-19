@@ -5,9 +5,7 @@
  */
 
 /**
-CAMBIAR LOS TDA URNA Y MESA. AGREGAR TDA PROVINCIA (ID, LISTA MESAS, LISTA PARTIDOSXPROV, LISTA CANDIDATOSXPROV)
-CREAR TDA PARTIDOSXPROV (ID, CantVotosTotales)
-CREAR TDA CANDIDATOSXPROV (ID, CANTVOTOS)
+    NOTAS: ...
 */
 #include <iostream>
 #include <cstdio>
@@ -25,7 +23,7 @@ int main()
 //    PruebadePila();
 //    PruebadeLista();
 //    PruebaEstructuras();
-    pruebaCandidatosListas();
+//    pruebaCandidatosListas();
     /**Fin del Bloque de pruebas**/
 
     bool continuar = true;

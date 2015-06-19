@@ -12,14 +12,25 @@
 				<Option compiler="gcc" />
 			</Target>
 		</Build>
+		<Unit filename="Candidato.cpp" />
+		<Unit filename="Candidato.h" />
 		<Unit filename="Cola.cpp" />
 		<Unit filename="Cola.h" />
+		<Unit filename="Enumeradores.h" />
 		<Unit filename="Lista.cpp" />
 		<Unit filename="Lista.h" />
+		<Unit filename="Mesa.cpp" />
+		<Unit filename="Mesa.h" />
+		<Unit filename="Partido.cpp" />
+		<Unit filename="Partido.h" />
 		<Unit filename="Pila.cpp" />
 		<Unit filename="Pila.h" />
 		<Unit filename="Test.cpp" />
 		<Unit filename="Test.h" />
+		<Unit filename="Urna.cpp" />
+		<Unit filename="Urna.h" />
+		<Unit filename="Voto.cpp" />
+		<Unit filename="Voto.h" />
 		<Unit filename="funciones.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="nuevatarea.cpp" />

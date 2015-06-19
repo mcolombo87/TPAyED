@@ -20,6 +20,11 @@ int getProvinciaMesa(Mesa mesa)
     return mesa.provincia;
 }
 
+Cola getUrnasMesa(Mesa mesa)
+{
+    return mesa.urnas;
+}
+
 void setIdMesa(Mesa &mesa, int dato)
 {
     mesa.id = dato;
@@ -28,4 +33,9 @@ void setIdMesa(Mesa &mesa, int dato)
 void setProvinciaMesa(Mesa &mesa,int  dato)
 {
     mesa.provincia = dato;
+}
+
+void setUrnasMesa (Mesa &mesa, Cola dato)
+{
+    mesa.urnas = dato;
 }
