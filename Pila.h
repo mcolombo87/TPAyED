@@ -33,5 +33,5 @@ PtrDatoPila pop(Pila& pila);
 void push(Pila& pila, PtrDatoPila ptrDato);
 bool estaVaciaPila(Pila& pila);
 PtrNodoPila finPila();
-
-#endif // PILA_H_INCLUDED
+// PILA_H_INCLUDED
+#endif

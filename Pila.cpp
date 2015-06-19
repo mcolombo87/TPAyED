@@ -1,7 +1,6 @@
-//Armar!
 #include "Pila.h"
+#include <string.h>
 
-/******************************************************************************/
 /* Implementación de Primitivas */
 /*------------------------------*/
 void crearPila(Pila& pila)

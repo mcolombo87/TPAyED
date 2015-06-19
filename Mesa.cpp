@@ -1,41 +1,41 @@
 #include "Mesa.h"
 
-void constructorMesa(Mesa mesa)
+void constructorMesa(Mesas mesa)
 {
 
 }
 
-void destructorMesa(Mesa mesa)
+void destructorMesa(Mesas mesa)
 {
 
 }
 
-int getIdMesa(Mesa mesa)
+int getIdMesa(Mesas mesa)
 {
     return mesa.id;
 }
 
-int getProvinciaMesa(Mesa mesa)
+int getProvinciaMesa(Mesas mesa)
 {
     return mesa.provincia;
 }
 
-Cola getUrnasMesa(Mesa mesa)
+Cola getUrnasMesa(Mesas mesa)
 {
     return mesa.urnas;
 }
 
-void setIdMesa(Mesa &mesa, int dato)
+void setIdMesa(Mesas &mesa, int dato)
 {
     mesa.id = dato;
 }
 
-void setProvinciaMesa(Mesa &mesa,int  dato)
+void setProvinciaMesa(Mesas &mesa,int  dato)
 {
     mesa.provincia = dato;
 }
 
-void setUrnasMesa (Mesa &mesa, Cola dato)
+void setUrnasMesa (Mesas &mesa, Cola dato)
 {
     mesa.urnas = dato;
 }

@@ -11,7 +11,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include "funciones.h"
-#include "Test.h"
+//#include "Test.h"
 
 using namespace std;
 
@@ -24,6 +24,7 @@ int main()
 //    PruebadeLista();
 //    PruebaEstructuras();
 //    pruebaCandidatosListas();
+//    PruebaDeCola();
     /**Fin del Bloque de pruebas**/
 
     bool continuar = true;

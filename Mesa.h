@@ -2,30 +2,26 @@
 #define MESA_H_INCLUDED
 #include "Cola.h"
 
-#ifndef NULL
-#define NULL      0
-#endif
-
 typedef struct{
-        int id;
-        int provincia;
-        Cola urnas;
-}Mesa;
+    int id;
+    int provincia;
+    Cola urnas;
+}Mesas;
 
-void constructorMesa(Mesa mesa);
+void constructorMesa(Mesas mesa);
 
-void destructorMesa(Mesa mesa);
+void destructorMesa(Mesas mesa);
 
-int getIdMesa(Mesa mesa);
+int getIdMesa(Mesas mesa);
 
-int getProvinciaMesa(Mesa mesa);
+int getProvinciaMesa(Mesas mesa);
 
-Cola getUrnasMesa(Mesa mesa);
+Cola getUrnasMesa(Mesas mesa);
 
-void setIdMesa(Mesa &mesa, int dato);
+void setIdMesa(Mesas &mesa, int dato);
 
-void setProvinciaMesa(Mesa &mesa,int  dato);
+void setProvinciaMesa(Mesas &mesa,int  dato);
 
-void setUrnasMesa (Mesa &mesa, Cola dato);
+void setUrnasMesa (Mesas &mesa, Cola dato);
 
 #endif // MESA_H_INCLUDED

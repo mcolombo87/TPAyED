@@ -5,8 +5,8 @@ CPP  = g++.exe
 CC   = gcc.exe
 WINDRES = windres.exe
 RES  = 
-OBJ  = main.o nuevatarea.o Pila.o Lista.o Cola.o sistemadevotacion.o Test.o $(RES)
-LINKOBJ  = main.o nuevatarea.o Pila.o Lista.o Cola.o sistemadevotacion.o Test.o $(RES)
+OBJ  = main.o nuevatarea.o Pila.o Lista.o Cola.o sistemadevotacion.o Test.o Candidato.o CandidatosXProv.o Partido.o PartidosXProv.o Provincia.o Voto.o Mesa.o Urna.o $(RES)
+LINKOBJ  = main.o nuevatarea.o Pila.o Lista.o Cola.o sistemadevotacion.o Test.o Candidato.o CandidatosXProv.o Partido.o PartidosXProv.o Provincia.o Voto.o Mesa.o Urna.o $(RES)
 LIBS =  -L"C:/Dev-Cpp/lib"  
 INCS =  -I"C:/Dev-Cpp/include" 
 CXXINCS =  -I"C:/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"C:/Dev-Cpp/include/c++/3.4.2/backward"  -I"C:/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"C:/Dev-Cpp/include/c++/3.4.2"  -I"C:/Dev-Cpp/include" 
@@ -46,3 +46,27 @@ sistemadevotacion.o: sistemadevotacion.cpp
 
 Test.o: Test.cpp
 	$(CPP) -c Test.cpp -o Test.o $(CXXFLAGS)
+
+Candidato.o: Candidato.cpp
+	$(CPP) -c Candidato.cpp -o Candidato.o $(CXXFLAGS)
+
+CandidatosXProv.o: CandidatosXProv.cpp
+	$(CPP) -c CandidatosXProv.cpp -o CandidatosXProv.o $(CXXFLAGS)
+
+Partido.o: Partido.cpp
+	$(CPP) -c Partido.cpp -o Partido.o $(CXXFLAGS)
+
+PartidosXProv.o: PartidosXProv.cpp
+	$(CPP) -c PartidosXProv.cpp -o PartidosXProv.o $(CXXFLAGS)
+
+Provincia.o: Provincia.cpp
+	$(CPP) -c Provincia.cpp -o Provincia.o $(CXXFLAGS)
+
+Voto.o: Voto.cpp
+	$(CPP) -c Voto.cpp -o Voto.o $(CXXFLAGS)
+
+Mesa.o: Mesa.cpp
+	$(CPP) -c Mesa.cpp -o Mesa.o $(CXXFLAGS)
+
+Urna.o: Urna.cpp
+	$(CPP) -c Urna.cpp -o Urna.o $(CXXFLAGS)

@@ -3,7 +3,6 @@
 
 void constructorUrna(Urna urna)
 {
-
 }
 
 void destructorUrna(Urna urna)

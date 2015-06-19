@@ -2,10 +2,6 @@
 #define URNA_H_INCLUDED
 #include "Pila.h"
 
-#ifndef NULL
-#define NULL      0
-#endif
-
 typedef struct{
         int id;
         char horaApertura[5];
@@ -31,6 +27,6 @@ void setHoraAperturaUrna(Urna &urna,char  dato[5]);
 
 void setHoraCierreUrna(Urna &urna,char  dato[5]);
 
-void setVotosUrna(Urna &urna, Pila dato)
+void setVotosUrna(Urna &urna, Pila dato);
 
 #endif // URNA_H_INCLUDED
