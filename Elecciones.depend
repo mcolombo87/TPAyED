@@ -28,14 +28,15 @@
 
 1434600392 d:\users\romina\documents\git\ayed\cola.h
 
-1434664127 source:d:\users\romina\documents\git\ayed\main.cpp
+1434689049 source:d:\users\romina\documents\git\ayed\main.cpp
 	<iostream>
 	<cstdio>
 	<cstdlib>
 	"funciones.h"
 	"Test.h"
 
-1434653518 d:\users\romina\documents\git\ayed\test.h
+1434689021 d:\users\romina\documents\git\ayed\test.h
+	"List.h"
 
 1434663896 source:d:\users\romina\documents\git\ayed\test.cpp
 	<iostream>
@@ -66,11 +67,11 @@
 	"Urna.h"
 	<string.h>
 
-1434669477 source:d:\users\romina\documents\git\ayed\candidato.cpp
+1434690623 source:d:\users\romina\documents\git\ayed\candidato.cpp
 	"Candidato.h"
 	<string.h>
 
-1434669309 d:\users\romina\documents\git\ayed\candidato.h
+1434688424 d:\users\romina\documents\git\ayed\candidato.h
 
 1434667187 source:d:\users\romina\documents\git\ayed\partido.cpp
 	"Partido.h"

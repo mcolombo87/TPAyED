@@ -22,7 +22,7 @@ char* getNombreCandidato(Candidato &candidato)
     return candidato.nombre;
 }
 
-char* getPartidoPolitico(Candidato &candidato)
+int getPartidoPolitico(Candidato candidato)
 {
     return candidato.PartidoPolitico;
 }
@@ -37,7 +37,7 @@ void setNombreCandidato(Candidato &candidato,char  dato[20])
     strcpy(candidato.nombre, dato);
 }
 
-void setPartidoPoliticoCandidato(Candidato &candidato,char  dato[20])
+void setPartidoPoliticoCandidato(Candidato &candidato,int  dato)
 {
-    strcpy(candidato.PartidoPolitico, dato);
+    candidato.PartidoPolitico = dato;
 }

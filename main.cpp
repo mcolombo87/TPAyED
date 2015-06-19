@@ -22,6 +22,7 @@ int main()
 //    PruebadePila();
 //    PruebadeLista();
 //    PruebaEstructuras();
+    pruebaCandidatosListas();
     /**Fin del Bloque de pruebas**/
 
     bool continuar = true;

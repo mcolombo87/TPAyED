@@ -9,6 +9,8 @@
 #include "Voto.h"
 #include "Urna.h"
 #include "Mesa.h"
+#include "Candidato.h"
+#include "Partido.h"
 
 void PruebaDeCola()
 {
@@ -165,3 +167,42 @@ void PruebaEstructuras()
 
     system("PAUSE");
 }
+
+void pruebaCandidatosListas()
+{
+    PtrDato miPartido;
+    miPartido = new Partido;
+    char nombre [20] = "FPV";
+
+    constructorPartido(*(Partido*)miPartido);
+    setIdPartido(*(Partido*)miPartido, 1);
+    setNombrePartido(*(Partido*)miPartido, nombre);
+    printf("\nIDPartido: %d\n", getIdPartido(*(Partido*)miPartido));
+    printf("\nNombre: %s\n", getNombrePartido(*(Partido*)miPartido));
+
+
+    Lista misCandidatos;
+    PtrDato Candi;
+    Candi = new Candidato;
+    constructorCandidato(*(Candidato*)Candi);
+    setIdCandidato(*(Candidato*)Candi, 5);
+    setNombreCandidato(*(Candidato*)Candi, "Juanito");
+    setPartidoPoliticoCandidato(*(Candidato*)Candi, 1);
+    adicionarPrincipio(misCandidatos, Candi);
+
+    setLista(*(Partido*)miPartido, misCandidatos);
+
+    //Imprimo desde la Lista
+    Lista traigoLista;
+    traigoLista = getLista(*(Partido*)miPartido);
+    PtrNodoLista DatoCandi;
+    DatoCandi = primero(traigoLista);
+    PtrDato datito;
+    datito = DatoCandi->ptrDato;
+
+    printf("\nCandidato ID: %d\nNombre Candidato: %s\n", getIdCandidato(*(Candidato*)datito), getNombreCandidato(*(Candidato*)datito) );
+
+
+    system("PAUSE");
+}
+

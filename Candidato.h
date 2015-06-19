@@ -9,7 +9,7 @@
 typedef struct{
         int id;
         char nombre[20];
-        char PartidoPolitico[20];
+        int PartidoPolitico;
 }Candidato;
 
 void constructorCandidato(Candidato candidato);
@@ -20,13 +20,13 @@ int getIdCandidato(Candidato candidato);
 
 char* getNombreCandidato(Candidato &candidato);
 
-char* getPartidoPolitico(Candidato &candidato);
+int getPartidoPolitico(Candidato candidato);
 
 void setIdCandidato(Candidato &candidato, int dato);
 
 void setNombreCandidato(Candidato &candidato,char  dato[20]);
 
-void setPartidoPoliticoCandidato(Candidato &candidato,char  dato[20]);
+void setPartidoPoliticoCandidato(Candidato &candidato,int  dato);
 
 
 #endif // CANDIDATO_H_INCLUDED
