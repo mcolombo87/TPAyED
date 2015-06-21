@@ -10,7 +10,8 @@
 	<cstdio>
 	"funciones.h"
 
-1434671571 d:\users\romina\documents\git\ayed\funciones.h
+1434892847 d:\users\romina\documents\git\ayed\funciones.h
+	"Lista.h"
 
 1434754055 source:d:\users\romina\documents\git\ayed\pila.cpp
 	"Pila.h"
@@ -89,7 +90,7 @@
 
 1434740135 d:\users\romina\documents\git\ayed\candidatosxprov.h
 
-1434741215 source:d:\users\romina\documents\git\ayed\partidosxprov.cpp
+1434750012 source:d:\users\romina\documents\git\ayed\partidosxprov.cpp
 	"PartidosXProv.h"
 	<string.h>
 

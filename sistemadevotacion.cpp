@@ -62,3 +62,45 @@ void sistemadevotacion()
     system("PAUSE");
     return;
 }
+
+void distribuirVotos(Lista &lstProvincias)
+{
+    //Para recorrer lista de prov.
+    PtrNodoLista prov = primero(lstProvincias);
+    PtrDato provDato;
+    Lista provMesas;
+    //Para recorrer lista de mesas
+    PtrNodoLista mesa;
+    PtrDato mesaDato;
+    Cola mesasUrnas;
+    //Para recorrer la Cola
+    PtrDatoCola urna;
+    //Para recorrer la Pila
+    Pila votos;
+    PtrDatoPila votoUnidad;
+
+    while (prov != fin())
+    {
+       provDato = prov->ptrDato;
+       provMesas = getMesasProv(*(Provincia*)provDato);
+       mesa = primero(provMesas);
+       while (mesa != fin())
+       {
+           mesaDato = mesa ->ptrDato;
+           mesasUrnas = getUrnasMesas(*(Mesas*)mesaDato);
+           urna = desencolar(mesasUrnas);
+           while (urna != finCola())
+           {
+               votos = getVotosUrna(*(Urna*)urna); //Hasta aca tengo la pila
+               votoUnidad = pop(votos);
+               while (votoUnidad != fin())
+               {
+                   //Hasta aca tengo el voto atomico (continuara)
+               }
+           }
+
+       }
+
+    }
+    /**Ya accedi al minimo, tengo que distribuir y asegurarme de pasar al otro nodo de la lista*/
+}

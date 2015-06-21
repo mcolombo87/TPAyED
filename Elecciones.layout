@@ -1,29 +1,49 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="default" />
-	<File name="CandidatosXProv.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Partido.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="226" topLine="0" />
+			<Cursor1 position="22" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="Test.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+	<File name="Partido.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="151" topLine="0" />
+			<Cursor1 position="588" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="Test.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Pila.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="186" topLine="0" />
+			<Cursor1 position="1325" topLine="27" />
 		</Cursor>
 	</File>
-	<File name="Urna.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Pila.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="220" topLine="0" />
+			<Cursor1 position="82" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="Urna.h" open="1" top="1" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Test.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="69" topLine="0" />
+			<Cursor1 position="5795" topLine="167" />
+		</Cursor>
+	</File>
+	<File name="Test.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="176" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Provincia.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="181" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Urna.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="19" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Urna.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="184" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="Voto.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -36,14 +56,14 @@
 			<Cursor1 position="228" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="funciones.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="funciones.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="58" topLine="0" />
+			<Cursor1 position="75" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="172" topLine="0" />
+			<Cursor1 position="258" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="nuevatarea.cpp" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -51,19 +71,9 @@
 			<Cursor1 position="0" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="sistemadevotacion.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="sistemadevotacion.cpp" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="79" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Provincia.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="158" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Provincia.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="246" topLine="0" />
+			<Cursor1 position="2818" topLine="66" />
 		</Cursor>
 	</File>
 	<File name="Candidato.cpp" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -78,27 +88,22 @@
 	</File>
 	<File name="Cola.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1138" topLine="3" />
+			<Cursor1 position="265" topLine="33" />
 		</Cursor>
 	</File>
-	<File name="Cola.h" open="0" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Cola.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="194" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="PartidosXProv.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Lista.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="49" topLine="0" />
+			<Cursor1 position="7021" topLine="15" />
 		</Cursor>
 	</File>
-	<File name="Lista.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Lista.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="7644" topLine="228" />
-		</Cursor>
-	</File>
-	<File name="Lista.h" open="0" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1962" topLine="0" />
+			<Cursor1 position="2160" topLine="60" />
 		</Cursor>
 	</File>
 	<File name="Mesa.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -106,151 +111,9 @@
 			<Cursor1 position="471" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="Mesa.h" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Mesa.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="71" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="Partido.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="291" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Partido.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="588" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Pila.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1558" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Pila.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="893" topLine="0" />
-		</Cursor>
-	</File>
 </CodeBlocks_layout_file>
-[Editors]
-Order=11,5,26,27,28
-Focused=28
-[Editor_0]
-Open=0
-Top=0
-[Editor_1]
-Open=0
-Top=0
-[Editor_2]
-Open=0
-Top=0
-[Editor_3]
-Open=0
-Top=0
-[Editor_4]
-Open=0
-Top=0
-[Editor_5]
-Open=1
-Top=0
-CursorCol=1
-CursorRow=1
-TopLine=1
-LeftChar=1
-[Editor_6]
-Open=0
-Top=0
-[Editor_7]
-Open=0
-Top=0
-[Editor_8]
-Open=0
-Top=0
-[Editor_9]
-Open=0
-Top=0
-[Editor_10]
-Open=0
-Top=0
-[Editor_11]
-Open=1
-Top=0
-CursorCol=18
-CursorRow=11
-TopLine=1
-LeftChar=1
-[Editor_12]
-CursorCol=1
-CursorRow=1
-TopLine=1
-LeftChar=1
-Open=0
-Top=0
-[Editor_13]
-Open=0
-Top=0
-[Editor_14]
-Open=0
-Top=0
-[Editor_15]
-Open=0
-Top=0
-[Editor_16]
-Open=0
-Top=0
-[Editor_17]
-Open=0
-Top=0
-[Editor_18]
-Open=0
-Top=0
-[Editor_19]
-Open=0
-Top=0
-[Editor_20]
-Open=0
-Top=0
-[Editor_21]
-Open=0
-Top=0
-[Editor_22]
-Open=0
-Top=0
-[Editor_23]
-Open=0
-Top=0
-CursorCol=1
-CursorRow=1
-TopLine=1
-LeftChar=1
-[Editor_24]
-Open=0
-Top=0
-CursorCol=1
-CursorRow=1
-TopLine=1
-LeftChar=1
-[Editor_25]
-Open=0
-Top=0
-[Editor_26]
-Open=1
-Top=0
-CursorCol=1
-CursorRow=28
-TopLine=1
-LeftChar=1
-[Editor_27]
-Open=1
-Top=0
-CursorCol=1
-CursorRow=12
-TopLine=1
-LeftChar=1
-[Editor_28]
-Open=1
-Top=1
-CursorCol=1
-CursorRow=33
-TopLine=1
-LeftChar=1

@@ -14,6 +14,8 @@
 		</Build>
 		<Unit filename="Candidato.cpp" />
 		<Unit filename="Candidato.h" />
+		<Unit filename="CandidatosXProv.cpp" />
+		<Unit filename="CandidatosXProv.h" />
 		<Unit filename="Cola.cpp" />
 		<Unit filename="Cola.h" />
 		<Unit filename="Enumeradores.h" />
@@ -23,8 +25,12 @@
 		<Unit filename="Mesa.h" />
 		<Unit filename="Partido.cpp" />
 		<Unit filename="Partido.h" />
+		<Unit filename="PartidosXProv.cpp" />
+		<Unit filename="PartidosXProv.h" />
 		<Unit filename="Pila.cpp" />
 		<Unit filename="Pila.h" />
+		<Unit filename="Provincia.cpp" />
+		<Unit filename="Provincia.h" />
 		<Unit filename="Test.cpp" />
 		<Unit filename="Test.h" />
 		<Unit filename="Urna.cpp" />
