@@ -6,5 +6,7 @@ ResultadoComparacion compararPartido(PtrDato ptrDato1, PtrDato ptrDato2);
 ResultadoComparacion compararProvincia(PtrDato ptrDato1, PtrDato ptrDato2);
 ResultadoComparacion compararCandidatos(PtrDato ptrDato1, PtrDato ptrDato2);
 ResultadoComparacion compararMesa(PtrDato ptrDato1, PtrDato ptrDato2);
+ResultadoComparacion compararPartidoXProv(PtrDato ptrDato1, PtrDato ptrDato2);
+ResultadoComparacion compararCandidatosXProv(PtrDato ptrDato1, PtrDato ptrDato2);
 
-#endif // 
+#endif //

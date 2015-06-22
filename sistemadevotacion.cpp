@@ -2,6 +2,12 @@
 #include <cstdio>
 #include <cstdlib>
 #include "funciones.h"
+#include "Cola.h"
+#include "Pila.h"
+#include "Provincia.h"
+#include "Mesa.h"
+#include "Urna.h"
+#include "Voto.h"
 
 using namespace std;
 
@@ -69,6 +75,9 @@ void distribuirVotos(Lista &lstProvincias)
     PtrNodoLista prov = primero(lstProvincias);
     PtrDato provDato;
     Lista provMesas;
+    //Para manejas las listas internas de Provincia
+    Lista lstCandxProv;
+    Lista lstPartxProv;
     //Para recorrer lista de mesas
     PtrNodoLista mesa;
     PtrDato mesaDato;
@@ -78,16 +87,21 @@ void distribuirVotos(Lista &lstProvincias)
     //Para recorrer la Pila
     Pila votos;
     PtrDatoPila votoUnidad;
+    //Puntero auxiliar
+    PtrDato cursor;
+    PtrDato cursor2;
 
     while (prov != fin())
     {
        provDato = prov->ptrDato;
        provMesas = getMesasProv(*(Provincia*)provDato);
+       lstCandxProv = getCandidatosProv(*(Provincia*)provDato);
+       lstPartxProv = getPartidosProv(*(Provincia*)provDato);
        mesa = primero(provMesas);
        while (mesa != fin())
        {
            mesaDato = mesa ->ptrDato;
-           mesasUrnas = getUrnasMesas(*(Mesas*)mesaDato);
+           mesasUrnas = getUrnasMesa(*(Mesas*)mesaDato);
            urna = desencolar(mesasUrnas);
            while (urna != finCola())
            {
@@ -95,12 +109,24 @@ void distribuirVotos(Lista &lstProvincias)
                votoUnidad = pop(votos);
                while (votoUnidad != fin())
                {
-                   //Hasta aca tengo el voto atomico (continuara)
+                    cursor = localizarDato(lstCandxProv, votoUnidad);
+                    if (cursor != fin()) //Por las dudas valido que haya un resultado aunque deberia siempre existir
+                    {
+                        setVotosCandidatosXProv(*(CandidatosXProv*)cursor, (getVotosCandidatosXProv(*(CandidatosXProv*)cursor))+1);
+                    }else {puts("Error: El candidato votado no se encuentra registrado en la Provincia"); system("pause");}
+                    cursor2 = localizarDato(lstPartxProv, cursor);
+                    if (cursor2 != fin()) //Por las dudas valido que haya un resultado aunque deberia siempre existir
+                    {
+                        setVotosPartidosXProv(*(PartidosXProv*)cursor2, (getVotosPartidosXProv(*(PartidosXProv*)cursor2))+1);
+                    }else {puts("Error: El partido al que pertenece el candidato votado no se encuentra registrado en la Provincia"); system("pause");}
+                    votoUnidad = pop(votos); //Saco un nuevo voto
                }
+               urna = desencolar(mesasUrnas); //Saco una nueva urna
            }
+           mesa = siguiente(provMesas, mesa); //Paso a un nuevo nodo de la lista (es decir a otra Mesa)
 
        }
 
     }
-    /**Ya accedi al minimo, tengo que distribuir y asegurarme de pasar al otro nodo de la lista*/
+    /**ME FALTA REALIZAR LAS ITERACIONES*/
 }

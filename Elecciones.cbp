@@ -18,6 +18,8 @@
 		<Unit filename="CandidatosXProv.h" />
 		<Unit filename="Cola.cpp" />
 		<Unit filename="Cola.h" />
+		<Unit filename="Comparaciones.cpp" />
+		<Unit filename="Comparaciones.h" />
 		<Unit filename="Enumeradores.h" />
 		<Unit filename="Lista.cpp" />
 		<Unit filename="Lista.h" />
@@ -37,6 +39,7 @@
 		<Unit filename="Urna.h" />
 		<Unit filename="Voto.cpp" />
 		<Unit filename="Voto.h" />
+		<Unit filename="ediciondedatos.cpp" />
 		<Unit filename="funciones.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="nuevatarea.cpp" />
