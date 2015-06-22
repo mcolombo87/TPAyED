@@ -6,5 +6,8 @@ void PruebadePila();
 void PruebaEstructuras();
 void pruebaCandidatosListas();
 
+//Carga e impresion de estructuras finales
+void imprimirPartidos(Lista&);
+void cargaListaProvincias(Lista&);
 
 #endif // TEST_H_INCLUDED

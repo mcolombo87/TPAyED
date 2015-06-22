@@ -5,11 +5,11 @@ CPP  = g++.exe
 CC   = gcc.exe
 WINDRES = windres.exe
 RES  = 
-OBJ  = main.o nuevatarea.o Pila.o Lista.o Cola.o sistemadevotacion.o Test.o Candidato.o CandidatosXProv.o Partido.o PartidosXProv.o Provincia.o Voto.o Mesa.o Urna.o $(RES)
-LINKOBJ  = main.o nuevatarea.o Pila.o Lista.o Cola.o sistemadevotacion.o Test.o Candidato.o CandidatosXProv.o Partido.o PartidosXProv.o Provincia.o Voto.o Mesa.o Urna.o $(RES)
-LIBS =  -L"C:/Dev-Cpp/lib"  
-INCS =  -I"C:/Dev-Cpp/include" 
-CXXINCS =  -I"C:/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"C:/Dev-Cpp/include/c++/3.4.2/backward"  -I"C:/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"C:/Dev-Cpp/include/c++/3.4.2"  -I"C:/Dev-Cpp/include" 
+OBJ  = main.o nuevatarea.o Pila.o Lista.o Cola.o sistemadevotacion.o Test.o Candidato.o CandidatosXProv.o Partido.o PartidosXProv.o Provincia.o Voto.o Mesa.o Urna.o ediciondedatos.o Comparaciones.o $(RES)
+LINKOBJ  = main.o nuevatarea.o Pila.o Lista.o Cola.o sistemadevotacion.o Test.o Candidato.o CandidatosXProv.o Partido.o PartidosXProv.o Provincia.o Voto.o Mesa.o Urna.o ediciondedatos.o Comparaciones.o $(RES)
+LIBS =  -L"lib"  
+INCS =  -I"include" 
+CXXINCS =  -I"lib/gcc/mingw32/3.4.2/include"  -I"include/c++/3.4.2/backward"  -I"include/c++/3.4.2/mingw32"  -I"include/c++/3.4.2"  -I"include" 
 BIN  = Elecciones.exe
 CXXFLAGS = $(CXXINCS)  
 CFLAGS = $(INCS)  
@@ -70,3 +70,9 @@ Mesa.o: Mesa.cpp
 
 Urna.o: Urna.cpp
 	$(CPP) -c Urna.cpp -o Urna.o $(CXXFLAGS)
+
+ediciondedatos.o: ediciondedatos.cpp
+	$(CPP) -c ediciondedatos.cpp -o ediciondedatos.o $(CXXFLAGS)
+
+Comparaciones.o: Comparaciones.cpp
+	$(CPP) -c Comparaciones.cpp -o Comparaciones.o $(CXXFLAGS)

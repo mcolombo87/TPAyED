@@ -11,6 +11,8 @@
 #include "Mesa.h"
 #include "Candidato.h"
 #include "Partido.h"
+#include "Provincia.h"
+#include "Comparaciones.h"
 
 void PruebaDeCola()
 {
@@ -206,3 +208,34 @@ void pruebaCandidatosListas()
     system("PAUSE");
 }
 
+void imprimirPartidos(Lista &lista){
+     PtrNodoLista cursor, cursor2;
+     cursor = primero(lista);
+     Lista candidatos;
+     while(cursor != fin()){
+                  
+                  printf("ID: %d  Nombre: %s \n", getIdPartido(*(Partido*)cursor->ptrDato), getNombrePartido(*(Partido*)cursor->ptrDato));
+                  candidatos = getLista(*(Partido*)cursor->ptrDato);
+                  cursor2 = primero(candidatos);
+                  while(cursor2 != fin()){
+                                   printf("\tID: %d ID partido: %d Nombre: %s \n", getIdCandidato(*(Candidato*)cursor2->ptrDato), getPartidoPolitico(*(Candidato*)cursor2->ptrDato), getNombreCandidato(*(Candidato*)cursor2->ptrDato));
+                                   cursor2=siguiente(candidatos,cursor2);
+                                }
+                  cursor=siguiente(lista,cursor);
+                  }
+     }
+     
+void cargaListaProvincias(Lista &provincias){
+     PtrDato provincia;
+     Lista mesa;
+     int idProvincia = 1;
+     
+     for(int i=0; i < 15; i++){
+                  provincia = new Provincia;
+                  setIdProvincia(*(Provincia*)provincia, idProvincia);
+                  crearLista(mesa, compararMesa);
+                  setMesasProv(*(Provincia*)provincia, mesa);
+                  adicionarFinal(provincias, provincia);
+                  idProvincia++;
+             }
+     }   

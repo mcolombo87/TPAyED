@@ -11,6 +11,8 @@
 #include <cstdio>
 #include <cstdlib>
 #include "funciones.h"
+#include "Lista.h"
+#include "Comparaciones.h"
 //#include "Test.h"
 
 using namespace std;
@@ -30,6 +32,11 @@ int main()
     bool continuar = true;
     bool opcinvalida = false;
     int opcion;
+    
+    Lista provincias;
+    Lista partidos;
+    crearLista(provincias, compararProvincia);
+    crearLista(partidos, compararPartido);
 
 
     while(continuar == true)
@@ -57,7 +64,8 @@ int main()
         switch(opcion)
         {
         case 1: /*funcion edicion de datos*/
-            //ACA Va la llamada al MODULO DE EDICION
+            edicionDeDatos(provincias, partidos);
+            nuevatarea(continuar);
             break;
         case 2: /*nos lleva al sub menu de votacion e inicia el motor de votacion*/
             sistemadevotacion();
@@ -78,6 +86,8 @@ int main()
 
 
     }
+    eliminarLista(provincias);
+    eliminarLista(partidos);
     system("PAUSE");
     return EXIT_SUCCESS;
 }
