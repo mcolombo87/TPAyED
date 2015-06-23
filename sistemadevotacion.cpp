@@ -157,7 +157,7 @@ void pantallaFinalizandoVotac(PtrDato &provDato, PtrDato &mesaDato, PtrDatoCola 
         printf("Votos TOTALES: %d\n\n", &pantallaEntradas);
 
         puts("Por favor aguarde...\n");
-        valor = sin((double)pantallaEntradas);
+        valor = 5*sin((double)pantallaEntradas)+6;
         if (round(valor) == (1)){printf("%c", &caracter);}
         if (round(valor) == (2)){printf("%c%c", &caracter, &caracter);}
         if (round(valor) == (3)){printf("%c%c%c", &caracter, &caracter, &caracter);}
