@@ -138,13 +138,10 @@ void modificarPartido(Lista &partidos){
          PtrDato insertar;
          insertar = dato->ptrDato;
          
-         printf("Se ha encontrado el partido. Ingrese el ID para cambiar:");
-         fflush(stdin);
-         scanf("%d",&idPartido);
+         printf("Se ha encontrado el partido\n");
          printf("Ingrese el nombre del partido para cambiar:");
          fflush(stdin);
          scanf("%s", nombre);
-         setIdPartido(*(Partido*)insertar, idPartido);
          setNombrePartido(*(Partido*)insertar, nombre);
          printf("Se ha modificado correctamente.\n");
          }else printf("no se ha encontrado el partido.\n");
@@ -249,14 +246,11 @@ void modificarCandidato(Lista &partidos){
              if(buscar != fin()){
                                 printf("Se ha encontrado el candidato.\n");
                                 candidato = buscar->ptrDato;
-                                printf("Ingrese el ID del partido del candidato: ");
-                                scanf("%d",&idPartido);
                                 printf("Ingrese el ID del candidato: ");
                                 scanf("%d",&idCandidato);
                                 printf("Ingrese el Nombre del candidato: ");
                                 fflush(stdin);
                                 scanf("%s",nombreCandidato);
-                                setIdCandidato(*(Candidato*)candidato, idCandidato);
                                 setPartidoPoliticoCandidato(*(Candidato*)candidato, idPartido);
                                 setNombreCandidato(*(Candidato*)candidato, nombreCandidato);
                                 printf("El candidato %s se ha modificado correctamente.\n", getNombreCandidato(*(Candidato*)candidato));

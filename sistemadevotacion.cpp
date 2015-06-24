@@ -9,18 +9,27 @@
 #include "Urna.h"
 #include "Voto.h"
 #include <math.h>
+#include <time.h>
+#include "Partido.h"
+#include "Candidato.h"
 #include "CandidatosXProv.h"
 #include "PartidosXProv.h"
+#include "Test.h"
 
 using namespace std;
 
-void sistemadevotacion()
+void abreUrna(Lista&, int&);
+void votacion(Lista&, Lista&, int&, int&);
+
+void sistemadevotacion(Lista provincias, Lista partidos)
 {
 
     bool continuar = true;
     bool opcinvalida = false;
     int opcion;
-
+    int idUrnaGlobal = 0;
+    int idVotoGlobal = 0;
+    
     while(continuar == true)
     {
         system("cls"); //Menu principal
@@ -46,13 +55,13 @@ void sistemadevotacion()
         switch(opcion)
         {
         case 1: /*funcion de Apertura de Mesas*/
-            //ACA Va la llamada al modulo de apertura de mesas
+            agregarMesa(provincias);
             break;
         case 2: /*funcion de Apertura de Urnas*/
-            //ACA Va la llamada al modulo de apertura de urnas
+            abreUrna(provincias, idUrnaGlobal);
             break;
         case 3: /*Registrar voto*/
-            //ACA Va la llamada al modulo de registrar votos
+            votacion(provincias,partidos,idUrnaGlobal,idVotoGlobal);
             break;
         case 4: /*Finaliza la votacion*/
             //ACA Va la llamada al modulo que finaliza la votacion
@@ -172,3 +181,128 @@ void pantallaFinalizandoVotac(PtrDato &provDato, PtrDato &mesaDato, PtrDatoCola 
 
 }
 
+char* hora()
+{
+      time_t t;
+      struct tm *tm;
+      char* fechayhora = new char;
+
+      t=time(NULL);
+      tm=localtime(&t);
+      strftime(fechayhora, 100, "%H:%M", tm);
+      return fechayhora;
+      } 
+      
+void votacion(Lista &provincias, Lista &partidos, int &id, int &idVoto){          
+          PtrDato provincia = new Provincia;//Auxiliar, guarda distintos tipos de TDA
+          PtrDato mesa = new Mesas;
+          PtrDatoPila voto = new Voto;
+          PtrDatoCola urna;// = new Urna;
+          PtrNodoLista buscar;
+          Lista mesas;
+          Cola urnas;
+          Pila votos;
+          
+          int idProvincia, idMesa, opcion = 0, idCandidato;
+          cout << "Ingrese la provincia donde vota: ";
+          cin >> idProvincia;
+          cout << "Ingrese la mesa donde vota: ";
+          cin >> idMesa;
+          
+          setIdProvincia(*(Provincia*)provincia, idProvincia);
+          setIdMesa(*(Mesas*)mesa, idMesa);
+          setProvinciaMesa(*(Mesas*)mesa, idProvincia);
+          
+          buscar = localizarDato(provincias, provincia);
+          
+          if(buscar != fin()){
+                       cout << "Provincia encontrada" << endl;
+                       provincia = buscar->ptrDato;
+                       mesas = getMesasProv(*(Provincia*)provincia);
+                      
+                       buscar = localizarDato(mesas, mesa);
+                       if(buscar != fin()){
+                                 
+                                    cout << "Mesa encontrada" << endl;
+                                    cout << "Listado de candidatos:" << endl;
+                                    imprimirPartidos(partidos);
+                                    cout << "Ingrese el ID del candidato a votar: ";
+                                    cin >> idCandidato;
+                                    setIdVoto(*(Voto*)voto, idVoto++);
+                                    setIdCandidatoVoto(*(Voto*)voto,idCandidato);
+                                    
+                                    provincia = buscar->ptrDato;
+                                    urnas = getUrnasMesa(*(Mesas*)provincia);
+                                    if(estaVacia(urnas)){
+                                              cout << "Esta vacia" << endl;
+                                              urna = new Urna;
+                                              crearPila(votos);
+                                              push(votos, voto);
+                                              constructorUrna(*(Urna*)urna, id++, hora() , votos);
+                                              encolar(urnas, urna);
+                                              setUrnasMesa(*(Mesas*)provincia, urnas);
+                                              }
+                                    else{
+                                         urna = urnas.last->ptrDato;
+                                         votos = getVotosUrna(*(Urna*)urna);
+                                         push(votos, voto);
+                                         setVotosUrna(*(Urna*)urna, votos);
+                                    }                                    
+                                    
+                                 }else{
+                                     cout << "No existe esa mesa " << endl;
+                                     cout << "Desea agregarla:  1-Si 2-No";
+                                     cin >> opcion;
+                                     if(opcion == 2){agregarMesa(provincias);}
+                                       }
+                    }else cout << "No existe esa provincia " << endl; 
+
+          
+          
+          
+          system("PAUSE");          
+     }
+     
+void abreUrna(Lista &provincias, int &id){
+     PtrDato provincia = new Provincia;
+     PtrDato mesa = new Mesas;
+     PtrNodoLista buscar;
+     PtrDatoCola urna;
+     Lista mesas;
+     Cola urnas;
+     Pila votos;
+     int idProvincia, idMesa, idCandidato;
+     
+     
+     
+     cout << "Ingrese la provincia donde abrira la urna: ";
+     cin >> idProvincia;
+     cout << "Ingrese la mesa donde abrira la urna: ";
+     cin >> idMesa;
+     
+     setIdProvincia(*(Provincia*)provincia, idProvincia);
+     setIdMesa(*(Mesas*)mesa, idMesa);
+     setProvinciaMesa(*(Mesas*)mesa, idProvincia);
+    
+     buscar = localizarDato(provincias, provincia);
+    
+     if(buscar != fin()){
+          cout << "Provincia encontrada" << endl;
+          provincia = buscar->ptrDato;
+          mesas = getMesasProv(*(Provincia*)provincia);
+          buscar = localizarDato(mesas, mesa);    
+          
+          if(buscar != fin()){
+                cout << "Mesa encontrada" << endl;
+                mesa = buscar->ptrDato;
+                urnas = getUrnasMesa(*(Mesas*)mesa);
+                urna = urnas.last->ptrDato;
+                if(urna != fin){setHoraCierreUrna(*(Urna*)urna, hora());}
+                crearPila(votos);
+                urna = new Urna;
+                constructorUrna(*(Urna*)urna, id++, hora() , votos);
+                cout << "Se agrego la urna correctamente." << endl;    
+                    }else cout << "No se ha encontrado la mesa." << endl;   
+          }else cout << "No se ha encontrado la provincia." << endl;
+    system("Pause");
+}

@@ -1,8 +1,12 @@
 #include "Urna.h"
 #include <string.h>
 
-void constructorUrna(Urna urna)
+void constructorUrna(Urna &urna, int id, char* horaApertura, Pila votos)
 {
+     urna.id = id;
+     urna.horaApertura =  horaApertura;
+     crearPila(votos);
+     urna.votos = votos;
 }
 
 void destructorUrna(Urna urna)
@@ -30,19 +34,20 @@ Pila getVotosUrna(Urna urna)
     return urna.votos;
 }
 
+
 void setIdUrna(Urna &urna, int dato)
 {
     urna.id = dato;
 }
 
-void setHoraAperturaUrna(Urna &urna,char  dato[5])
+void setHoraAperturaUrna(Urna &urna,char* dato)
 {
-    strcpy(urna.horaApertura, dato);
+    urna.horaApertura= dato;
 }
 
-void setHoraCierreUrna(Urna &urna,char  dato[5])
+void setHoraCierreUrna(Urna &urna,char*  dato)
 {
-    strcpy(urna.horaCierre, dato);
+    urna.horaCierre = dato;
 }
 
 void setVotosUrna(Urna &urna, Pila dato)

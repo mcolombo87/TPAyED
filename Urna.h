@@ -4,12 +4,12 @@
 
 typedef struct{
         int id;
-        char horaApertura[5];
-        char horaCierre[5];
+        char* horaApertura;
+        char* horaCierre;
         Pila votos;
 }Urna;
 
-void constructorUrna(Urna urna);
+void constructorUrna(Urna &urna, int id, char horaApertura[6], Pila votos);
 
 void destructorUrna(Urna urna);
 
@@ -23,9 +23,9 @@ Pila getVotosUrna(Urna urna);
 
 void setIdUrna(Urna &urna, int dato);
 
-void setHoraAperturaUrna(Urna &urna,char  dato[5]);
+void setHoraAperturaUrna(Urna &urna, char* dato);
 
-void setHoraCierreUrna(Urna &urna,char  dato[5]);
+void setHoraCierreUrna(Urna &urna,char* dato);
 
 void setVotosUrna(Urna &urna, Pila dato);
 

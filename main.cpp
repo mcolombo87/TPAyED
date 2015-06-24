@@ -68,7 +68,7 @@ int main()
             nuevatarea(continuar);
             break;
         case 2: /*nos lleva al sub menu de votacion e inicia el motor de votacion*/
-            sistemadevotacion();
+            sistemadevotacion(provincias, partidos);
             nuevatarea(continuar);
             break;
         case 3: /*Genera Informes de Votacion*/
