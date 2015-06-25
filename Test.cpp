@@ -176,7 +176,7 @@ void pruebaCandidatosListas()
     miPartido = new Partido;
     char nombre [20] = "FPV";
 
-    constructorPartido(*(Partido*)miPartido);
+    //constructorPartido(*(Partido*)miPartido);
     setIdPartido(*(Partido*)miPartido, 1);
     setNombrePartido(*(Partido*)miPartido, nombre);
     printf("\nIDPartido: %d\n", getIdPartido(*(Partido*)miPartido));

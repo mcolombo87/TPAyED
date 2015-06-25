@@ -12,7 +12,7 @@ typedef struct{
         Lista candidatos;
 }Partido;
 
-void constructorPartido(Partido partido);
+void constructorPartido(Partido&, int, char[]);
 
 void destructorPartido(Partido partido);
 

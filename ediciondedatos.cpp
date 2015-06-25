@@ -108,6 +108,7 @@ void agregarPartido(Lista &partidos){
      printf("Ingrese el nombre:");
      fflush(stdin);
      scanf("%s", nombre);
+     //constructorPartido(*(Partido*)ptrdato, idPartido, nombre);
      setIdPartido(*(Partido*)ptrdato, idPartido);
      setNombrePartido(*(Partido*)ptrdato, nombre);
      setLista(*(Partido*)ptrdato, candidatos);
