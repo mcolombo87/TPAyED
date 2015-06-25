@@ -8,7 +8,7 @@ typedef struct{
     Cola urnas;
 }Mesas;
 
-void constructorMesa(Mesas mesa);
+void constructorMesa(Mesas&, int, int, Cola);
 
 void destructorMesa(Mesas mesa);
 

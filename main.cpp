@@ -13,7 +13,7 @@
 #include "funciones.h"
 #include "Lista.h"
 #include "Comparaciones.h"
-//#include "Test.h"
+#include "Test.h"
 
 using namespace std;
 
@@ -37,6 +37,7 @@ int main()
     Lista partidos;
     crearLista(provincias, compararProvincia);
     crearLista(partidos, compararPartido);
+    cargaListaProvincias(provincias);
 
 
     while(continuar == true)

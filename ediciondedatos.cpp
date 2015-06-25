@@ -25,7 +25,6 @@ void agregarMesa(Lista &provincias){
      PtrNodoLista buscar;
      Lista mesas;
      Cola urna;
-     crearCola(urna);
      int idMesa, idProvincia;
      
      printf("Ingrese la provincia: ");
@@ -35,9 +34,10 @@ void agregarMesa(Lista &provincias){
      
      setIdProvincia(*(Provincia*)provincia,idProvincia);
      
-     setIdMesa(*(Mesas*)mesa, idMesa);
-     setProvinciaMesa(*(Mesas*)mesa, idProvincia);
-     setUrnasMesa(*(Mesas*)mesa, urna);
+     constructorMesa(*(Mesas*)mesa, idMesa, idProvincia, urna);
+     //setIdMesa(*(Mesas*)mesa, idMesa);
+     //setProvinciaMesa(*(Mesas*)mesa, idProvincia);
+     //setUrnasMesa(*(Mesas*)mesa, urna);
      
      buscar = localizarDato(provincias, provincia);
      

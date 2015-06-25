@@ -3,12 +3,12 @@
 #include "Comparaciones.h"
 #include "Lista.h"
 
-void constructorPartido(Partido &partido, int id, char nombre[20])
+void constructorPartido(Partido &partido, int id, char nombre[20], Lista candidatos)
 {
      partido.id = id;
      strcpy(partido.nombre, nombre);
-     Lista candidatos;
      crearLista(candidatos,compararCandidatos);
+     partido.candidatos = candidatos;
 }
 
 void destructorPartido(Partido partido)

@@ -1,8 +1,11 @@
 #include "Mesa.h"
 
-void constructorMesa(Mesas mesa)
+void constructorMesa(Mesas &mesa, int id, int prov, Cola urna)
 {
-
+     mesa.id = id;
+     mesa.provincia = prov;
+     crearCola(urna);
+     mesa.urnas = urna;
 }
 
 void destructorMesa(Mesas mesa)

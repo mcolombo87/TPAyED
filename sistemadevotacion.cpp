@@ -253,7 +253,7 @@ void votacion(Lista &provincias, Lista &partidos, int &id, int &idVoto){
                                      cout << "No existe esa mesa " << endl;
                                      cout << "Desea agregarla:  1-Si 2-No";
                                      cin >> opcion;
-                                     if(opcion == 2){agregarMesa(provincias);}
+                                     if(opcion == 1){agregarMesa(provincias);}
                                        }
                     }else cout << "No existe esa provincia " << endl; 
 
