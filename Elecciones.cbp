@@ -12,6 +12,7 @@
 				<Option compiler="gcc" />
 			</Target>
 		</Build>
+		<Unit filename="Archivos.cpp" />
 		<Unit filename="Candidato.cpp" />
 		<Unit filename="Candidato.h" />
 		<Unit filename="CandidatosXProv.cpp" />

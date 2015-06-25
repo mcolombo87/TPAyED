@@ -10,4 +10,11 @@ void edicionDeDatos(Lista&, Lista&); //LLeva a la edicion de datos
 void agregarMesa(Lista&);
 void pantallaFinalizandoVotac(PtrDato &provDato, PtrDato &mesaDato, PtrDatoCola &urna, int &pantallaEntradas, int &pantallaEntradasProv);
 
+//Funciones para el módulo de carga.
+
+void cargarArcCandidatos(Lista &lstCan);
+void cargarArcPartidos(Lista &lstPar);
+void cargarArcMesas(Lista &lstMes);
+void guardarEnArchivos(Lista &Candidatos, Lista &Partidos, Lista &Mesa);
+
 #endif // FUNCIONES_H_INCLUDED

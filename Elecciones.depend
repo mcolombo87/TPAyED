@@ -10,7 +10,7 @@
 	<cstdio>
 	"funciones.h"
 
-1435038309 d:\users\romina\documents\git\ayed\funciones.h
+1435198662 d:\users\romina\documents\git\ayed\funciones.h
 	"Lista.h"
 	"Cola.h"
 
@@ -20,28 +20,42 @@
 
 1434749919 d:\users\romina\documents\git\ayed\pila.h
 
-1434123001 source:d:\users\romina\documents\git\ayed\sistemadevotacion.cpp
+1435196598 source:d:\users\romina\documents\git\ayed\sistemadevotacion.cpp
 	<iostream>
 	<cstdio>
 	<cstdlib>
 	"funciones.h"
+	"Cola.h"
+	"Pila.h"
+	"Provincia.h"
+	"Mesa.h"
+	"Urna.h"
+	"Voto.h"
+	<math.h>
+	<time.h>
+	"Partido.h"
+	"Candidato.h"
+	"CandidatosXProv.h"
+	"PartidosXProv.h"
+	"Test.h"
 
 1434600392 source:d:\users\romina\documents\git\ayed\cola.cpp
 	"Cola.h"
 
 1434600392 d:\users\romina\documents\git\ayed\cola.h
 
-1434982820 source:d:\users\romina\documents\git\ayed\main.cpp
+1435203489 source:d:\users\romina\documents\git\ayed\main.cpp
 	<iostream>
 	<cstdio>
 	<cstdlib>
 	"funciones.h"
 	"Lista.h"
 	"Comparaciones.h"
+	"Test.h"
 
-1434982820 d:\users\romina\documents\git\ayed\test.h
+1435067190 d:\users\romina\documents\git\ayed\test.h
 
-1434982820 source:d:\users\romina\documents\git\ayed\test.cpp
+1435203759 source:d:\users\romina\documents\git\ayed\test.cpp
 	<iostream>
 	<cstdlib>
 	<cstdio>
@@ -63,16 +77,16 @@
 1434659107 source:d:\users\romina\documents\git\ayed\voto.cpp
 	"Voto.h"
 
-1434742646 source:d:\users\romina\documents\git\ayed\mesa.cpp
+1435196598 source:d:\users\romina\documents\git\ayed\mesa.cpp
 	"Mesa.h"
 
-1434742595 d:\users\romina\documents\git\ayed\mesa.h
+1435196598 d:\users\romina\documents\git\ayed\mesa.h
 	"Cola.h"
 
-1434754189 d:\users\romina\documents\git\ayed\urna.h
+1435196598 d:\users\romina\documents\git\ayed\urna.h
 	"Pila.h"
 
-1434754173 source:d:\users\romina\documents\git\ayed\urna.cpp
+1435196598 source:d:\users\romina\documents\git\ayed\urna.cpp
 	"Urna.h"
 	<string.h>
 
@@ -82,11 +96,13 @@
 
 1434688424 d:\users\romina\documents\git\ayed\candidato.h
 
-1434667187 source:d:\users\romina\documents\git\ayed\partido.cpp
+1435196598 source:d:\users\romina\documents\git\ayed\partido.cpp
 	"Partido.h"
 	<string.h>
+	"Comparaciones.h"
+	"Lista.h"
 
-1434669555 d:\users\romina\documents\git\ayed\partido.h
+1435196598 d:\users\romina\documents\git\ayed\partido.h
 	"Lista.h"
 
 1434740477 source:d:\users\romina\documents\git\ayed\candidatosxprov.cpp
@@ -121,7 +137,7 @@
 1434983359 d:\users\romina\documents\git\ayed\comparaciones.h
 	"Lista.h"
 
-1434982820 source:d:\users\romina\documents\git\ayed\ediciondedatos.cpp
+1435196598 source:d:\users\romina\documents\git\ayed\ediciondedatos.cpp
 	<iostream>
 	<cstdlib>
 	<cstdio>
@@ -136,4 +152,13 @@
 	"Candidato.h"
 	"Partido.h"
 	"Comparaciones.h"
+
+1435203734 source:d:\users\romina\documents\git\ayed\archivos.cpp
+	<iostream>
+	<cstdio>
+	<cstdlib>
+	"funciones.h"
+	"Mesa.h"
+	"Candidato.h"
+	"Partido.h"
 

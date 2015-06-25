@@ -213,7 +213,7 @@ void imprimirPartidos(Lista &lista){
      cursor = primero(lista);
      Lista candidatos;
      while(cursor != fin()){
-                  
+
                   printf("ID: %d  Nombre: %s \n", getIdPartido(*(Partido*)cursor->ptrDato), getNombrePartido(*(Partido*)cursor->ptrDato));
                   candidatos = getLista(*(Partido*)cursor->ptrDato);
                   cursor2 = primero(candidatos);
@@ -223,13 +223,14 @@ void imprimirPartidos(Lista &lista){
                                 }
                   cursor=siguiente(lista,cursor);
                   }
+        system("pause");
      }
-     
+
 void cargaListaProvincias(Lista &provincias){
      PtrDato provincia;
      Lista mesa;
      int idProvincia = 1;
-     
+
      for(int i=0; i < 15; i++){
                   provincia = new Provincia;
                   setIdProvincia(*(Provincia*)provincia, idProvincia);
@@ -238,4 +239,4 @@ void cargaListaProvincias(Lista &provincias){
                   adicionarFinal(provincias, provincia);
                   idProvincia++;
              }
-     }   
+     }

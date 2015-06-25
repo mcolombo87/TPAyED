@@ -1,0 +1,4 @@
+1;macri;1
+2;scioli;2
+3;massa;3
+4;randazzo;2

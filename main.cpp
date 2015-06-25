@@ -19,6 +19,19 @@ using namespace std;
 
 int main()
 {
+
+    //Creo las listas temporales y cargo archivos
+    Lista lstCan;
+    crearLista(lstCan, NULL);
+    Lista lstPar;
+    crearLista(lstPar, NULL);
+    Lista lstMes;
+    crearLista(lstMes, NULL);
+
+    cargarArcCandidatos(lstCan);
+    cargarArcMesas(lstMes);
+    cargarArcPartidos(lstPar);
+
     /**Todas las Pruebas que quieran hacer por fuera del funcionamiento de la aplicacion**/
     /**deben hacerse usando los Test. Llaman a las funciones aca cuando quieren probar algo**/
 //    PruebaDeCola();
@@ -27,17 +40,20 @@ int main()
 //    PruebaEstructuras();
 //    pruebaCandidatosListas();
 //    PruebaDeCola();
+
+    imprimirPartidos(lstPar);
     /**Fin del Bloque de pruebas**/
 
     bool continuar = true;
     bool opcinvalida = false;
     int opcion;
-    
+
     Lista provincias;
     Lista partidos;
     crearLista(provincias, compararProvincia);
     crearLista(partidos, compararPartido);
     cargaListaProvincias(provincias);
+
 
 
     while(continuar == true)
