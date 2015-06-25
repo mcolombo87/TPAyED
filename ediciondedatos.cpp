@@ -254,6 +254,7 @@ void modificarCandidato(Lista &partidos){
                                 scanf("%s",nombreCandidato);
                                 setPartidoPoliticoCandidato(*(Candidato*)candidato, idPartido);
                                 setNombreCandidato(*(Candidato*)candidato, nombreCandidato);
+                                //setLista(*(Partido*)partidoAux, candidatos);
                                 printf("El candidato %s se ha modificado correctamente.\n", getNombreCandidato(*(Candidato*)candidato));
                     }else printf("El candidato no existe.\n");
              
