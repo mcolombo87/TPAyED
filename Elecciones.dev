@@ -1,7 +1,7 @@
 [Project]
 FileName=Elecciones.dev
 Name=Elecciones
-UnitCount=32
+UnitCount=33
 Type=1
 Ver=1
 ObjFiles=
@@ -359,6 +359,16 @@ BuildCmd=
 
 [Unit32]
 FileName=Comparaciones.h
+CompileCpp=1
+Folder=Elecciones
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit33]
+FileName=Archivos.cpp
 CompileCpp=1
 Folder=Elecciones
 Compile=1
