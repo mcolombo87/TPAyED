@@ -18,75 +18,78 @@ using namespace std;
 //-------------------------------ABM FUNCIONES-------------------------------------------------//
 
 //---------------------------------ABM MESA----------------------------------------------------//
-void agregarMesa(Lista &provincias){
+void agregarMesa(Lista &mesas){
       printf("---------------Agregar una mesa-----------------\n");
-     PtrDato provincia = new Provincia;
+     cout << longitud(mesas) << endl;
      PtrDato mesa = new Mesas;
      PtrNodoLista buscar;
-     Lista mesas;
      Cola urna;
      int idMesa, idProvincia;
+     bool correcto;
      
-     printf("Ingrese la provincia: ");
-     scanf("%d", &idProvincia);
+     cout << "Ingrese el id de la provincia: ";
+     fflush(stdin);
+     correcto = scanf("%d",&idProvincia);
+     while(!correcto){
+           cout << "Debe ingresar un numero entero, intente de nuevo: " << endl;
+           fflush(stdin);
+           correcto = scanf("%d",&idProvincia);           
+                      }
      printf("Ingrese el id de la mesa: ");
-     scanf("%d", &idMesa);
-     
-     setIdProvincia(*(Provincia*)provincia,idProvincia);
+     fflush(stdin);
+     correcto = scanf("%d",&idMesa);
+     while(!correcto){
+           cout << "Debe ingresar un numero entero, intente de nuevo: " << endl;
+           fflush(stdin);
+           correcto = scanf("%d",&idMesa);           
+                      }
      
      constructorMesa(*(Mesas*)mesa, idMesa, idProvincia, urna);
-     //setIdMesa(*(Mesas*)mesa, idMesa);
-     //setProvinciaMesa(*(Mesas*)mesa, idProvincia);
-     //setUrnasMesa(*(Mesas*)mesa, urna);
      
-     buscar = localizarDato(provincias, provincia);
-     
-     if(buscar != fin()){
-               
-                  printf("Se ha encontrado la provincia.\n");
-                  provincia = buscar->ptrDato;
-                  mesas = getMesasProv(*(Provincia*)provincia);
-                  adicionarFinal(mesas, mesa);
-                  setMesasProv(*(Provincia*)provincia, mesas);
-                  printf("Se ha agregado una mesa.\n");   
-               }else printf("No se ha encontrado la provincia.\n");
+     buscar = localizarDato(mesas, mesa);
+     if(buscar == fin()){
+        adicionarFinal(mesas, mesa);
+        printf("Se ha agregado una mesa con el id %d.\n", idMesa);   
+               }else printf("Ya existe una mesa con ese id.\n");
      system("Pause");     
      }
 
-void bajaMesa(Lista &provincias){
+void bajaMesa(Lista &mesas){
      printf("---------------Dar de baja una mesa-----------------\n");
-     PtrDato provincia = new Provincia;
+     
      PtrDato mesa = new Mesas;
      PtrNodoLista buscar;
-     Lista mesas;
+     bool correcto;
      int idMesa, idProvincia, opcion = 0;
      
-     printf("Ingrese la provincia de la mesa a dar de baja: ");
-     scanf("%d",&idProvincia);
      printf("Ingrese el id de la mesa: ");
-     scanf("%d",&idMesa);
-     
-     setIdProvincia(*(Provincia*)provincia,idProvincia);
+     fflush(stdin);
+     correcto = scanf("%d",&idMesa);
+     while(!correcto){
+           cout << "Debe ingresar un numero entero, intente de nuevo: " << endl;
+           fflush(stdin);
+           correcto = scanf("%d",&idMesa);           
+                      }
      
      setIdMesa(*(Mesas*)mesa, idMesa);
-     setProvinciaMesa(*(Mesas*)mesa, idProvincia);
+     buscar = localizarDato(mesas, mesa);
      
-     buscar = localizarDato(provincias, provincia);
      if(buscar != fin()){
-                  printf("Provincia encontrada\n");
-                  provincia = buscar->ptrDato;
-                  mesas = getMesasProv(*(Provincia*)provincia);
-                  buscar = localizarDato(mesas, mesa);
-                  if(buscar != fin()){
-                               printf("Se ha encontrado la mesa, esta seguro de querer borrar? 1-SI  2-NO  ");
-                               scanf("%d", &opcion);
-                               if(opcion == 1){
-                                         eliminarNodo(mesas, buscar);
-                                         printf("Mesa eliminada.\n");
-                                    }else printf("Borrado cancelado.\n");
+            printf("Se ha encontrado la mesa ID: %d, esta seguro de querer borrar? 1-SI  2-NO  ", idMesa);
+            fflush(stdin);
+            correcto = scanf("%d",&opcion);
+            while(!correcto){
+                             cout << "Debe ingresar un numero entero, intente de nuevo: " << endl;
+                             fflush(stdin);
+                             correcto = scanf("%d",&opcion);           
+                      }
+            
+            if(opcion == 1){
+                     eliminarNodo(mesas, buscar);
+                     printf("Mesa eliminada.\n");
+                     }else printf("Borrado cancelado.\n");
                             }else printf("No existe una mesa con ese ID\n");
                
-               }else printf("No existe una provincia con ese ID\n");
      system("Pause");
      }
 //-------------------------------FIN ABM MESA-------------------------------------------------//
@@ -94,57 +97,72 @@ void bajaMesa(Lista &provincias){
 //-------------------------------ABM PARTIDOS--------------------------------------------------//
 void agregarPartido(Lista &partidos){
      printf("---------Agregar un partido------------\n");
-     //cin.getline(var, tamaño, fin);
-     PtrDato ptrdato;
-     int idPartido = 0, opcion = 1;
+     PtrDato ptrdato= new Partido;;
+     int idPartido;
+     PtrNodoLista buscar;
      char nombre[20]="";
+     bool correcto;
      Lista candidatos;
-     crearLista(candidatos, compararCandidatos);
                   
-     ptrdato = new Partido;
      printf("Ingrese el ID del partido:");
      fflush(stdin);
-     scanf("%d",&idPartido);
+     correcto = scanf("%d",&idPartido);
+     while(!correcto){
+           cout << "Debe ingresar un numero entero, intente de nuevo: " << endl;
+           fflush(stdin);
+           correcto = scanf("%d",&idPartido);
+           fflush(stdin);           
+                      }
+                      
      printf("Ingrese el nombre:");
      fflush(stdin);
-     scanf("%s", nombre);
-     //constructorPartido(*(Partido*)ptrdato, idPartido, nombre);
-     setIdPartido(*(Partido*)ptrdato, idPartido);
-     setNombrePartido(*(Partido*)ptrdato, nombre);
-     setLista(*(Partido*)ptrdato, candidatos);
-     if(localizarDato(partidos,ptrdato) != fin())
-     {printf("Ya existe ese partido.\n");}
-     else{
-          adicionarFinal(partidos, ptrdato);
-          printf("Se agrego con exito el partido politico.\n");
-          }
-          
+     cin.getline(nombre, 20, '\n');
+     while(strlen(nombre) < 3){
+                     cout << "Debe ingresa un nombre de al menos 3 caracteres: ";
+                     cin.getline(nombre, 20, '\n');
+                     fflush(stdin);}
+     constructorPartido(*(Partido*)ptrdato, idPartido, nombre, candidatos);
+     buscar = localizarDato(partidos, ptrdato);
+     if(buscar == fin()){
+               adicionarFinal(partidos, ptrdato);
+               printf("Se agrego con exito el partido ""%s"".\n", getNombrePartido(*(Partido*)ptrdato));
+               }else cout << "Ya existe un partido con ese ID.\n" << endl;
+             
      system("Pause");
      }
 
 void modificarPartido(Lista &partidos){
      printf("---------Modificar un partido------------\n");
-     PtrDato ptrdato;
-     int idPartido = 0, opcion = 1;
+     PtrDato ptrdato = new Partido;
+     int idPartido = 0;
      char nombre[20]="";
-     ptrdato = new Partido;
+     bool correcto;
      
      printf("Ingrese el ID del partido a cambiar:");
      fflush(stdin);
-     scanf("%d",&idPartido);
+     correcto = scanf("%d",&idPartido);
+     while(!correcto){
+          cout << "Debe ingresar un numero entero, intente de nuevo: " << endl;
+          fflush(stdin);
+          correcto = scanf("%d",&idPartido); 
+          fflush(stdin);           
+                      }
+                      
      setIdPartido(*(Partido*)ptrdato, idPartido);
-     PtrNodoLista dato =localizarDato(partidos,ptrdato);
+     PtrNodoLista dato = localizarDato(partidos, ptrdato);
      
      if( dato != fin()){
-         PtrDato insertar;
-         insertar = dato->ptrDato;
-         
+         ptrdato = dato->ptrDato;
          printf("Se ha encontrado el partido\n");
          printf("Ingrese el nombre del partido para cambiar:");
          fflush(stdin);
-         scanf("%s", nombre);
-         setNombrePartido(*(Partido*)insertar, nombre);
-         printf("Se ha modificado correctamente.\n");
+         cin.getline(nombre, 20, '\n');
+         while(strlen(nombre) < 3){
+                     cout << "Debe ingresa un nombre de al menos 3 caracteres: ";
+                     cin.getline(nombre, 20, '\n');
+                     fflush(stdin);}
+         setNombrePartido(*(Partido*)ptrdato, nombre);
+         printf("El partido %s se ha modificado correctamente.\n", getNombrePartido(*(Partido*)ptrdato));
          }else printf("no se ha encontrado el partido.\n");
      
      system("Pause");
@@ -152,24 +170,36 @@ void modificarPartido(Lista &partidos){
      
 void bajaPartido(Lista &partidos){
      printf("---------Dar de baja un partido------------\n");
-     PtrDato ptrdato;
+     PtrDato ptrdato = new Partido;
      int idPartido = 0, opcion = 0;
      char nombre[20]="";
-     ptrdato = new Partido;
+     bool correcto;
      
      printf("Ingrese el ID del partido para dar de baja: ");
      fflush(stdin);
-     scanf("%d",&idPartido);
+     correcto = scanf("%d",&idPartido);
+     while(!correcto){
+                      fflush(stdin);
+          cout << "Debe ingresar un numero entero, intente de nuevo: " << endl;
+          correcto = scanf("%d",&idPartido);
+          fflush(stdin);           
+                      }
+                      
      setIdPartido(*(Partido*)ptrdato, idPartido);
-     setNombrePartido(*(Partido*)ptrdato, nombre);
-     
      PtrNodoLista dato = localizarDato(partidos,ptrdato);
      
      if(dato != fin()){
-                printf("Esta seguro de querer borrar? 1-SI  2-NO  ");
-                scanf("%d", &opcion);
+                printf("Esta seguro de querer borrar el partido %s? 1-SI  2-NO  ", getNombrePartido(*(Partido*)dato->ptrDato));
+                fflush(stdin);
+                correcto = scanf("%d",&opcion);
+                while(!correcto){
+                      fflush(stdin);
+                      cout << "Debe ingresar un numero entero, intente de nuevo: " << endl;
+                      correcto = scanf("%d",&opcion);
+                      fflush(stdin);           
+                      }
                 if(opcion == 1){
-                          eliminarNodo(partidos, dato);//NO BORRA LA LISTA, SE QUEDA EN MEMORIA?
+                          eliminarNodo(partidos, dato);
                           printf("Partido eliminado.\n");
                        }else printf("Borrado cancelado.\n");
              }else printf("No existe ese partido.\n");
@@ -178,127 +208,127 @@ void bajaPartido(Lista &partidos){
 
 //-------------------------------FIN ABM PARTIDO-------------------------------------------------//
 //--------------------------------ABM CANDIDATOS-----------------------------------------------------------//
-void agregarCandidato(Lista &partidos){ 
+void agregarCandidato(Lista &candidatos){ 
      printf("---------Agregar un candidato a un partido------------\n");
-     PtrDato ptrdato;
-     PtrDato busqueda = new Partido;
-     PtrDato partidoPolitico;
-     
-     ptrdato = new Candidato;
-     Lista candidatos;
+     PtrDato ptrdato = new Candidato;
     
-     int id = 0, partido = 1;
-     char nombre2[20] = "";
+     int id, partido;
+     char nombre[20] = "";
+     bool correcto;
+     PtrNodoLista buscar;
      
      printf("Ingrese el ID del partido: ");
-     scanf("%d",&partido);
+     correcto = scanf("%d",&partido);
+     while(!correcto){
+                      fflush(stdin);
+          cout << "Debe ingresar un numero entero, intente de nuevo: " << endl;
+          correcto = scanf("%d",&partido);  
+          fflush(stdin);         
+                      }
      printf("Ingrese el ID del Candidato: ");
-     scanf("%d",&id);
+     correcto = scanf("%d",&id);
+     while(!correcto){
+                      fflush(stdin);
+          cout << "Debe ingresar un numero entero, intente de nuevo: " << endl;
+          correcto = scanf("%d",&id); 
+          fflush(stdin);          
+                      }
      printf("Ingrese el Nombre del candidato: ");
      fflush(stdin);
-     scanf("%s",nombre2);
+     cin.getline(nombre, 20, '\n');
+     while(strlen(nombre) < 5){
+                     cout << "Debe ingresa un nombre de al menos 5 caracteres: ";
+                     cin.getline(nombre, 20, '\n');
+                     fflush(stdin);}
      
      setIdCandidato(*(Candidato*)ptrdato, id);
      setPartidoPoliticoCandidato(*(Candidato*)ptrdato, partido);
-     setNombreCandidato(*(Candidato*)ptrdato, nombre2);
-     setIdPartido(*(Partido*)busqueda, partido);//para buscar el partido
+     setNombreCandidato(*(Candidato*)ptrdato, nombre);
      
-     PtrNodoLista dato = localizarDato(partidos, busqueda);
-    
-     if(dato != fin()){
-                       printf("Se ha encontrado el partido.\n");
-                       partidoPolitico = dato->ptrDato;
-                       candidatos = getLista(*(Partido*)partidoPolitico);
-                       adicionarFinal(candidatos, ptrdato);
-                       setLista(*(Partido*)partidoPolitico, candidatos);
-                       printf("Se ha agregado un candidato.\n");         
-                }else printf("No se ha encontrado el partido.\n");     
+     buscar = localizarDato(candidatos, ptrdato);
+     if(buscar == fin()){
+               adicionarFinal(candidatos, ptrdato);
+               printf("Se ha agregado un candidato.\n");
+               }else cout << "Ya existe un candidato con esa ID" << endl;              
      
      system("PAUSE");
      }
      
-void modificarCandidato(Lista &partidos){
+void modificarCandidato(Lista &candidatos){
      printf("---------Modificar un candidato de un partido------------\n");
      
-     PtrDato partidoAux = new Partido;
      PtrDato candidato = new Candidato;
-     PtrNodoLista buscar;
-     Lista candidatos; //Lista donde se modifican los datos
      int idCandidato = 0, idPartido = 1;
-     char nombreCandidato[20] = "";
+     char nombre[20] = "";
+     bool correcto;
+     PtrNodoLista buscar;
      
-     printf("Ingrese el ID del partido del candidato a buscar: ");
-     scanf("%d",&idPartido);
      printf("Ingrese el ID del candidato a buscar: ");
-     scanf("%d",&idCandidato);
+     correcto = scanf("%d",&idCandidato);
+     while(!correcto){
+                      fflush(stdin);
+          cout << "Debe ingresar un numero entero, intente de nuevo: " << endl;
+          correcto = scanf("%d",&idCandidato);
+          fflush(stdin);           
+                      }
      
      setIdCandidato(*(Candidato*)candidato, idCandidato);
-     setPartidoPoliticoCandidato(*(Candidato*)candidato, idPartido);
-     setNombreCandidato(*(Candidato*)candidato, nombreCandidato);
      
-     setIdPartido(*(Partido*)partidoAux, idPartido);
-     buscar = localizarDato(partidos, partidoAux);
+     buscar = localizarDato(candidatos, candidato);
      
      if(buscar != fin()){
-             printf("Se ha encontrado el partido.\n");
-             partidoAux = buscar->ptrDato;
-             candidatos = getLista(*(Partido*)partidoAux);
-             buscar = localizarDato(candidatos, candidato);        
-             if(buscar != fin()){
-                                printf("Se ha encontrado el candidato.\n");
-                                candidato = buscar->ptrDato;
-                                printf("Ingrese el ID del candidato: ");
-                                scanf("%d",&idCandidato);
-                                printf("Ingrese el Nombre del candidato: ");
-                                fflush(stdin);
-                                scanf("%s",nombreCandidato);
-                                setPartidoPoliticoCandidato(*(Candidato*)candidato, idPartido);
-                                setNombreCandidato(*(Candidato*)candidato, nombreCandidato);
-                                //setLista(*(Partido*)partidoAux, candidatos);
-                                printf("El candidato %s se ha modificado correctamente.\n", getNombreCandidato(*(Candidato*)candidato));
-                    }else printf("El candidato no existe.\n");
+               printf("Se ha encontrado el candidato.\n");
+               candidato = buscar->ptrDato;
+               printf("Ingrese el Nombre del candidato: ");
+               fflush(stdin);
+               cin.getline(nombre, 20, '\n');
+               while(strlen(nombre) < 5){
+                     cout << "Debe ingresa un nombre de al menos 5 caracteres: ";
+                     fflush(stdin);
+                     cin.getline(nombre, 20, '\n');
+                     fflush(stdin);}
+               setNombreCandidato(*(Candidato*)candidato, nombre);
+               printf("El candidato %s se ha modificado correctamente.\n", getNombreCandidato(*(Candidato*)candidato));
+               }else printf("El candidato no existe.\n");
              
-             
-             }else printf("El partido no existe.\n");
      system("Pause");
      }
      
-void bajaCandidato(Lista &partidos){ //NO DEJAR VACIA LA LISTA CANDIDATO O EXPLOTA TODO TODO
+void bajaCandidato(Lista &candidatos){
      printf("---------Dar de baja un candidato de un partido------------\n");
      
-     PtrDato partidoAux = new Partido;
      PtrDato candidato = new Candidato;
      PtrNodoLista buscar;
-     Lista candidatos; //Lista donde se modifican los datos
+     bool correcto;
+    
      int idCandidato = 0, idPartido = 1, opcion = 0;
      
-     printf("Ingrese el ID del partido del candidato a buscar: ");
-     scanf("%d",&idPartido);
      printf("Ingrese el ID del candidato a buscar: ");
-     scanf("%d",&idCandidato);
+     correcto = scanf("%d", &idCandidato);
+               while(!correcto){
+                                fflush(stdin); 
+                       cout << "Debe ingresar un numero entero, intente de nuevo: " << endl;
+                       correcto = scanf("%d",&idCandidato); 
+                       fflush(stdin);           
+                                }
      
      setIdCandidato(*(Candidato*)candidato, idCandidato);
-     setPartidoPoliticoCandidato(*(Candidato*)candidato, idPartido);
-     
-     setIdPartido(*(Partido*)partidoAux, idPartido);
-     buscar = localizarDato(partidos, partidoAux);
-     
+    
+     buscar = localizarDato(candidatos, candidato);
      if(buscar != fin()){
-            
-             printf("Se ha encontrado el partido.\n");
-             partidoAux = buscar->ptrDato;
-             candidatos = getLista(*(Partido*)partidoAux);
-             buscar = localizarDato(candidatos, candidato);    
-             if(buscar != fin()){
-                       printf("Se ha encontrado el candidato, esta seguro de querer borrar? 1-SI  2-NO  ");
-                       scanf("%d", &opcion);
-                       if(opcion == 1){
-                                    partidoAux = buscar->ptrDato;
-                                    eliminarNodo(candidatos, buscar);
-                                    printf("Candidato eliminado.\n");
-                                 }else printf("Borrado cancelado.\n");
-                       }else printf("El candidato con ese id no existe.\n");
-             }else printf("No existe ese partido.\n");
+               printf("Se ha encontrado el candidato, esta seguro de querer borrar a %s? 1-SI  2-NO  ",getNombreCandidato(*(Candidato*)buscar->ptrDato));
+               correcto = scanf("%d", &opcion);
+               while(!correcto){
+                                fflush(stdin); 
+                       cout << "Debe ingresar un numero entero, intente de nuevo: " << endl;
+                       correcto = scanf("%d",&opcion); 
+                       fflush(stdin);           
+                                }
+               if(opcion == 1){
+                         eliminarNodo(candidatos, buscar);
+                         printf("Candidato eliminado.\n");
+                         }else printf("Borrado cancelado.\n");
+               }else printf("El candidato con ese id no existe.\n");
              
      system("PAUSE");
      }
@@ -307,12 +337,13 @@ void bajaCandidato(Lista &partidos){ //NO DEJAR VACIA LA LISTA CANDIDATO O EXPLO
 
 //----------------------------------------MENUS-------------------------------------------------//
 
-void MesaABM(Lista &provincias)
+void MesaABM(Lista &mesas)
 {
 
     bool continuar = true;
     bool opcinvalida = false;
     int opcion;
+    bool correcto;
 
     while(continuar == true)
     {
@@ -332,15 +363,21 @@ void MesaABM(Lista &provincias)
         }
 
 
-        scanf("%d", &opcion);
+         correcto = scanf("%d", &opcion);
+               while(!correcto){
+                                fflush(stdin); 
+                       cout << "Debe ingresar un numero entero, intente de nuevo: " << endl;
+                       correcto = scanf("%d",&opcion);
+                       fflush(stdin);            
+                                }
 
         switch(opcion)
         {
         case 1: 
-            agregarMesa(provincias);
+            agregarMesa(mesas);
             break;
         case 2: 
-            bajaMesa(provincias);
+            bajaMesa(mesas);
             break;
         case 0:
             return;
@@ -355,14 +392,15 @@ void MesaABM(Lista &provincias)
     }
     system("PAUSE");
     return;
-}    
+}   
 
-void CandidatoABM(Lista &partidos)
+void CandidatoABM(Lista &candidatos)
 {
 
     bool continuar = true;
     bool opcinvalida = false;
     int opcion;
+    bool correcto;
 
     while(continuar == true)
     {
@@ -383,18 +421,24 @@ void CandidatoABM(Lista &partidos)
         }
 
 
-        scanf("%d", &opcion);
+         correcto = scanf("%d", &opcion);
+               while(!correcto){
+                                fflush(stdin); 
+                       cout << "Debe ingresar un numero entero, intente de nuevo: " << endl;
+                       correcto = scanf("%d",&opcion); 
+                       fflush(stdin);           
+                                }
 
         switch(opcion)
         {
         case 1: //funcion de agregar partido
-            agregarCandidato(partidos);
+            agregarCandidato(candidatos);
             break;
         case 2: //funcion de modificar partido
-            modificarCandidato(partidos);
+            modificarCandidato(candidatos);
             break;
         case 3: //Funcion dar de baja un partido
-            bajaCandidato(partidos);
+            bajaCandidato(candidatos);
             break;
         case 0:
             return;
@@ -417,6 +461,7 @@ void PartidoABM(Lista &partidos)
     bool continuar = true;
     bool opcinvalida = false;
     int opcion;
+    bool correcto;
 
     while(continuar == true)
     {
@@ -437,7 +482,13 @@ void PartidoABM(Lista &partidos)
         }
 
 
-        scanf("%d", &opcion);
+         correcto = scanf("%d", &opcion);
+               while(!correcto){
+                       fflush(stdin);         
+                       cout << "Debe ingresar un numero entero, intente de nuevo: " << endl;
+                       correcto = scanf("%d",&opcion);
+                       fflush(stdin);            
+                                }
 
         switch(opcion)
         {
@@ -465,12 +516,13 @@ void PartidoABM(Lista &partidos)
     return;
 }
 
-void edicionDeDatos(Lista &provincias, Lista &partidos)
+void edicionDeDatos(Lista &candidatos, Lista &partidos, Lista &mesas)
 {
 
     bool continuar = true;
     bool opcinvalida = false;
     int opcion;
+    bool correcto;
 
     while(continuar == true)
     {
@@ -491,7 +543,13 @@ void edicionDeDatos(Lista &provincias, Lista &partidos)
         }
 
 
-        scanf("%d", &opcion);
+        correcto = scanf("%d", &opcion);
+               while(!correcto){
+                                fflush(stdin); 
+                       cout << "Debe ingresar un numero entero, intente de nuevo: " << endl;
+                       correcto = scanf("%d",&opcion);
+                       fflush(stdin);            
+                                }
 
         switch(opcion)
         {
@@ -499,10 +557,10 @@ void edicionDeDatos(Lista &provincias, Lista &partidos)
             PartidoABM(partidos);
             break;
         case 2: 
-            CandidatoABM(partidos);
+            CandidatoABM(candidatos);
             break;
         case 3: 
-            MesaABM(provincias);
+            MesaABM(mesas);
             break;
         case 0:
             return;

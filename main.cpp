@@ -22,11 +22,11 @@ int main()
 
     //Creo las listas temporales y cargo archivos
     Lista lstCan;
-    crearLista(lstCan, NULL);
+    crearLista(lstCan, compararCandidatos);
     Lista lstPar;
-    crearLista(lstPar, NULL);
+    crearLista(lstPar, compararPartido);
     Lista lstMes;
-    crearLista(lstMes, NULL);
+    crearLista(lstMes, compararMesa);
 
     Lista provincias;
 
@@ -82,7 +82,7 @@ int main()
         switch(opcion)
         {
         case 1: /*funcion edicion de datos*/
-            edicionDeDatos(provincias, partidos);
+            edicionDeDatos(lstCan, lstPar, lstMes);
             nuevatarea(continuar);
             break;
         case 2: /*nos lleva al sub menu de votacion e inicia el motor de votacion*/
