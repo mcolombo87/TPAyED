@@ -2,6 +2,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include "funciones.h"
+#include "Lista.h"
 #include "Cola.h"
 #include "Pila.h"
 #include "Provincia.h"
@@ -15,6 +16,7 @@
 #include "CandidatosXProv.h"
 #include "PartidosXProv.h"
 #include "Test.h"
+
 
 using namespace std;
 
@@ -306,3 +308,91 @@ void abreUrna(Lista &provincias, int &id){
           }else cout << "No se ha encontrado la provincia." << endl;
     system("Pause");
 }
+
+void reportes(Lista provincias){
+     Lista partidosXprovincia;
+     Lista candidatosXprovincia;
+     Lista auxiliarPartidos;
+     Lista auxiliarCandidatos;
+     crearLista(auxiliarPartidos, NULL);
+     crearLista(auxiliarCandidatos, NULL);
+     PtrDato partido;
+     int votosPartido = 0, votosCandidato = 0;
+     int totalVotos = 0;
+     double porcentaje = 0;
+     PtrNodoLista cursor, cursor2;
+     bool primer = true;
+     
+     cursor = primero(provincias);
+     
+     partidosXprovincia = getPartidosProv(*(Provincia*)cursor);//Traigo la lista de PXP
+     cursor2 = primero(partidosXprovincia); //Busco el primer partido almacenado en la lista                     
+          
+     for(int i = 0; i < longitud(partidosXprovincia); i++){ // For determinado por la cantidad de partidos que hay
+          while(cursor != fin()){ // Recorro todas las provincias
+             partidosXprovincia = getPartidosProv(*(Provincia*)cursor->ptrDato);//En cada provincia, geteo la lista PXP
+             if(localizarDato(partidosXprovincia, cursor2->ptrDato) != fin()){ //Busco el partido en la lista 
+                 if(primer){partido = new PartidosXProv;// Para saber si es la primera vez que entra el partido
+                             primer  = false;
+                             setIdPartidosXProv(*(PartidosXProv*)partido, getIdPartidosXProv(*(PartidosXProv*)cursor2->ptrDato));
+                             setNombrePartidosXProv(*(PartidosXProv*)partido, getNombrePartidosXProv(*(PartidosXProv*)cursor2->ptrDato));
+                             }
+                 votosPartido += getVotosPartidosXProv(*(PartidosXProv*)cursor2->ptrDato);// sumo todos los votos de ese partido    
+                        }
+             cursor = siguiente(provincias, cursor); //Recorro la lista de provincias              
+                  }
+             setVotosPartidosXProv(*(PartidosXProv*)partido, votosPartido); //Terminadas las provincias, seteo los votos
+             adicionarFinal(auxiliarPartidos, partido); // agrego a la lista auxiliar
+             cursor2 = siguiente(partidosXprovincia, cursor2); // Sigo con el proximo partido
+             primer = true;
+             votosPartido = 0; 
+          }
+          
+     cursor = primero(provincias);
+     candidatosXprovincia = getCandidatosProv(*(Provincia*)cursor->ptrDato);
+     cursor2 = primero(candidatosXprovincia);
+     primer = true;
+     
+     for(int i = 0; i < longitud(candidatosXprovincia); i++){
+        while(cursor != fin()){
+           candidatosXprovincia = getCandidatosProv(*(Provincia*)cursor);         
+           if(localizarDato(candidatosXprovincia, cursor2->ptrDato) != fin()){
+                if(primer){
+                           partido = new CandidatosXProv;
+                           primer  = false;
+                           setPartidoCandidatosXProv(*(CandidatosXProv*)partido, getPartidoCandidatosXProv(*(CandidatosXProv*)cursor2->ptrDato));
+                           setIdCandidatosXProv(*(CandidatosXProv*)partido, getIdCandidatosXProv(*(CandidatosXProv*)cursor2->ptrDato));
+                           setNombreCandidatosXProv(*(CandidatosXProv*)partido, getNombreCandidatosXProv(*(CandidatosXProv*)cursor2->ptrDato));
+                           }
+                votosCandidato += getVotosCandidatosXProv(*(CandidatosXProv*)cursor2->ptrDato);                                
+                                      }
+           cursor = siguiente(provincias, cursor);          
+                     }     
+           setVotosCandidatosXProv(*(CandidatosXProv*)partido, votosCandidato);
+           adicionarFinal(auxiliarCandidatos, partido);
+           cursor2 = siguiente(candidatosXprovincia, cursor2); // Sigo con el proximo partido
+           primer = true;
+           votosCandidato = 0; 
+             
+             }//Hasta aca, deberian estar cargadas las listas auxiliares con los resultados de la votacion
+             
+           cursor = primero(provincias);// Me pongo al inicio de la lista grosa
+           while(cursor != fin()){
+               partidosXprovincia = getPartidosProv(*(Provincia*)cursor->ptrDato); //Geteo la lista
+               cursor2 = primero(partidosXprovincia);
+               while(cursor2 != fin()){ //
+                   totalVotos+= getVotosPartidosXProv(*(PartidosXProv*)cursor2->ptrDato);//Sumo los votos de todos los partidos para sacar el total
+                   cursor2 = siguiente(partidosXprovincia, cursor2);          
+                             }
+               cursor = siguiente(provincias, cursor);                       
+                        }
+                        
+           
+           cursor = primero(auxiliarCandidatos);
+           porcentaje = totalVotos * 1.5 /100;
+           while(cursor != fin()){
+                if(getVotosCandidatosXProv(*(CandidatosXProv*)cursor->ptrDato) > porcentaje){
+                     printf("%s entra.\n", getNombreCandidatosXProv(*(CandidatosXProv*)cursor->ptrDato));                                                       
+                        }else printf("%s no entra.\n", getNombreCandidatosXProv(*(CandidatosXProv*)cursor->ptrDato));
+                        }
+     }
