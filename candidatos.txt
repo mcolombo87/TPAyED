@@ -2,3 +2,14 @@
 2;scioli;2
 3;massa;3
 4;randazzo;2
+5;carrio;1
+6;sanz;1
+7;fernandez;2
+8;rossi;2
+9;taiana;2
+10;urribarri;2
+11;delasota;4
+12;rodriguezsaa;4
+13;stolbizer;5
+14;degennaro;6
+15;altamira;7

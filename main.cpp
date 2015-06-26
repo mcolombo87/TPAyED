@@ -28,6 +28,8 @@ int main()
     Lista lstMes;
     crearLista(lstMes, NULL);
 
+    Lista provincias;
+
     cargarArcCandidatos(lstCan);
     cargarArcMesas(lstMes);
     cargarArcPartidos(lstPar);
@@ -40,18 +42,17 @@ int main()
 //    PruebaEstructuras();
 //    pruebaCandidatosListas();
 //    PruebaDeCola();
+//    imprimirPartidos(lstPar);
 
-    imprimirPartidos(lstPar);
+    Lista partidos;
+    crearLista(provincias, compararProvincia);
+    crearLista(partidos, compararPartido);
     /**Fin del Bloque de pruebas**/
 
     bool continuar = true;
     bool opcinvalida = false;
     int opcion;
 
-    Lista provincias;
-    Lista partidos;
-    crearLista(provincias, compararProvincia);
-    crearLista(partidos, compararPartido);
     cargaListaProvincias(provincias);
 
 
@@ -93,18 +94,25 @@ int main()
             nuevatarea(continuar);
             break;
         case 0:
+            //Tareas antes de finalizar programa
+            eliminarLista(provincias);
+            eliminarLista(partidos);
+            system("cls");
+            puts("\t**Guardado de datos en Archivos, espere...**");
+            guardarEnArchivos(lstCan, lstPar,lstMes);
             return 0;
             break;
         default:
             opcinvalida=true ;
             break;
-
         }
 
 
     }
-    eliminarLista(provincias);
-    eliminarLista(partidos);
+
     system("PAUSE");
     return EXIT_SUCCESS;
 }
+
+
+

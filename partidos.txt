@@ -1,4 +1,7 @@
 1;Pro
 2;FPV
 3;FrenteRenovador
-
+4;FrenteJusticialista
+5;FrenteAmplioProgresista
+6;FrentePopular
+7;FIT

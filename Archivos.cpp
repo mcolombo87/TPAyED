@@ -84,5 +84,39 @@ void cargarArcMesas(Lista &lstMes)
 
 void guardarEnArchivos(Lista &Candidatos, Lista &Partidos, Lista &Mesa)
 {
+    FILE *fileCandi, *filePart, *fileMesa;
+    PtrNodoLista nodo;
 
+    //Guardo Mesas
+    if((fileMesa=fopen("mesas.txt", "w"))!=NULL)
+     {
+         nodo = primero(Mesa);
+         while (nodo != fin())
+         {
+             fprintf(fileMesa,"%d;%d\n", getIdMesa(*(Mesas*)nodo->ptrDato),getProvinciaMesa(*(Mesas*)nodo->ptrDato) );
+             nodo = siguiente(Mesa, nodo);
+         }
+     } else{puts("El archivo mesas.txt no pudo ser creado");}
+
+     //Guardo Candidatos
+    if((fileCandi=fopen("candidatos.txt", "w"))!=NULL)
+     {
+         nodo = primero(Candidatos);
+         while (nodo != fin())
+         {
+             fprintf(fileCandi,"%d;%s;%d\n", getIdCandidato(*(Candidato*)nodo->ptrDato),getNombreCandidato(*(Candidato*)nodo->ptrDato),getPartidoPolitico(*(Candidato*)nodo->ptrDato) );
+             nodo = siguiente(Candidatos, nodo);
+         }
+     } else{puts("El archivo candidatos.txt no pudo ser creado");}
+
+     //Guardo Partidos
+    if((filePart=fopen("partidos.txt", "w"))!=NULL)
+     {
+         nodo = primero(Partidos);
+         while (nodo != fin())
+         {
+             fprintf(filePart,"%d;%s\n", getIdPartido(*(Partido*)nodo->ptrDato),getNombrePartido(*(Partido*)nodo->ptrDato) );
+             nodo = siguiente(Partidos, nodo);
+         }
+     } else{puts("El archivo partidos.txt no pudo ser creado");}
 }
