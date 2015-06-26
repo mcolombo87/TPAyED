@@ -10,7 +10,7 @@
 	<cstdio>
 	"funciones.h"
 
-1435332160 d:\users\romina\documents\git\ayed\funciones.h
+1435332611 d:\users\romina\documents\git\ayed\funciones.h
 	"Lista.h"
 	"Cola.h"
 
@@ -102,7 +102,7 @@
 	"Comparaciones.h"
 	"Lista.h"
 
-1435332160 d:\users\romina\documents\git\ayed\partido.h
+1435332611 d:\users\romina\documents\git\ayed\partido.h
 	"Lista.h"
 
 1434740477 source:d:\users\romina\documents\git\ayed\candidatosxprov.cpp
@@ -120,7 +120,7 @@
 1435300407 source:d:\users\romina\documents\git\ayed\provincia.cpp
 	"Provincia.h"
 
-1435299977 d:\users\romina\documents\git\ayed\provincia.h
+1435332611 d:\users\romina\documents\git\ayed\provincia.h
 	"Lista.h"
 
 1434987938 source:d:\users\romina\documents\git\ayed\comparaciones.cpp
