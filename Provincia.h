@@ -27,11 +27,11 @@ Lista getCandidatosProv(Provincia provincia);
 
 void setIdProvincia(Provincia &provincia, int dato);
 
-Lista setMesasProv(Provincia &provincia, Lista dato);
+void setMesasProv(Provincia &provincia, Lista dato);
 
-Lista setPartidosProv(Provincia &provincia, Lista dato);
+void setPartidosProv(Provincia &provincia, Lista dato);
 
-Lista setCandidatosProv(Provincia &provincia, Lista dato);
+void setCandidatosProv(Provincia &provincia, Lista dato);
 
 
 #endif // PROVINCIA_H_INCLUDED

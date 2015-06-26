@@ -28,8 +28,6 @@ int main()
     Lista lstMes;
     crearLista(lstMes, compararMesa);
 
-    Lista provincias;
-
     cargarArcCandidatos(lstCan);
     cargarArcMesas(lstMes);
     cargarArcPartidos(lstPar);
@@ -43,18 +41,13 @@ int main()
 //    pruebaCandidatosListas();
 //    PruebaDeCola();
 //    imprimirPartidos(lstPar);
-
-    Lista partidos;
-    crearLista(provincias, compararProvincia);
-    crearLista(partidos, compararPartido);
+//    cargaListaProvincias(provincias);
     /**Fin del Bloque de pruebas**/
 
     bool continuar = true;
     bool opcinvalida = false;
     int opcion;
     bool correcto;
-
-    cargaListaProvincias(provincias);
 
 
 
@@ -80,10 +73,10 @@ int main()
 
         correcto = scanf("%d", &opcion);
                while(!correcto){
-                                fflush(stdin); 
+                                fflush(stdin);
                        cout << "Debe ingresar un numero entero, intente de nuevo: " << endl;
                        correcto = scanf("%d",&opcion);
-                       fflush(stdin);            
+                       fflush(stdin);
                                 }
 
         switch(opcion)
@@ -93,17 +86,17 @@ int main()
             nuevatarea(continuar);
             break;
         case 2: /*nos lleva al sub menu de votacion e inicia el motor de votacion*/
-            sistemadevotacion(provincias, partidos);
+            sistemadevotacion(lstCan, lstPar, lstMes);
             nuevatarea(continuar);
             break;
         case 3: /*Genera Informes de Votacion*/
-            //ACA Va la llamada al MODULO DE EDICION
+            //ACA Va la llamada al MODULO estadisticas
             nuevatarea(continuar);
             break;
         case 0:
             //Tareas antes de finalizar programa
-            eliminarLista(provincias);
-            eliminarLista(partidos);
+            //eliminarLista(provincias);
+//            eliminarLista(partidos);
             system("cls");
             puts("\t**Guardado de datos en Archivos, espere...**");
             guardarEnArchivos(lstCan, lstPar,lstMes);
