@@ -52,6 +52,7 @@ int main()
     bool continuar = true;
     bool opcinvalida = false;
     int opcion;
+    bool correcto;
 
     cargaListaProvincias(provincias);
 
@@ -77,7 +78,13 @@ int main()
         }
 
 
-        scanf("%d", &opcion);
+        correcto = scanf("%d", &opcion);
+               while(!correcto){
+                                fflush(stdin); 
+                       cout << "Debe ingresar un numero entero, intente de nuevo: " << endl;
+                       correcto = scanf("%d",&opcion);
+                       fflush(stdin);            
+                                }
 
         switch(opcion)
         {
