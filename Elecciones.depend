@@ -20,11 +20,12 @@
 
 1434749919 d:\users\romina\documents\git\ayed\pila.h
 
-1435196598 source:d:\users\romina\documents\git\ayed\sistemadevotacion.cpp
+1435333061 source:d:\users\romina\documents\git\ayed\sistemadevotacion.cpp
 	<iostream>
 	<cstdio>
 	<cstdlib>
 	"funciones.h"
+	"Lista.h"
 	"Cola.h"
 	"Pila.h"
 	"Provincia.h"
@@ -38,13 +39,14 @@
 	"CandidatosXProv.h"
 	"PartidosXProv.h"
 	"Test.h"
+	"Comparaciones.h"
 
 1434600392 source:d:\users\romina\documents\git\ayed\cola.cpp
 	"Cola.h"
 
 1434600392 d:\users\romina\documents\git\ayed\cola.h
 
-1435300376 source:d:\users\romina\documents\git\ayed\main.cpp
+1435332611 source:d:\users\romina\documents\git\ayed\main.cpp
 	<iostream>
 	<cstdio>
 	<cstdlib>
@@ -117,7 +119,7 @@
 
 1434740697 d:\users\romina\documents\git\ayed\partidosxprov.h
 
-1435300407 source:d:\users\romina\documents\git\ayed\provincia.cpp
+1435332611 source:d:\users\romina\documents\git\ayed\provincia.cpp
 	"Provincia.h"
 
 1435332611 d:\users\romina\documents\git\ayed\provincia.h
@@ -137,7 +139,7 @@
 1434983359 d:\users\romina\documents\git\ayed\comparaciones.h
 	"Lista.h"
 
-1435205070 source:d:\users\romina\documents\git\ayed\ediciondedatos.cpp
+1435332611 source:d:\users\romina\documents\git\ayed\ediciondedatos.cpp
 	<iostream>
 	<cstdlib>
 	<cstdio>

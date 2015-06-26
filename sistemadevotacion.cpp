@@ -31,7 +31,7 @@ void sistemadevotacion(Lista &candidatos, Lista &partidos, Lista &mesa)
     Lista prov;
     crearLista(prov, compararProvincia);
 
-    void cargandoMotor(Lista prov, Lista candidatos ,Lista partidos, Lista mesa);
+    cargandoMotor(prov,candidatos ,partidos,mesa);
 
     bool continuar = true;
     bool opcinvalida = false;
@@ -334,10 +334,9 @@ void cargandoMotor(Lista &prov, Lista &candidatos ,Lista &partidos, Lista &mesa)
     cursorLista = primero(prov);
 
     //Primera pasada, seteo de Provincias
-    for (int i=1; i>=24; i++)
+    for (int i=1; i<=24; i++)
     {
         dato = new Provincia;
-        adicionarFinal(prov,dato);
         setIdProvincia(*(Provincia*)dato, i);
         lstMesas = new Lista;
         crearLista(*(Lista*)lstMesas, compararMesa);
@@ -345,6 +344,7 @@ void cargandoMotor(Lista &prov, Lista &candidatos ,Lista &partidos, Lista &mesa)
         candProv = new Lista;
         crearLista(*(Lista*)candProv, NULL);
         setCandidatosProv(*(Provincia*)dato, *(Lista*)candProv);
+        adicionarFinal(prov,dato);
         cursorLista = primero(candidatos);
         //cursorLista2 = primero(*(Lista*)candProv));
         while (cursorLista != fin()) //Seteo CANDXPROV
