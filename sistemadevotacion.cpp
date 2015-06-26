@@ -317,6 +317,7 @@ void abreUrna(Lista &provincias, int &id){
 void cargandoMotor(Lista &prov, Lista &candidatos ,Lista &partidos, Lista &mesa)
 {
     PtrNodoLista cursorLista;
+    PtrNodoLista cursorLista2;
     Provincia provinciaEstruc;
     PtrDato lstMesas;
     PtrDato candProv;
@@ -324,24 +325,75 @@ void cargandoMotor(Lista &prov, Lista &candidatos ,Lista &partidos, Lista &mesa)
     PtrDato dato;
     PtrDato dato2;
     PtrDato dato3;
+    PtrDato dato4;
 
     cursorLista = primero(prov);
-
-    //Cargo CandProv
 
     //Primera pasada, seteo de Provincias
     for (int i=1; i>=24; i++)
     {
         dato = new Provincia;
-        adicionarFinal(prov,*(Provincia*)dato);
+        adicionarFinal(prov,dato);
         setIdProvincia(*(Provincia*)dato, i);
         lstMesas = new Lista;
-        setMesasProv(*(Provincia*)dato, lstMesas);
+        crearLista(*(Lista*)lstMesas, compararMesa);
+        setMesasProv(*(Provincia*)dato, *(Lista*)lstMesas);
         candProv = new Lista;
-        setCandidatosProv(*(Provincia*)dato, candProv);
+        crearLista(*(Lista*)candProv, NULL);
+        setCandidatosProv(*(Provincia*)dato, *(Lista*)candProv);
+        cursorLista = primero(candidatos);
+        //cursorLista2 = primero(*(Lista*)candProv));
+        while (cursorLista != fin()) //Seteo CANDXPROV
+        {
+            dato2 = cursorLista ->ptrDato;
+            //dato3 = cursorLista2 ->ptrDato;
+            dato4 = new CandidatosXProv;
+            setIdCandidatosXProv(*(CandidatosXProv*)dato4, getIdCandidato(*(Candidato*)dato2));
+            setNombreCandidatosXProv(*(CandidatosXProv*)dato4, getNombreCandidato(*(Candidato*)dato2));
+            setPartidoCandidatosXProv(*(CandidatosXProv*)dato4, getPartidoPolitico(*(Candidato*)dato2));
+            setVotosCandidatosXProv(*(CandidatosXProv*)dato4, 0);
+            adicionarFinal(*(Lista*)candProv, dato4);
+            cursorLista=siguiente(candidatos,cursorLista);
+        }
         partProv = new Lista;
-        setPartidosProv(*(Provincia*)dato, partProv);
-
+        crearLista(*(Lista*)partProv, NULL);
+        setPartidosProv(*(Provincia*)dato, *(Lista*)partProv);
+        cursorLista = primero(partidos);
+        //cursorLista2 = primero(*(Lista*)candProv));
+        while (cursorLista != fin()) //Seteo PARTXPROV
+        {
+            dato2 = cursorLista ->ptrDato;
+            //dato3 = cursorLista2 ->ptrDato;
+            dato4 = new PartidosXProv;
+            setIdPartidosXProv(*(PartidosXProv*)dato4, getIdPartido(*(Partido*)dato2));
+            setNombrePartidosXProv(*(PartidosXProv*)dato4, getNombrePartido(*(Partido*)dato2));
+            setVotosPartidosXProv(*(PartidosXProv*)dato4, 0);
+            adicionarFinal(*(Lista*)partProv, dato4);
+            cursorLista=siguiente(partidos,cursorLista);
+        }
     }
+
+    cursorLista = primero(mesa);
+    int idAux;
+    while (cursorLista != fin())
+    {
+        dato = cursorLista ->ptrDato;
+        cursorLista2 = primero(prov);
+        while (cursorLista2 != fin())
+        {
+            dato2 = cursorLista2 ->ptrDato;
+            if ( (getIdProvincia(*(Provincia*)dato2)) == (getProvinciaMesa(*(Mesas*)dato)) )
+            {
+                dato3 = new Mesas;
+                setIdMesa(*(Mesas*)dato3, getIdMesa(*(Mesas*)dato));
+                setProvinciaMesa(*(Mesas*)dato3, getProvinciaMesa(*(Mesas*)dato));
+                adicionarFinal(getMesasProv(*(Provincia*)dato2), dato3);
+            }
+            cursorLista2 = siguiente(prov,cursorLista2);
+        }
+        cursorLista = siguiente(mesa,cursorLista);
+    }
+
+
 
 }
