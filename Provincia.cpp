@@ -35,17 +35,17 @@ void setIdProvincia(Provincia &provincia, int dato)
     provincia.id = dato;
 }
 
-Lista setMesasProv(Provincia &provincia, Lista dato)
+void setMesasProv(Provincia &provincia, Lista dato)
 {
     provincia.mesas = dato;
 }
 
-Lista setPartidosProv(Provincia &provincia, Lista dato)
+void setPartidosProv(Provincia &provincia, Lista dato)
 {
     provincia.partidosXprovincia = dato;
 }
 
-Lista setCandidatosProv(Provincia &provincia, Lista dato)
+void setCandidatosProv(Provincia &provincia, Lista dato)
 {
     provincia.candidatosXprovincia = dato;
 }
