@@ -73,7 +73,7 @@ void sistemadevotacion(Lista &candidatos, Lista &partidos, Lista &mesa)
             votacion(prov,partidos,idUrnaGlobal,idVotoGlobal);
             break;
         case 4: /*Finaliza la votacion*/
-            //ACA Va la llamada al modulo que finaliza la votacion
+            distribuirVotos(prov);
             break;
         case 0:
             return;
@@ -377,6 +377,7 @@ void cargandoMotor(Lista &prov, Lista &candidatos ,Lista &partidos, Lista &mesa)
         }
     }
 
+    //Segunda pasada seteo mesas
     cursorLista = primero(mesa);
     int idAux;
     while (cursorLista != fin())
@@ -400,6 +401,29 @@ void cargandoMotor(Lista &prov, Lista &candidatos ,Lista &partidos, Lista &mesa)
         cursorLista = siguiente(mesa,cursorLista);
     }
 
+    //Tercera pasada re-armo la lista de partidos distribuyendo candidatos.
+
+    int idPartAux;
+    cursorLista = primero(partidos);
+    while (cursorLista != fin())
+    {
+        dato = cursorLista ->ptrDato;
+        idPartAux = getIdPartido(*(Partido*)dato);
+        cursorLista2 = primero(candidatos);
+        while(cursorLista2 != fin())
+        {
+            dato2 = cursorLista2 ->ptrDato;
+            if (idPartAux == getPartidoPolitico(*(Candidato*)dato2))
+            {
+                lstAux = getLista(*(Partido*)dato);
+                adicionarFinal(lstAux, dato2);
+                setLista(*(Partido*)dato, lstAux);
+
+            }
+            cursorLista2 = siguiente(candidatos, cursorLista2);
+        }
+        cursorLista = siguiente(partidos, cursorLista);
+    }
 
 
 }
