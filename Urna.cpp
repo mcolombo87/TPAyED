@@ -1,10 +1,11 @@
 #include "Urna.h"
 #include <string.h>
 
-void constructorUrna(Urna &urna, int id, char* horaApertura, Pila votos)
+void constructorUrna(Urna &urna, int id, char* horaApertura, char* horaCierre, Pila votos)
 {
      urna.id = id;
      urna.horaApertura =  horaApertura;
+     urna.horaCierre = horaCierre;
      crearPila(votos);
      urna.votos = votos;
 }

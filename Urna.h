@@ -9,7 +9,7 @@ typedef struct{
         Pila votos;
 }Urna;
 
-void constructorUrna(Urna &urna, int id, char horaApertura[6], Pila votos);
+void constructorUrna(Urna &urna, int id, char* horaApertura, char* horaCierre, Pila votos);
 
 void destructorUrna(Urna urna);
 

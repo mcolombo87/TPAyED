@@ -42,3 +42,7 @@ void setUrnasMesa (Mesas &mesa, Cola dato)
 {
     mesa.urnas = dato;
 }
+
+Cola* punteroCola(Mesas &mesa){
+    return &mesa.urnas;
+}

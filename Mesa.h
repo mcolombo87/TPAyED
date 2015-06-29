@@ -24,4 +24,6 @@ void setProvinciaMesa(Mesas &mesa,int  dato);
 
 void setUrnasMesa (Mesas &mesa, Cola dato);
 
+Cola* punteroCola(Mesas&);
+
 #endif // MESA_H_INCLUDED

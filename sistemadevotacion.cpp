@@ -24,6 +24,8 @@ using namespace std;
 void abreUrna(Lista&, int&);
 void votacion(Lista&, Lista&, int&, int&);
 void cargandoMotor(Lista &prov, Lista &candidatos ,Lista &partidos, Lista &mesa);
+void imprimirMegaEstructura(Lista &);
+void cerrarUrna(Lista&);
 
 void sistemadevotacion(Lista &candidatos, Lista &partidos, Lista &mesa)
 {
@@ -36,8 +38,8 @@ void sistemadevotacion(Lista &candidatos, Lista &partidos, Lista &mesa)
     bool continuar = true;
     bool opcinvalida = false;
     int opcion;
-    int idUrnaGlobal = 0;
-    int idVotoGlobal = 0;
+    int idUrnaGlobal = 1;
+    int idVotoGlobal = 1;
 
     while(continuar == true)
     {
@@ -47,8 +49,9 @@ void sistemadevotacion(Lista &candidatos, Lista &partidos, Lista &mesa)
         cout <<"\n"<<endl;
         cout << "1. Apertura de Mesas" << endl;
         cout << "2. Apertura de Urnas" << endl;
-        cout << "3. Registro de Votos"<< endl;
-        cout << "4. Finalizar votacion"<< endl;
+        cout << "3. Cerrar la Urna actual." << endl;
+        cout << "4. Registro de Votos"<< endl;
+        cout << "5. Finalizar votacion"<< endl;
         cout << "\n" << endl;
         cout << "0. Salir" << endl;
 
@@ -70,10 +73,17 @@ void sistemadevotacion(Lista &candidatos, Lista &partidos, Lista &mesa)
             abreUrna(prov, idUrnaGlobal);
             break;
         case 3: /*Registrar voto*/
-            votacion(prov,partidos,idUrnaGlobal,idVotoGlobal);
+            cerrarUrna(prov);
             break;
         case 4: /*Finaliza la votacion*/
+            votacion(prov,partidos,idUrnaGlobal,idVotoGlobal);
+
+            break;
+        case 5:
             distribuirVotos(prov);
+             break;
+        case 6:
+            imprimirMegaEstructura(prov);
             break;
         case 0:
             return;
@@ -165,7 +175,7 @@ void pantallaFinalizandoVotac(PtrDato &provDato, PtrDato &mesaDato, PtrDatoCola 
         double valor;
         system ("CLS");
         puts ("**Contabilizando Votos en PROCESO**\n");
-        puts ("¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨\n");
+        puts ("Ð¸Ð¸Ð¸Ð¸Ð¸Ð¸Ð¸Ð¸Ð¸Ð¸Ð¸Ð¸Ð¸Ð¸Ð¸Ð¸Ð¸Ð¸Ð¸Ð¸Ð¸Ð¸Ð¸Ð¸Ð¸Ð¸Ð¸Ð¸Ð¸Ð¸Ð¸Ð¸Ð¸Ð¸Ð¸\n");
 
         printf("Provincia: %d\n", (getIdProvincia(*(Provincia*)provDato)));
         printf("Mesa: %d\n", (getIdMesa(*(Mesas*)mesaDato)));
@@ -203,7 +213,7 @@ char* hora()
       }
 
 void votacion(Lista &provincias, Lista &partidos, int &id, int &idVoto){
-          PtrDato provincia = new Provincia;//Auxiliar, guarda distintos tipos de TDA
+          PtrDato provincia = new Provincia;
           PtrDato mesa = new Mesas;
           PtrDatoPila voto = new Voto;
           PtrDatoCola urna;// = new Urna;
@@ -225,97 +235,40 @@ void votacion(Lista &provincias, Lista &partidos, int &id, int &idVoto){
           buscar = localizarDato(provincias, provincia);
 
           if(buscar != fin()){
-                       cout << "Provincia encontrada" << endl;
-                       provincia = buscar->ptrDato;
-                       mesas = getMesasProv(*(Provincia*)provincia);
-
-                       buscar = localizarDato(mesas, mesa);
-                       if(buscar != fin()){
-
-                                    cout << "Mesa encontrada" << endl;
-                                    cout << "Listado de candidatos:" << endl;
-                                    imprimirPartidos(partidos);
-                                    cout << "Ingrese el ID del candidato a votar: ";
-                                    cin >> idCandidato;
-                                    setIdVoto(*(Voto*)voto, idVoto++);
-                                    setIdCandidatoVoto(*(Voto*)voto,idCandidato);
-
-                                    provincia = buscar->ptrDato;
-                                    urnas = getUrnasMesa(*(Mesas*)provincia);
-                                    if(estaVacia(urnas)){
-                                              cout << "Esta vacia" << endl;
-                                              urna = new Urna;
-                                              crearPila(votos);
-                                              push(votos, voto);
-                                              constructorUrna(*(Urna*)urna, id++, hora() , votos);
-                                              encolar(urnas, urna);
-                                              setUrnasMesa(*(Mesas*)provincia, urnas);
-                                              }
-                                    else{
-                                         urna = urnas.last->ptrDato;
-                                         votos = getVotosUrna(*(Urna*)urna);
-                                         push(votos, voto);
-                                         setVotosUrna(*(Urna*)urna, votos);
-                                    }
-
-                                 }else{
-                                     cout << "No existe esa mesa " << endl;
-                                     cout << "Desea agregarla:  1-Si 2-No";
-                                     cin >> opcion;
-                                     if(opcion == 1){agregarMesa(provincias);}
-                                       }
-                    }else cout << "No existe esa provincia " << endl;
-
-
-
-
-          system("PAUSE");
-     }
-
-void abreUrna(Lista &provincias, int &id){
-     PtrDato provincia = new Provincia;
-     PtrDato mesa = new Mesas;
-     PtrNodoLista buscar;
-     PtrDatoCola urna;
-     Lista mesas;
-     Cola urnas;
-     Pila votos;
-     int idProvincia, idMesa, idCandidato;
-
-
-
-     cout << "Ingrese la provincia donde abrira la urna: ";
-     cin >> idProvincia;
-     cout << "Ingrese la mesa donde abrira la urna: ";
-     cin >> idMesa;
-
-     setIdProvincia(*(Provincia*)provincia, idProvincia);
-     setIdMesa(*(Mesas*)mesa, idMesa);
-     setProvinciaMesa(*(Mesas*)mesa, idProvincia);
-
-     buscar = localizarDato(provincias, provincia);
-
-     if(buscar != fin()){
-          cout << "Provincia encontrada" << endl;
-          provincia = buscar->ptrDato;
-          mesas = getMesasProv(*(Provincia*)provincia);
-          buscar = localizarDato(mesas, mesa);
-
-          if(buscar != fin()){
+            cout << "Provincia encontrada" << endl;
+            provincia = buscar->ptrDato;
+            mesas = getMesasProv(*(Provincia*)provincia);
+            buscar = localizarDato(mesas, mesa);
+            if(buscar != fin()){
                 cout << "Mesa encontrada" << endl;
                 mesa = buscar->ptrDato;
                 urnas = getUrnasMesa(*(Mesas*)mesa);
-                urna = urnas.last->ptrDato;
-                if(urna != fin){setHoraCierreUrna(*(Urna*)urna, hora());}
-                crearPila(votos);
-                urna = new Urna;
-                constructorUrna(*(Urna*)urna, id++, hora() , votos);
-                cout << "Se agrego la urna correctamente." << endl;
-                    }else cout << "No se ha encontrado la mesa." << endl;
-          }else cout << "No se ha encontrado la provincia." << endl;
-    system("Pause");
-}
+                if(estaVacia(urnas)){
+                    cout << "Debe abrir una urna primero." << endl;
+                }else{
+                    cout << "Listado de candidatos:" << endl;
+                    imprimirPartidos(partidos);
+                    cout << "Ingrese el ID del candidato a votar: ";
+                    scanf("%d",&idCandidato);
+                    setIdVoto(*(Voto*)voto, idVoto++);
+                    setIdCandidatoVoto(*(Voto*)voto,idCandidato);
+                    urna = (punteroCola(*(Mesas*)mesa)->last)->ptrDato;
+                    votos = getVotosUrna(*(Urna*)urna);
+                    push(votos, voto);
+                    setVotosUrna(*(Urna*)urna, votos);
+                    setMesasProv(*(Provincia*)provincia, mesas);
+                    cout << "El voto se agrego correctamente." << endl;
+                    }
+            }else{
+                cout << "No existe esa mesa " << endl;
+                cout << "Desea agregarla:  1-Si 2-No";
+                cin >> opcion;
+                if(opcion == 1)agregarMesa(provincias);
+                }
+          }else cout << "No existe esa provincia " << endl;
 
+          system("PAUSE");
+     }
 
 void cargandoMotor(Lista &prov, Lista &candidatos ,Lista &partidos, Lista &mesa)
 {
@@ -515,3 +468,129 @@ void reportes(Lista provincias){
                         }else printf("%s no entra.\n", getNombreCandidatosXProv(*(CandidatosXProv*)cursor->ptrDato));
                         }
      }
+
+void imprimirMegaEstructura(Lista &provincias){
+     PtrNodoLista cursor, cursor2, cursor3;
+     Lista mesas, candidatos;
+     Cola urnas;
+     PtrDatoCola urna;
+     cursor3 = primero(provincias);
+     int i = 1;
+
+     while(cursor3 != fin()){
+            printf("ID provincia: %d\n", getIdProvincia(*(Provincia*)cursor3->ptrDato));
+            mesas = getMesasProv(*(Provincia*)cursor3->ptrDato);
+
+            cursor = primero(mesas);
+            while(cursor != fin()){
+                  printf("ID mesa: %d  ID provincia: %d \n",getIdMesa(*(Mesas*)cursor->ptrDato), getProvinciaMesa(*(Mesas*)cursor->ptrDato));
+                  //urnas = getUrnasMesa(*(Mesas*)cursor->ptrDato);
+                  urna = punteroCola(*(Mesas*)cursor->ptrDato)->last->ptrDato;
+                  printf("ID: %d  Hora Apertura: %s Hora cierre: %s \n", getIdUrna(*(Urna*)urna),getHoraAperturaUrna(*(Urna*)urna),getHoraCierreUrna(*(Urna*)urna));
+                  /*if(!estaVacia(urnas)){
+                       cout << "No esta Vacia!" << endl;
+                       urna = desencolar(urnas);
+                       while(urna != finCola()){
+                        printf("ID: %d  Hora Apertura: %s Hora cierre: %s \n", getIdUrna(*(Urna*)urna),getHoraAperturaUrna(*(Urna*)urna),getHoraCierreUrna(*(Urna*)urna));
+                        urna = desencolar(urnas);
+                       }
+                  }*/
+                  cursor=siguiente(mesas,cursor);
+                  }
+             cursor3 = siguiente(provincias, cursor3);
+          }
+
+
+        system("pause");
+     }
+
+void abreUrna(Lista &provincias, int &id){
+     PtrDato provincia = new Provincia;
+     PtrDato mesa = new Mesas;
+     PtrNodoLista buscar;
+     PtrDatoCola urna;
+     Lista mesas;
+     Cola urnas;
+     Pila votos;
+     int idProvincia, idMesa, opcion;
+
+
+
+     cout << "Ingrese la provincia donde abrira la urna: ";
+     cin >> idProvincia;
+     cout << "Ingrese la mesa donde abrira la urna: ";
+     cin >> idMesa;
+
+     setIdProvincia(*(Provincia*)provincia, idProvincia);
+     setIdMesa(*(Mesas*)mesa, idMesa);
+     setProvinciaMesa(*(Mesas*)mesa, idProvincia);
+
+     buscar = localizarDato(provincias, provincia);
+
+     if(buscar != fin()){
+          cout << "Provincia encontrada" << endl;
+          provincia = buscar->ptrDato;
+          mesas = getMesasProv(*(Provincia*)provincia);
+          buscar = localizarDato(mesas, mesa);
+
+          if(buscar != fin()){
+                cout << "Mesa encontrada" << endl;
+                mesa = buscar->ptrDato;
+                urnas = getUrnasMesa(*(Mesas*)mesa);
+                if(!estaVacia(urnas) && getHoraCierreUrna(*(Urna*)((punteroCola(*(Mesas*)mesa)->last)->ptrDato)) == NULL){
+                    cout << "Debe cerrar la urna antes de abrir otra." << endl;
+                }else{
+                    crearPila(votos);
+                    urna = new Urna;
+                    constructorUrna(*(Urna*)urna, id, hora(), NULL , votos);
+                    printf("Id urna: %d\n", id);
+                    id++;
+                    encolar(urnas, urna);
+                    setUrnasMesa(*(Mesas*)buscar->ptrDato, urnas);
+                    setMesasProv(*(Provincia*)provincia, mesas);
+                    cout << "Se agrego la urna correctamente." << endl;
+                    }
+          }else cout << "No se ha encontrado la mesa." << endl;
+    }else cout << "No se ha encontrado la provincia." << endl;
+    system("Pause");
+}
+
+
+void cerrarUrna(Lista &provincias){
+    PtrDato provincia = new Provincia;
+    PtrDato mesa = new Mesas;
+    PtrDatoCola urna;
+    PtrNodoLista buscar;
+    PtrNodoCola ptrUrna;
+    Cola urnas;
+    Lista mesas;
+    int idProvincia, idMesa;
+
+     cout << "Ingrese la provincia donde cerrara la urna: ";
+     cin >> idProvincia;
+     cout << "Ingrese la mesa donde cerrara la urna: ";
+     cin >> idMesa;
+
+     setIdProvincia(*(Provincia*)provincia, idProvincia);
+     setIdMesa(*(Mesas*)mesa, idMesa);
+
+     buscar = localizarDato(provincias, provincia);
+     if(buscar != fin()){
+          cout << "Provincia encontrada" << endl;
+          provincia = buscar->ptrDato;
+          mesas = getMesasProv(*(Provincia*)provincia);
+          buscar = localizarDato(mesas, mesa);
+          if(buscar != fin()){
+                cout << "Mesa encontrada" << endl;
+                mesa = buscar->ptrDato;
+                if(!estaVacia(urnas) && getHoraCierreUrna(*(Urna*)((punteroCola(*(Mesas*)mesa)->last)->ptrDato)) == NULL){
+                    cout << "Se cerrara la urna actual." << endl;
+                    ptrUrna = urnas.last;
+                    urna = (punteroCola(*(Mesas*)mesa)->last)->ptrDato;
+                    setHoraCierreUrna(*(Urna*)urna, hora());
+                    printf("ID: %d  Hora Apertura: %s Hora cierre: %s se ha cerrado.\n", getIdUrna(*(Urna*)urna),getHoraAperturaUrna(*(Urna*)urna),getHoraCierreUrna(*(Urna*)urna));
+                    }else cout << "No hay urna abierta, Debe abrir una primero." << endl;
+          }else cout << "La mesa no existe" << endl;
+     }else cout << "La provincia no existe." << endl;
+    system("Pause");
+}
