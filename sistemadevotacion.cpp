@@ -243,7 +243,7 @@ void votacion(Lista &provincias, Lista &partidos, int &id, int &idVoto){
                 cout << "Mesa encontrada" << endl;
                 mesa = buscar->ptrDato;
                 urnas = getUrnasMesa(*(Mesas*)mesa);
-                if(estaVacia(urnas)){
+                if(estaVacia(urnas) || getHoraCierreUrna(*(Urna*)((punteroCola(*(Mesas*)mesa)->last)->ptrDato)) != NULL){
                     cout << "Debe abrir una urna primero." << endl;
                 }else{
                     cout << "Listado de candidatos:" << endl;
