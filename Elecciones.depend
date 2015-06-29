@@ -14,13 +14,13 @@
 	"Lista.h"
 	"Cola.h"
 
-1434754055 source:d:\users\romina\documents\git\ayed\pila.cpp
+1435590230 source:d:\users\romina\documents\git\ayed\pila.cpp
 	"Pila.h"
 	<string.h>
 
 1434749919 d:\users\romina\documents\git\ayed\pila.h
 
-1435434581 source:d:\users\romina\documents\git\ayed\sistemadevotacion.cpp
+1435589929 source:d:\users\romina\documents\git\ayed\sistemadevotacion.cpp
 	<iostream>
 	<cstdio>
 	<cstdlib>
@@ -41,7 +41,7 @@
 	"Test.h"
 	"Comparaciones.h"
 
-1434600392 source:d:\users\romina\documents\git\ayed\cola.cpp
+1435590084 source:d:\users\romina\documents\git\ayed\cola.cpp
 	"Cola.h"
 
 1434600392 d:\users\romina\documents\git\ayed\cola.h
@@ -57,7 +57,7 @@
 
 1435067190 d:\users\romina\documents\git\ayed\test.h
 
-1435203759 source:d:\users\romina\documents\git\ayed\test.cpp
+1435553955 source:d:\users\romina\documents\git\ayed\test.cpp
 	<iostream>
 	<cstdlib>
 	<cstdio>
@@ -79,16 +79,16 @@
 1434659107 source:d:\users\romina\documents\git\ayed\voto.cpp
 	"Voto.h"
 
-1435196598 source:d:\users\romina\documents\git\ayed\mesa.cpp
+1435550144 source:d:\users\romina\documents\git\ayed\mesa.cpp
 	"Mesa.h"
 
-1435196598 d:\users\romina\documents\git\ayed\mesa.h
+1435550144 d:\users\romina\documents\git\ayed\mesa.h
 	"Cola.h"
 
-1435196598 d:\users\romina\documents\git\ayed\urna.h
+1435550144 d:\users\romina\documents\git\ayed\urna.h
 	"Pila.h"
 
-1435196598 source:d:\users\romina\documents\git\ayed\urna.cpp
+1435550144 source:d:\users\romina\documents\git\ayed\urna.cpp
 	"Urna.h"
 	<string.h>
 

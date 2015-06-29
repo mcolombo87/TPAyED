@@ -50,8 +50,12 @@ PtrDatoPila pop(Pila &pila) {
     PtrNodoPila nodoAux; //Nodo que saco.
 
     nodoAux = pila.top;
-    pilaNodoDato = nodoAux ->ptrDato;
-    pila.top = nodoAux ->sgte;
+    if (nodoAux != finPila())
+    {
+        pilaNodoDato = nodoAux ->ptrDato;
+        pila.top = nodoAux ->sgte;
+    }else{return finPila();}
+
 
   return pilaNodoDato;
 }

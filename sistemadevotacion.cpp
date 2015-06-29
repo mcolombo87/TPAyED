@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
+#include <string.h>
 #include "funciones.h"
 #include "Lista.h"
 #include "Cola.h"
@@ -141,19 +142,30 @@ void distribuirVotos(Lista &lstProvincias)
            {
                votos = getVotosUrna(*(Urna*)urna); //Hasta aca tengo la pila
                votoUnidad = pop(votos);
-               while (votoUnidad != fin())
+               while (!estaVaciaPila(votos))
                {
                     cursor = localizarDato(lstCandxProv, votoUnidad);
+                    system("pause");
+                    int a = getIdCandidatosXProv(*(CandidatosXProv*)cursor);
+                    system("pause");
+                    char b[20];
+                    strcpy(b, getNombreCandidatosXProv(*(CandidatosXProv*)cursor));
+                    system("pause");
+                    printf("\nDato Encontrado id: %d\nNombre: %s\n", a ,b );
+                    system("pause");
                     if (cursor != fin()) //Por las dudas valido que haya un resultado aunque deberia siempre existir
                     {
                         setVotosCandidatosXProv(*(CandidatosXProv*)cursor, (getVotosCandidatosXProv(*(CandidatosXProv*)cursor))+1);
-                    }else {puts("Error: El candidato votado no se encuentra registrado en la Provincia"); system("pause");}
+                    }else {puts("\nError: El candidato votado no se encuentra registrado en la Provincia"); system("pause");}
                     cursor2 = localizarDato(lstPartxProv, cursor);
                     if (cursor2 != fin()) //Por las dudas valido que haya un resultado aunque deberia siempre existir
                     {
                         setVotosPartidosXProv(*(PartidosXProv*)cursor2, (getVotosPartidosXProv(*(PartidosXProv*)cursor2))+1);
-                    }else {puts("Error: El partido al que pertenece el candidato votado no se encuentra registrado en la Provincia"); system("pause");}
-
+                    }else {puts("\nError: El partido al que pertenece el candidato votado no se encuentra registrado en la Provincia"); system("pause");}
+                    //VER LUEGO
+                     setVotosCandidatosXProv(*(CandidatosXProv*)cursor, (getVotosCandidatosXProv(*(CandidatosXProv*)cursor))+1);
+                     setVotosPartidosXProv(*(PartidosXProv*)cursor2, (getVotosPartidosXProv(*(PartidosXProv*)cursor2))+1);
+                    //FIN DE VER LUEGO
                     pantallaFinalizandoVotac(provDato, mesaDato, urna, pantallaEntradas, pantallaEntradasProv); //LLamo a la pantalla de progreso
                     votoUnidad = pop(votos); //Saco un nuevo voto
                }
@@ -180,12 +192,12 @@ void pantallaFinalizandoVotac(PtrDato &provDato, PtrDato &mesaDato, PtrDatoCola 
         printf("Provincia: %d\n", (getIdProvincia(*(Provincia*)provDato)));
         printf("Mesa: %d\n", (getIdMesa(*(Mesas*)mesaDato)));
         printf("Urna: %d\n", (getIdUrna(*(Urna*)urna)));
-        printf("Votos Contados en la Provincia: %d\n", &pantallaEntradasProv);
+        printf("Votos Contados en la Provincia: %d\n", pantallaEntradasProv);
         puts ("**********************************\n");
-        printf("Votos TOTALES: %d\n\n", &pantallaEntradas);
+        printf("Votos TOTALES: %d\n\n", pantallaEntradas);
 
         puts("Por favor aguarde...\n");
-        valor = 5*sin((double)pantallaEntradas)+6;
+        valor = 5*sin(5.49+pantallaEntradas)+6; //(double)
         if (round(valor) == (1)){printf("%c", &caracter);}
         if (round(valor) == (2)){printf("%c%c", &caracter, &caracter);}
         if (round(valor) == (3)){printf("%c%c%c", &caracter, &caracter, &caracter);}
@@ -267,7 +279,7 @@ void votacion(Lista &provincias, Lista &partidos, int &id, int &idVoto){
                 }
           }else cout << "No existe esa provincia " << endl;
 
-          system("PAUSE");
+//          system("PAUSE");
      }
 
 void cargandoMotor(Lista &prov, Lista &candidatos ,Lista &partidos, Lista &mesa)
@@ -333,6 +345,7 @@ void cargandoMotor(Lista &prov, Lista &candidatos ,Lista &partidos, Lista &mesa)
     //Segunda pasada seteo mesas
     cursorLista = primero(mesa);
     int idAux;
+    Cola urna;
     while (cursorLista != fin())
     {
         dato = cursorLista ->ptrDato;
@@ -343,8 +356,9 @@ void cargandoMotor(Lista &prov, Lista &candidatos ,Lista &partidos, Lista &mesa)
             if ( (getIdProvincia(*(Provincia*)dato2)) == (getProvinciaMesa(*(Mesas*)dato)) )
             {
                 dato3 = new Mesas;
-                setIdMesa(*(Mesas*)dato3, getIdMesa(*(Mesas*)dato));
-                setProvinciaMesa(*(Mesas*)dato3, getProvinciaMesa(*(Mesas*)dato));
+                constructorMesa(*(Mesas*)dato3, getIdMesa(*(Mesas*)dato),getProvinciaMesa(*(Mesas*)dato), urna);
+//                setIdMesa(*(Mesas*)dato3, getIdMesa(*(Mesas*)dato));
+//                setProvinciaMesa(*(Mesas*)dato3, getProvinciaMesa(*(Mesas*)dato));
                 lstAux = getMesasProv(*(Provincia*)dato2);
                 adicionarFinal(lstAux, dato3);
                 setMesasProv(*(Provincia*)dato2, lstAux);
@@ -382,6 +396,10 @@ void cargandoMotor(Lista &prov, Lista &candidatos ,Lista &partidos, Lista &mesa)
 }
 
 void reportes(Lista provincias){
+
+    puts("REPORTES");
+    system("pause");
+
      Lista partidosXprovincia;
      Lista candidatosXprovincia;
      Lista auxiliarPartidos;

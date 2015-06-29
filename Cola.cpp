@@ -55,8 +55,12 @@ PtrDatoCola desencolar(Cola &cola) {
     PtrNodoCola nodoAux; //Nodo que saco.
 
     nodoAux = cola.first;
-    colaNodoDato = nodoAux ->ptrDato;  //cola.first.ptrDato;
-    cola.first = nodoAux ->sgte;
+    if (cola.first != finCola())
+    {
+        colaNodoDato = nodoAux ->ptrDato;  //cola.first.ptrDato;
+        cola.first = nodoAux ->sgte;
+    }else {return finCola();}
+
 
   return colaNodoDato;
   //ptrPrevio->sgte = ptrNodo->sgte;

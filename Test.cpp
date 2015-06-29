@@ -223,7 +223,7 @@ void imprimirPartidos(Lista &lista){
                                 }
                   cursor=siguiente(lista,cursor);
                   }
-        system("pause");
+//        system("pause");
      }
 
 void cargaListaProvincias(Lista &provincias){
