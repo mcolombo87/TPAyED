@@ -40,7 +40,7 @@ int main()
 //    PruebaEstructuras();
 //    pruebaCandidatosListas();
 //    PruebaDeCola();
-//    imprimirPartidos(lstPar);
+//    imprimirPartidos(lstPar);probandoDistri
 //    cargaListaProvincias(provincias);
     /**Fin del Bloque de pruebas**/
 
@@ -90,7 +90,7 @@ int main()
             nuevatarea(continuar);
             break;
         case 3: /*Genera Informes de Votacion*/
-            //ACA Va la llamada al MODULO estadisticas
+//            reportes();
             nuevatarea(continuar);
             break;
         case 0:

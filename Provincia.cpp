@@ -49,3 +49,8 @@ void setCandidatosProv(Provincia &provincia, Lista dato)
 {
     provincia.candidatosXprovincia = dato;
 }
+
+Lista* getPartidosProvPtr (Provincia &provincia)
+{
+    return &provincia.partidosXprovincia;
+}

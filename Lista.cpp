@@ -4,6 +4,9 @@
  * Versión : 1.1
  */
 #include "Lista.h"
+#include <iostream>
+#include <cstdio>
+#include <cstdlib>
 
 /******************************************************************************/
 /* Definición de Tipos de Datos para manejo interno */
@@ -180,11 +183,9 @@ PtrNodoLista localizarDato(Lista &lista, PtrDato ptrDato) {
 
    bool encontrado = false;
    PtrNodoLista ptrCursor = primero(lista);
-
   /* recorre los nodos hasta llegar al último o hasta
      encontrar el nodo buscado */
   while ((ptrCursor != fin()) && (! encontrado)) {
-
     if (lista.compara(ptrCursor->ptrDato,ptrDato) == IGUAL)
       encontrado = true;
     else

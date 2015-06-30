@@ -13,6 +13,8 @@
 #include "Partido.h"
 #include "Provincia.h"
 #include "Comparaciones.h"
+#include "PartidosXProv.h"
+#include "CandidatosXProv.h"
 
 void PruebaDeCola()
 {
@@ -240,3 +242,28 @@ void cargaListaProvincias(Lista &provincias){
                   idProvincia++;
              }
      }
+
+void probandoDistri(Lista &provincias)
+{
+    PtrNodoLista nodoLis;
+    PtrNodoLista nodoLis2;
+    PtrDato datoLis;
+    PtrDato datoLis2;
+    Lista aux;
+
+    nodoLis = primero(provincias);
+    datoLis = nodoLis ->ptrDato;
+    system("pause");
+    printf("\nProvincia ID: %d\n", getIdProvincia(*(Provincia*)datoLis));
+    aux = getCandidatosProv(*(Provincia*)datoLis);//datoLis2 = getPartidosProvPtr(*(Provincia*)datoLis);
+    system("pause");
+    nodoLis = primero(aux);// nodoLis = primero(*(Lista*)datoLis2);
+    if (nodoLis == fin()){puts("\nEsta vacia!!\n");}
+    printf("Tamanio: %d\n", longitud(aux));
+    system("pause");
+    datoLis = nodoLis ->ptrDato;
+    system("pause");
+    printf("\nNombre Primer Partido: %s\n", getNombreCandidatosXProv(*(CandidatosXProv*)datoLis));
+    system("pause");
+
+}

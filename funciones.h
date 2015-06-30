@@ -8,6 +8,7 @@ void sistemadevotacion(Lista &candidatos, Lista &partidos, Lista &mesa);//Inicia
 void distribuirVotos(Lista &lstProvincias); //Comienza a distribuir los votos guardado en las estructuras (pilas, colas, listas) y los clasifica.
 void edicionDeDatos(Lista&, Lista&, Lista&); //LLeva a la edicion de datos
 void agregarMesa(Lista&);
+void reportes(Lista provincia);
 void pantallaFinalizandoVotac(PtrDato &provDato, PtrDato &mesaDato, PtrDatoCola &urna, int &pantallaEntradas, int &pantallaEntradasProv);
 
 //Funciones para el módulo de carga.

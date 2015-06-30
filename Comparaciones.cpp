@@ -1,3 +1,6 @@
+#include <iostream>
+#include <cstdio>
+#include <cstdlib>
 #include "Comparaciones.h"
 #include "Lista.h"
 #include "Partido.h"

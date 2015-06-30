@@ -10,4 +10,6 @@ void pruebaCandidatosListas();
 void imprimirPartidos(Lista&);
 void cargaListaProvincias(Lista&);
 
+void probandoDistri(Lista &provincias);
+
 #endif // TEST_H_INCLUDED

@@ -23,6 +23,8 @@ Lista getMesasProv(Provincia provincia);
 
 Lista getPartidosProv(Provincia provincia);
 
+Lista* getPartidosProvPtr (Provincia&);
+
 Lista getCandidatosProv(Provincia provincia);
 
 void setIdProvincia(Provincia &provincia, int dato);

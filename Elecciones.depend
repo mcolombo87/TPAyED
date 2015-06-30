@@ -1,6 +1,9 @@
 # depslib dependency file v1.0
-1434122921 source:d:\users\romina\documents\git\ayed\lista.cpp
+1435678167 source:d:\users\romina\documents\git\ayed\lista.cpp
 	"Lista.h"
+	<iostream>
+	<cstdio>
+	<cstdlib>
 
 1434596560 d:\users\romina\documents\git\ayed\lista.h
 
@@ -10,7 +13,7 @@
 	<cstdio>
 	"funciones.h"
 
-1435332611 d:\users\romina\documents\git\ayed\funciones.h
+1435673630 d:\users\romina\documents\git\ayed\funciones.h
 	"Lista.h"
 	"Cola.h"
 
@@ -20,10 +23,11 @@
 
 1434749919 d:\users\romina\documents\git\ayed\pila.h
 
-1435589929 source:d:\users\romina\documents\git\ayed\sistemadevotacion.cpp
+1435678928 source:d:\users\romina\documents\git\ayed\sistemadevotacion.cpp
 	<iostream>
 	<cstdio>
 	<cstdlib>
+	<string.h>
 	"funciones.h"
 	"Lista.h"
 	"Cola.h"
@@ -46,7 +50,7 @@
 
 1434600392 d:\users\romina\documents\git\ayed\cola.h
 
-1435332611 source:d:\users\romina\documents\git\ayed\main.cpp
+1435673323 source:d:\users\romina\documents\git\ayed\main.cpp
 	<iostream>
 	<cstdio>
 	<cstdlib>
@@ -55,9 +59,9 @@
 	"Comparaciones.h"
 	"Test.h"
 
-1435067190 d:\users\romina\documents\git\ayed\test.h
+1435619649 d:\users\romina\documents\git\ayed\test.h
 
-1435553955 source:d:\users\romina\documents\git\ayed\test.cpp
+1435670408 source:d:\users\romina\documents\git\ayed\test.cpp
 	<iostream>
 	<cstdlib>
 	<cstdio>
@@ -73,6 +77,8 @@
 	"Partido.h"
 	"Provincia.h"
 	"Comparaciones.h"
+	"PartidosXProv.h"
+	"CandidatosXProv.h"
 
 1434662362 d:\users\romina\documents\git\ayed\voto.h
 
@@ -119,13 +125,16 @@
 
 1434740697 d:\users\romina\documents\git\ayed\partidosxprov.h
 
-1435332611 source:d:\users\romina\documents\git\ayed\provincia.cpp
+1435670309 source:d:\users\romina\documents\git\ayed\provincia.cpp
 	"Provincia.h"
 
-1435332611 d:\users\romina\documents\git\ayed\provincia.h
+1435670294 d:\users\romina\documents\git\ayed\provincia.h
 	"Lista.h"
 
-1434987938 source:d:\users\romina\documents\git\ayed\comparaciones.cpp
+1435678186 source:d:\users\romina\documents\git\ayed\comparaciones.cpp
+	<iostream>
+	<cstdio>
+	<cstdlib>
 	"Comparaciones.h"
 	"Lista.h"
 	"Partido.h"
