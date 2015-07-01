@@ -63,7 +63,32 @@ if (((Mesas*)ptrDato1)->id > ((Mesas*)ptrDato2)->id) {
 
 /**Comparaciones entre VOTOS y PartidosXProvincia y CandidatosXProvincias para contabilizar*/
 ResultadoComparacion compararPartidoXProv(PtrDato ptrDato1, PtrDato ptrDato2) {
-if (((PartidosXProv*)ptrDato1)->id > ((CandidatosXProv*)ptrDato2)->id/*PartidoPolitico CAMBIO!!!*/) {
+if (((PartidosXProv*)ptrDato1)->id > ((PartidosXProv*)ptrDato2)->id/*PartidoPolitico CAMBIO!!!*/) {
+        return MAYOR;
+    }
+    else if (((PartidosXProv*)ptrDato1)->id < ((PartidosXProv*)ptrDato2)->id){
+        return MENOR;
+    }
+    else {
+        return IGUAL;
+    }
+}
+
+ResultadoComparacion compararCandidatosXProv(PtrDato ptrDato1, PtrDato ptrDato2) {
+if (((CandidatosXProv*)ptrDato1)->id > ((CandidatosXProv*)ptrDato2)->id) { //Compara con idCandidato(dentro de voto)
+        return MAYOR;
+    }
+    else if (((CandidatosXProv*)ptrDato1)->id < ((CandidatosXProv*)ptrDato2)->id){
+        return MENOR;
+    }
+    else {
+        return IGUAL;
+    }
+}
+
+/** SE DEJARON COMO SIEMPRE DEBIO SER, ESTO ES LO ANTERIOR... POR LAS DUDAS
+ResultadoComparacion compararPartidoXProv(PtrDato ptrDato1, PtrDato ptrDato2) {
+if (((PartidosXProv*)ptrDato1)->id > ((CandidatosXProv*)ptrDato2)->id) {
         return MAYOR;
     }
     else if (((PartidosXProv*)ptrDato1)->id < ((PartidosXProv*)ptrDato2)->id){
@@ -85,3 +110,4 @@ if (((CandidatosXProv*)ptrDato1)->id > ((Voto*)ptrDato2)->idCandidato) { //Compa
         return IGUAL;
     }
 }
+*/

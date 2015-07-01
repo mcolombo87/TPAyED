@@ -143,13 +143,13 @@ void distribuirVotos(Lista &lstProvincias)
        lstCandxProv = getCandidatosProv(*(Provincia*)provDato);
        lstPartxProv = getPartidosProv(*(Provincia*)provDato);
        mesa = primero(provMesas);
-       puts("0");
+//       puts("0");
        while (mesa != fin())
        {
            mesaDato = mesa ->ptrDato;
            mesasUrnas = getUrnasMesa(*(Mesas*)mesaDato);
            urna = desencolar(mesasUrnas);
-           puts("1");
+//           puts("1");
 //           int a = getIdUrna(*(Urna*)urna);
 //           printf("ID urna: %d\n", a );
 //           system("PAUSE");
@@ -157,9 +157,9 @@ void distribuirVotos(Lista &lstProvincias)
            {
                votos = getVotosUrna(*(Urna*)urna); //Hasta aca tengo la pila
                votoUnidad = pop(votos);
-               puts("2");
-                printf("ID Voto: %d\n", getIdVoto(*(Voto*)votoUnidad));
-               system("PAUSE");
+//               puts("2");
+//                printf("ID Voto: %d\n", getIdVoto(*(Voto*)votoUnidad));
+//               system("PAUSE");
                while (votoUnidad != finPila())
                {
                     puts("3");
@@ -173,14 +173,14 @@ void distribuirVotos(Lista &lstProvincias)
                             cursorNodo = siguiente(lstCandxProv, cursorNodo);
                         }else{encontrado = true; cursor = cursorNodo ->ptrDato;}
                     }
-                    puts("4");//
-                    //
-                    system("PAUSE");
-                    int a = getIdCandidatosXProv(*(CandidatosXProv*)cursor);
-                    char b[20];
-                    strcpy(b, getNombreCandidatosXProv(*(CandidatosXProv*)cursor));
-                    printf("\nDato Encontrado id: %d\nNombre: %s\n", a ,b );
-                    system("pause");
+//                    puts("4");//
+//                    //
+//                    system("PAUSE");
+//                    int a = getIdCandidatosXProv(*(CandidatosXProv*)cursor);
+//                    char b[20];
+//                    strcpy(b, getNombreCandidatosXProv(*(CandidatosXProv*)cursor));
+//                    printf("\nDato Encontrado id: %d\nNombre: %s\n", a ,b );
+//                    system("pause");
                     //
                     if (cursorNodo != fin()) //Por las dudas valido que haya un resultado aunque deberia siempre existir
                     {
@@ -203,7 +203,7 @@ void distribuirVotos(Lista &lstProvincias)
 
                     if (cursorNodo != fin()) //Por las dudas valido que haya un resultado aunque deberia siempre existir
                     {
-                        puts("Entramos?");
+//                        puts("Entramos?");
                         //ontadorAux =
                         setVotosPartidosXProv(*(PartidosXProv*)cursor2, (getVotosPartidosXProv(*(PartidosXProv*)cursor2))+1);
                     }else {puts("\nError: El partido al que pertenece el candidato votado no se encuentra registrado en la Provincia"); system("pause");}
@@ -212,12 +212,12 @@ void distribuirVotos(Lista &lstProvincias)
 //                     setVotosPartidosXProv(*(PartidosXProv*)cursor2, (getVotosPartidosXProv(*(PartidosXProv*)cursor2))+1);
                     //FIN DE VER LUEGO
 //                    system("PAUSE");
-                    puts("Salimos?");
+//                    puts("Salimos?");
                     pantallaFinalizandoVotac(provDato, mesaDato, urna, pantallaEntradas, pantallaEntradasProv); //LLamo a la pantalla de progreso
                     votoUnidad = pop(votos); //Saco un nuevo voto
                }
-               puts ("5");
-               system("PAUSE");
+//               puts ("5");
+//               system("PAUSE");
                urna = desencolar(mesasUrnas); //Saco una nueva urna
            }
            mesa = siguiente(provMesas, mesa); //Paso a un nuevo nodo de la lista (es decir a otra Mesa)
@@ -375,10 +375,10 @@ void cargandoMotor(Lista &prov, Lista &candidatos ,Lista &partidos, Lista &mesa)
             setPartidoCandidatosXProv(*(CandidatosXProv*)dato4, getPartidoPolitico(*(Candidato*)dato2));
             setVotosCandidatosXProv(*(CandidatosXProv*)dato4, 0);
             adicionarFinal(*(Lista*)candProv, dato4);
-            /**PRUEBA BORRAR LUEGO*/
-            cursorLista3 = ultimo(*(Lista*)candProv);
-            dato5 = cursorLista3->ptrDato;
-            printf("\nNOMBRE Candidato: %s\n", getNombreCandidatosXProv(*(CandidatosXProv*)dato5));
+//            /**PRUEBA BORRAR LUEGO*/
+//            cursorLista3 = ultimo(*(Lista*)candProv);
+//            dato5 = cursorLista3->ptrDato;
+//            printf("\nNOMBRE Candidato: %s\n", getNombreCandidatosXProv(*(CandidatosXProv*)dato5));
 
             setCandidatosProv(*(Provincia*)dato, *(Lista*)candProv);
             //system("pause");
@@ -484,8 +484,9 @@ void reportes(Lista provincia){
      for(int i = 0; i < longitud(partidosXprovincia); i++){ // For determinado por la cantidad de partidos que hay
           while(cursor != fin()){ // Recorro todas las provincias
              partidosXprovincia = getPartidosProv(*(Provincia*)cursor->ptrDato);//En cada provincia, geteo la lista PXP
-             if(localizarDato(partidosXprovincia, cursor2->ptrDato) != fin()){ //Busco el partido en la lista
-                 if(primer){cout<< "primero" << endl;
+             cursor2 = localizarDato(partidosXprovincia, cursor2->ptrDato);
+             if(cursor2 != fin()){ //Busco el partido en la lista
+                 if(primer){
                              partido = new PartidosXProv;// Para saber si es la primera vez que entra el partido
                              primer  = false;
                              setIdPartidosXProv(*(PartidosXProv*)partido, getIdPartidosXProv(*(PartidosXProv*)cursor2->ptrDato));
@@ -503,15 +504,23 @@ void reportes(Lista provincia){
              votosPartido = 0;
           }//Probando sin agregar ni un voto, la lista de partidos se carga correctamente.
 
-    /*cursor = primero(provincia);
+            puts ("Partidos OK");
+            system("pause");
+
+
+     cursor = primero(provincia);
      candidatosXprovincia = getCandidatosProv(*(Provincia*)cursor->ptrDato);
      cursor2 = primero(candidatosXprovincia);
      primer = true;
 
-     for(int i = 0; i < longitud(candidatosXprovincia); i++){
-        while(cursor != fin()){
-           candidatosXprovincia = getCandidatosProv(*(Provincia*)cursor);
-           if(localizarDato(candidatosXprovincia, cursor2->ptrDato) != fin()){
+     for(int i = 0; i < longitud(candidatosXprovincia); i++)
+        {
+        while(cursor != fin())
+        {
+           candidatosXprovincia = getCandidatosProv(*(Provincia*)cursor ->ptrDato);
+           cursor2 = localizarDato(candidatosXprovincia, cursor2->ptrDato);
+           if(cursor2 != fin())
+           {
                 if(primer){
                            partido = new CandidatosXProv;
                            primer  = false;
@@ -520,18 +529,20 @@ void reportes(Lista provincia){
                            setNombreCandidatosXProv(*(CandidatosXProv*)partido, getNombreCandidatosXProv(*(CandidatosXProv*)cursor2->ptrDato));
                            }
                 votosCandidato += getVotosCandidatosXProv(*(CandidatosXProv*)cursor2->ptrDato);
-                                      }
-           cursor = siguiente(provincia, cursor);
-                     }
+            }
+            cursor = siguiente(provincia, cursor);
+        }
            setVotosCandidatosXProv(*(CandidatosXProv*)partido, votosCandidato);
            adicionarFinal(auxiliarCandidatos, partido);
            cursor2 = siguiente(candidatosXprovincia, cursor2); // Sigo con el proximo partido
            primer = true;
-           votosCandidato = 0;
+           votosCandidato = 0;//Hasta aca, deberian estar cargadas las listas auxiliares con los resultados de la votacion
+        }
 
-             }//Hasta aca, deberian estar cargadas las listas auxiliares con los resultados de la votacion
+            puts ("Candidatos OK");
+            system("pause");
 
-           /*cursor = primero(provincia);// Me pongo al inicio de la lista grosa
+           cursor = primero(provincia);// Me pongo al inicio de la lista grosa
            while(cursor != fin()){
                partidosXprovincia = getPartidosProv(*(Provincia*)cursor->ptrDato); //Geteo la lista
                cursor2 = primero(partidosXprovincia);
@@ -541,15 +552,18 @@ void reportes(Lista provincia){
                              }
                cursor = siguiente(provincia, cursor);
                         }
-
+            printf("TOTAL DE VOTOS: %d", totalVotos);
+            puts ("Conteo TOTAL ok");
+            system("pause");
 
            cursor = primero(auxiliarCandidatos);
            porcentaje = totalVotos * 1.5 /100;
            while(cursor != fin()){
                 if(getVotosCandidatosXProv(*(CandidatosXProv*)cursor->ptrDato) > porcentaje){
                      printf("%s entra.\n", getNombreCandidatosXProv(*(CandidatosXProv*)cursor->ptrDato));
-                        }else printf("%s no entra.\n", getNombreCandidatosXProv(*(CandidatosXProv*)cursor->ptrDato));
-                        }*/
+                        }else {printf("%s no entra.\n", getNombreCandidatosXProv(*(CandidatosXProv*)cursor->ptrDato));}
+                cursor = siguiente(auxiliarCandidatos, cursor);
+                        }
         system("Pause");
      }
 
