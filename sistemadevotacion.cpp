@@ -467,8 +467,8 @@ void reportes(Lista provincia){
      Lista candidatosXprovincia;
      Lista auxiliarPartidos;
      Lista auxiliarCandidatos;
-     crearLista(auxiliarPartidos, NULL);
-     crearLista(auxiliarCandidatos, NULL);
+     crearLista(auxiliarPartidos, compararPartidoXProv);
+     crearLista(auxiliarCandidatos, compararCandidatosXProv);
      PtrDato partido;
      int votosPartido = 0, votosCandidato = 0;
      int totalVotos = 0;
@@ -537,6 +537,7 @@ void reportes(Lista provincia){
            cursor2 = siguiente(candidatosXprovincia, cursor2); // Sigo con el proximo partido
            primer = true;
            votosCandidato = 0;//Hasta aca, deberian estar cargadas las listas auxiliares con los resultados de la votacion
+           cursor = primero(provincia);
         }
 
             puts ("Candidatos OK");
@@ -562,6 +563,20 @@ void reportes(Lista provincia){
                 if(getVotosCandidatosXProv(*(CandidatosXProv*)cursor->ptrDato) > porcentaje){
                      printf("%s entra.\n", getNombreCandidatosXProv(*(CandidatosXProv*)cursor->ptrDato));
                         }else {printf("%s no entra.\n", getNombreCandidatosXProv(*(CandidatosXProv*)cursor->ptrDato));}
+                cursor = siguiente(auxiliarCandidatos, cursor);
+                        }
+        system("Pause");
+
+          cursor = primero(auxiliarPartidos);
+           while(cursor != fin()){
+                printf("\nPartido: %s\t Votos: %d\n", getNombrePartidosXProv(*(PartidosXProv*)cursor->ptrDato), getVotosPartidosXProv(*(PartidosXProv*)cursor->ptrDato));
+                cursor = siguiente(auxiliarPartidos, cursor);
+                        }
+        system("Pause");
+
+                  cursor = primero(auxiliarCandidatos);
+           while(cursor != fin()){
+                printf("\nCandidato: %s\t Votos: %d\n", getNombreCandidatosXProv(*(CandidatosXProv*)cursor->ptrDato), getVotosCandidatosXProv(*(CandidatosXProv*)cursor->ptrDato));
                 cursor = siguiente(auxiliarCandidatos, cursor);
                         }
         system("Pause");
