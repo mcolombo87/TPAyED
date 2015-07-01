@@ -89,6 +89,9 @@ void sistemadevotacion(Lista &candidatos, Lista &partidos, Lista &mesa)
         case 6:
             reportes(prov);
             break;
+        case 7:
+            imprimirMegaEstructura(prov);
+            break;
         case 0:
             return;
             break;
@@ -295,7 +298,7 @@ void votacion(Lista &provincias, Lista &partidos, int &id, int &idVoto){
                 }
           }else cout << "No existe esa provincia " << endl;
 
-//          system("PAUSE");
+         system("PAUSE");
      }
 
 void cargandoMotor(Lista &prov, Lista &candidatos ,Lista &partidos, Lista &mesa)
@@ -444,14 +447,15 @@ void reportes(Lista provincia){
 
      cursor = primero(provincia);
 
-     partidosXprovincia = getPartidosProv(*(Provincia*)cursor);//Traigo la lista de PXP
+     partidosXprovincia = getPartidosProv(*(Provincia*)cursor->ptrDato);//Traigo la lista de PXP
      cursor2 = primero(partidosXprovincia); //Busco el primer partido almacenado en la lista
 
      for(int i = 0; i < longitud(partidosXprovincia); i++){ // For determinado por la cantidad de partidos que hay
           while(cursor != fin()){ // Recorro todas las provincias
              partidosXprovincia = getPartidosProv(*(Provincia*)cursor->ptrDato);//En cada provincia, geteo la lista PXP
              if(localizarDato(partidosXprovincia, cursor2->ptrDato) != fin()){ //Busco el partido en la lista
-                 if(primer){partido = new PartidosXProv;// Para saber si es la primera vez que entra el partido
+                 if(primer){cout<< "primero" << endl;
+                             partido = new PartidosXProv;// Para saber si es la primera vez que entra el partido
                              primer  = false;
                              setIdPartidosXProv(*(PartidosXProv*)partido, getIdPartidosXProv(*(PartidosXProv*)cursor2->ptrDato));
                              setNombrePartidosXProv(*(PartidosXProv*)partido, getNombrePartidosXProv(*(PartidosXProv*)cursor2->ptrDato));
@@ -464,10 +468,11 @@ void reportes(Lista provincia){
              adicionarFinal(auxiliarPartidos, partido); // agrego a la lista auxiliar
              cursor2 = siguiente(partidosXprovincia, cursor2); // Sigo con el proximo partido
              primer = true;
+             cursor = primero(provincia);
              votosPartido = 0;
-          }
+          }//Probando sin agregar ni un voto, la lista de partidos se carga correctamente.
 
-     cursor = primero(provincia);
+    /*cursor = primero(provincia);
      candidatosXprovincia = getCandidatosProv(*(Provincia*)cursor->ptrDato);
      cursor2 = primero(candidatosXprovincia);
      primer = true;
@@ -495,7 +500,7 @@ void reportes(Lista provincia){
 
              }//Hasta aca, deberian estar cargadas las listas auxiliares con los resultados de la votacion
 
-           cursor = primero(provincia);// Me pongo al inicio de la lista grosa
+           /*cursor = primero(provincia);// Me pongo al inicio de la lista grosa
            while(cursor != fin()){
                partidosXprovincia = getPartidosProv(*(Provincia*)cursor->ptrDato); //Geteo la lista
                cursor2 = primero(partidosXprovincia);
@@ -513,7 +518,8 @@ void reportes(Lista provincia){
                 if(getVotosCandidatosXProv(*(CandidatosXProv*)cursor->ptrDato) > porcentaje){
                      printf("%s entra.\n", getNombreCandidatosXProv(*(CandidatosXProv*)cursor->ptrDato));
                         }else printf("%s no entra.\n", getNombreCandidatosXProv(*(CandidatosXProv*)cursor->ptrDato));
-                        }
+                        }*/
+        system("Pause");
      }
 
 void imprimirMegaEstructura(Lista &provincias){
@@ -531,17 +537,15 @@ void imprimirMegaEstructura(Lista &provincias){
             cursor = primero(mesas);
             while(cursor != fin()){
                   printf("ID mesa: %d  ID provincia: %d \n",getIdMesa(*(Mesas*)cursor->ptrDato), getProvinciaMesa(*(Mesas*)cursor->ptrDato));
-                  //urnas = getUrnasMesa(*(Mesas*)cursor->ptrDato);
-                  urna = punteroCola(*(Mesas*)cursor->ptrDato)->last->ptrDato;
-                  printf("ID: %d  Hora Apertura: %s Hora cierre: %s \n", getIdUrna(*(Urna*)urna),getHoraAperturaUrna(*(Urna*)urna),getHoraCierreUrna(*(Urna*)urna));
-                  /*if(!estaVacia(urnas)){
+                  urnas = getUrnasMesa(*(Mesas*)cursor->ptrDato);
+                  if(!estaVacia(urnas)){
                        cout << "No esta Vacia!" << endl;
                        urna = desencolar(urnas);
                        while(urna != finCola()){
                         printf("ID: %d  Hora Apertura: %s Hora cierre: %s \n", getIdUrna(*(Urna*)urna),getHoraAperturaUrna(*(Urna*)urna),getHoraCierreUrna(*(Urna*)urna));
                         urna = desencolar(urnas);
                        }
-                  }*/
+                  }
                   cursor=siguiente(mesas,cursor);
                   }
              cursor3 = siguiente(provincias, cursor3);

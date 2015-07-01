@@ -63,7 +63,7 @@ if (((Mesas*)ptrDato1)->id > ((Mesas*)ptrDato2)->id) {
 
 /**Comparaciones entre VOTOS y PartidosXProvincia y CandidatosXProvincias para contabilizar*/
 ResultadoComparacion compararPartidoXProv(PtrDato ptrDato1, PtrDato ptrDato2) {
-if (((PartidosXProv*)ptrDato1)->id > ((CandidatosXProv*)ptrDato2)->PartidoPolitico) {
+if (((PartidosXProv*)ptrDato1)->id > ((CandidatosXProv*)ptrDato2)->id/*PartidoPolitico CAMBIO!!!*/) {
         return MAYOR;
     }
     else if (((PartidosXProv*)ptrDato1)->id < ((PartidosXProv*)ptrDato2)->id){
