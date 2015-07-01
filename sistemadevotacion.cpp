@@ -536,13 +536,12 @@ void imprimirMegaEstructura(Lista &provincias){
 
             cursor = primero(mesas);
             while(cursor != fin()){
-                  printf("ID mesa: %d  ID provincia: %d \n",getIdMesa(*(Mesas*)cursor->ptrDato), getProvinciaMesa(*(Mesas*)cursor->ptrDato));
+                  printf("\tID mesa: %d  ID provincia: %d \n",getIdMesa(*(Mesas*)cursor->ptrDato), getProvinciaMesa(*(Mesas*)cursor->ptrDato));
                   urnas = getUrnasMesa(*(Mesas*)cursor->ptrDato);
                   if(!estaVacia(urnas)){
-                       cout << "No esta Vacia!" << endl;
                        urna = desencolar(urnas);
                        while(urna != finCola()){
-                        printf("ID: %d  Hora Apertura: %s Hora cierre: %s \n", getIdUrna(*(Urna*)urna),getHoraAperturaUrna(*(Urna*)urna),getHoraCierreUrna(*(Urna*)urna));
+                        printf("\t\tID: %d  Hora Apertura: %s Hora cierre: %s \n", getIdUrna(*(Urna*)urna),getHoraAperturaUrna(*(Urna*)urna),getHoraCierreUrna(*(Urna*)urna));
                         urna = desencolar(urnas);
                        }
                   }
