@@ -252,18 +252,29 @@ void probandoDistri(Lista &provincias)
     Lista aux;
 
     nodoLis = primero(provincias);
-    datoLis = nodoLis ->ptrDato;
+    while (nodoLis != fin())
+    {
+        datoLis = nodoLis ->ptrDato;
+    //    system("pause");
+        printf("\nProvincia ID: %d\n", getIdProvincia(*(Provincia*)datoLis));
+        aux = getCandidatosProv(*(Provincia*)datoLis);//datoLis2 = getPartidosProvPtr(*(Provincia*)datoLis);
+    //    system("pause");
+        nodoLis2 = primero(aux);// nodoLis = primero(*(Lista*)datoLis2);
+        while (nodoLis2 != fin())
+    {
+        if (nodoLis2 == fin()){puts("\nEsta vacia!!\n");}
+        printf("Tamanio: %d\n", longitud(aux));
+    //    system("pause");
+        datoLis = nodoLis2 ->ptrDato;
+    //    system("pause");
+        printf("\nNombre Primer Candidato: %s\n", getNombreCandidatosXProv(*(CandidatosXProv*)datoLis));
+        printf("\Votos del primer Candida: %d\n", getVotosCandidatosXProv(*(CandidatosXProv*)datoLis));
+        nodoLis2 = siguiente(aux, nodoLis2);
+    }
     system("pause");
-    printf("\nProvincia ID: %d\n", getIdProvincia(*(Provincia*)datoLis));
-    aux = getCandidatosProv(*(Provincia*)datoLis);//datoLis2 = getPartidosProvPtr(*(Provincia*)datoLis);
-    system("pause");
-    nodoLis = primero(aux);// nodoLis = primero(*(Lista*)datoLis2);
-    if (nodoLis == fin()){puts("\nEsta vacia!!\n");}
-    printf("Tamanio: %d\n", longitud(aux));
-    system("pause");
-    datoLis = nodoLis ->ptrDato;
-    system("pause");
-    printf("\nNombre Primer Partido: %s\n", getNombreCandidatosXProv(*(CandidatosXProv*)datoLis));
-    system("pause");
+    nodoLis = siguiente(provincias, nodoLis);
+    }
+system("pause");
+
 
 }

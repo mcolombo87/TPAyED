@@ -92,6 +92,9 @@ void sistemadevotacion(Lista &candidatos, Lista &partidos, Lista &mesa)
         case 7:
             imprimirMegaEstructura(prov);
             break;
+        case 8:
+            probandoDistri(prov);
+            break;
         case 0:
             return;
             break;
@@ -110,14 +113,14 @@ void sistemadevotacion(Lista &candidatos, Lista &partidos, Lista &mesa)
 void distribuirVotos(Lista &lstProvincias)
 {
     int pantallaEntradas = 0; //Contar ingresos a funcion
-    int pantallaEntradasProv;
+    int pantallaEntradasProv, idPartidoVotado, contadorAux;
     //Para recorrer lista de prov.
     PtrNodoLista prov = primero(lstProvincias);
     PtrDato provDato;
     Lista provMesas;
     //Para manejas las listas internas de Provincia
-    Lista lstCandxProv;
-    Lista lstPartxProv;
+    Lista lstCandxProv, lstPartxProv;
+
     //Para recorrer lista de mesas
     PtrNodoLista mesa;
     PtrDato mesaDato;
@@ -128,9 +131,10 @@ void distribuirVotos(Lista &lstProvincias)
     Pila votos;
     PtrDatoPila votoUnidad;
     //Puntero auxiliar
-    PtrDato cursor;
-    PtrDato cursor2;
+    PtrDato cursor, cursor2, cursorAuxBusq;
     PtrNodoLista cursorNodo;
+    bool encontrado;
+
     while (prov != fin())
     {
         pantallaEntradasProv =0;
@@ -158,24 +162,49 @@ void distribuirVotos(Lista &lstProvincias)
                system("PAUSE");
                while (votoUnidad != finPila())
                {
-//                    puts("3");
-                    cursorNodo = localizarDato(lstCandxProv, votoUnidad);
-//                    puts("4");
-                    cursor = cursorNodo ->ptrDato;
-//                    system("PAUSE");
-//                    int a = getIdCandidatosXProv(*(CandidatosXProv*)cursor);
-//                    char b[20];
-//                    strcpy(b, getNombreCandidatosXProv(*(CandidatosXProv*)cursor));
-//                    system("pause");
-//                    printf("\nDato Encontrado id: %d\nNombre: %s\n", a ,b );
-//                    system("pause");
+                    puts("3");
+                    cursorNodo = primero(lstCandxProv); //RASTREO EL DATO PARA CANDIDATO
+                    encontrado = false;
+                    while (encontrado == false && cursorNodo != fin())
+                    {
+                        cursorAuxBusq = cursorNodo ->ptrDato;
+                        if (getIdCandidatosXProv(*(CandidatosXProv*)cursorAuxBusq) != getIdCandidatoVoto(*(Voto*)votoUnidad))
+                        {
+                            cursorNodo = siguiente(lstCandxProv, cursorNodo);
+                        }else{encontrado = true; cursor = cursorNodo ->ptrDato;}
+                    }
+                    puts("4");//
+                    //
+                    system("PAUSE");
+                    int a = getIdCandidatosXProv(*(CandidatosXProv*)cursor);
+                    char b[20];
+                    strcpy(b, getNombreCandidatosXProv(*(CandidatosXProv*)cursor));
+                    printf("\nDato Encontrado id: %d\nNombre: %s\n", a ,b );
+                    system("pause");
+                    //
                     if (cursorNodo != fin()) //Por las dudas valido que haya un resultado aunque deberia siempre existir
                     {
                         setVotosCandidatosXProv(*(CandidatosXProv*)cursor, (getVotosCandidatosXProv(*(CandidatosXProv*)cursor))+1);
+                        idPartidoVotado = getPartidoCandidatosXProv(*(CandidatosXProv*)cursor);
                     }else {puts("\nError: El candidato votado no se encuentra registrado en la Provincia"); system("pause");}
-                    cursor2 = localizarDato(lstPartxProv, cursor);
-                    if (cursor2 != fin()) //Por las dudas valido que haya un resultado aunque deberia siempre existir
+
+                    //HASTA ACA TODO BIEN
+                    cursorNodo = primero(lstPartxProv); //RASTREO EL DATO PARA PARTIDO
+                    encontrado = false;
+                    while (encontrado == false && cursorNodo != fin())
                     {
+                        cursorAuxBusq = cursorNodo ->ptrDato;
+                        if (getIdPartidosXProv(*(PartidosXProv*)cursorAuxBusq) != idPartidoVotado)
+                        {
+                            cursorNodo = siguiente(lstCandxProv, cursorNodo);
+                        }else{encontrado = true; cursor2 = cursorNodo ->ptrDato;}
+                    }
+                    cursor = cursorNodo ->ptrDato;
+
+                    if (cursorNodo != fin()) //Por las dudas valido que haya un resultado aunque deberia siempre existir
+                    {
+                        puts("Entramos?");
+                        //ontadorAux =
                         setVotosPartidosXProv(*(PartidosXProv*)cursor2, (getVotosPartidosXProv(*(PartidosXProv*)cursor2))+1);
                     }else {puts("\nError: El partido al que pertenece el candidato votado no se encuentra registrado en la Provincia"); system("pause");}
                     //VER LUEGO
@@ -183,10 +212,12 @@ void distribuirVotos(Lista &lstProvincias)
 //                     setVotosPartidosXProv(*(PartidosXProv*)cursor2, (getVotosPartidosXProv(*(PartidosXProv*)cursor2))+1);
                     //FIN DE VER LUEGO
 //                    system("PAUSE");
+                    puts("Salimos?");
                     pantallaFinalizandoVotac(provDato, mesaDato, urna, pantallaEntradas, pantallaEntradasProv); //LLamo a la pantalla de progreso
                     votoUnidad = pop(votos); //Saco un nuevo voto
                }
-//               system("PAUSE");
+               puts ("5");
+               system("PAUSE");
                urna = desencolar(mesasUrnas); //Saco una nueva urna
            }
            mesa = siguiente(provMesas, mesa); //Paso a un nuevo nodo de la lista (es decir a otra Mesa)
