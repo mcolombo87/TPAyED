@@ -460,9 +460,8 @@ void cargandoMotor(Lista &prov, Lista &candidatos ,Lista &partidos, Lista &mesa)
 
 void reportes(Lista provincia){
 
+    system("cls");
     puts("REPORTES");
-    system("pause");
-
      Lista partidosXprovincia;
      Lista candidatosXprovincia;
      Lista auxiliarPartidos;
@@ -504,9 +503,6 @@ void reportes(Lista provincia){
              votosPartido = 0;
           }//Probando sin agregar ni un voto, la lista de partidos se carga correctamente.
 
-            puts ("Partidos OK");
-            system("pause");
-
 
      cursor = primero(provincia);
      candidatosXprovincia = getCandidatosProv(*(Provincia*)cursor->ptrDato);
@@ -540,8 +536,6 @@ void reportes(Lista provincia){
            cursor = primero(provincia);
         }
 
-            puts ("Candidatos OK");
-            system("pause");
 
            cursor = primero(provincia);// Me pongo al inicio de la lista grosa
            while(cursor != fin()){
@@ -553,33 +547,41 @@ void reportes(Lista provincia){
                              }
                cursor = siguiente(provincia, cursor);
                         }
-            printf("TOTAL DE VOTOS: %d", totalVotos);
-            puts ("Conteo TOTAL ok");
-            system("pause");
+            printf("TOTAL DE VOTOS: %d\n\n", totalVotos);
 
            cursor = primero(auxiliarCandidatos);
            porcentaje = totalVotos * 1.5 /100;
+           puts("Candidatos que no llegaron al 1.5% de votos:");
            while(cursor != fin()){
-                if(getVotosCandidatosXProv(*(CandidatosXProv*)cursor->ptrDato) > porcentaje){
-                     printf("%s entra.\n", getNombreCandidatosXProv(*(CandidatosXProv*)cursor->ptrDato));
-                        }else {printf("%s no entra.\n", getNombreCandidatosXProv(*(CandidatosXProv*)cursor->ptrDato));}
+                if(getVotosCandidatosXProv(*(CandidatosXProv*)cursor->ptrDato) <= porcentaje){
+                     printf("%s - ", getNombreCandidatosXProv(*(CandidatosXProv*)cursor->ptrDato));}
                 cursor = siguiente(auxiliarCandidatos, cursor);
                         }
-        system("Pause");
 
-          cursor = primero(auxiliarPartidos);
-           while(cursor != fin()){
-                printf("\nPartido: %s\t Votos: %d\n", getNombrePartidosXProv(*(PartidosXProv*)cursor->ptrDato), getVotosPartidosXProv(*(PartidosXProv*)cursor->ptrDato));
-                cursor = siguiente(auxiliarPartidos, cursor);
-                        }
-        system("Pause");
-
+            double porcTemp;
+            int tempInt;
+            puts("\n***\t***\n\n\nVotos Generales (todas las provincias) por Candidato:\n");
                   cursor = primero(auxiliarCandidatos);
            while(cursor != fin()){
-                printf("\nCandidato: %s\t Votos: %d\n", getNombreCandidatosXProv(*(CandidatosXProv*)cursor->ptrDato), getVotosCandidatosXProv(*(CandidatosXProv*)cursor->ptrDato));
+                printf("\n%s\n Votos: %d\n", getNombreCandidatosXProv(*(CandidatosXProv*)cursor->ptrDato), getVotosCandidatosXProv(*(CandidatosXProv*)cursor->ptrDato));
+                tempInt = getVotosCandidatosXProv(*(CandidatosXProv*)cursor->ptrDato);
+                porcTemp = tempInt *100/totalVotos;
+                printf("%2.f%c del Total.\n******", porcTemp, 37 );
                 cursor = siguiente(auxiliarCandidatos, cursor);
                         }
+
+            puts("\n***\t***\n\n\nVotos Generales (todas las provincias) por Partido:\n");
+          cursor = primero(auxiliarPartidos);
+           while(cursor != fin()){
+                printf("\n%s\n Votos: %d\n******", getNombrePartidosXProv(*(PartidosXProv*)cursor->ptrDato), getVotosPartidosXProv(*(PartidosXProv*)cursor->ptrDato));
+                tempInt = getVotosPartidosXProv(*(PartidosXProv*)cursor->ptrDato);
+                porcTemp = tempInt*100/totalVotos;
+                printf("%2.f%c del Total.\n******", porcTemp, 37);
+                cursor = siguiente(auxiliarPartidos, cursor);
+                        }
+        puts("\n");
         system("Pause");
+
      }
 
 void imprimirMegaEstructura(Lista &provincias){
