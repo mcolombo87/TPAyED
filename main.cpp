@@ -28,9 +28,10 @@ int main()
     Lista lstMes;
     crearLista(lstMes, compararMesa);
 
-    cargarArcCandidatos(lstCan);
-    cargarArcMesas(lstMes);
+    //El orden de carga NO es arbitrario, no puede ser de otra manera o falla la validacion de referencias
     cargarArcPartidos(lstPar);
+    cargarArcCandidatos(lstCan, lstPar);
+    cargarArcMesas(lstMes);
 
     /**Todas las Pruebas que quieran hacer por fuera del funcionamiento de la aplicacion**/
     /**deben hacerse usando los Test. Llaman a las funciones aca cuando quieren probar algo**/

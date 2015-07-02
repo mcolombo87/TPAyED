@@ -13,7 +13,7 @@ void pantallaFinalizandoVotac(PtrDato &provDato, PtrDato &mesaDato, PtrDatoCola 
 
 //Funciones para el módulo de carga.
 
-void cargarArcCandidatos(Lista &lstCan);
+void cargarArcCandidatos(Lista &lstCan, Lista &lstPar);
 void cargarArcPartidos(Lista &lstPar);
 void cargarArcMesas(Lista &lstMes);
 void guardarEnArchivos(Lista &Candidatos, Lista &Partidos, Lista &Mesa);

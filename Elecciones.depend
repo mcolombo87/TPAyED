@@ -13,7 +13,7 @@
 	<cstdio>
 	"funciones.h"
 
-1435673630 d:\users\romina\documents\git\ayed\funciones.h
+1435848287 d:\users\romina\documents\git\ayed\funciones.h
 	"Lista.h"
 	"Cola.h"
 
@@ -23,7 +23,7 @@
 
 1434749919 d:\users\romina\documents\git\ayed\pila.h
 
-1435772433 source:d:\users\romina\documents\git\ayed\sistemadevotacion.cpp
+1435790267 source:d:\users\romina\documents\git\ayed\sistemadevotacion.cpp
 	<iostream>
 	<cstdio>
 	<cstdlib>
@@ -50,7 +50,7 @@
 
 1434600392 d:\users\romina\documents\git\ayed\cola.h
 
-1435673323 source:d:\users\romina\documents\git\ayed\main.cpp
+1435848305 source:d:\users\romina\documents\git\ayed\main.cpp
 	<iostream>
 	<cstdio>
 	<cstdlib>
