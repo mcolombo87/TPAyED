@@ -49,6 +49,7 @@ int main()
     bool opcinvalida = false;
     int opcion;
     bool correcto;
+    bool vota = true;
 
 
 
@@ -83,11 +84,12 @@ int main()
         switch(opcion)
         {
         case 1: /*funcion edicion de datos*/
-            edicionDeDatos(lstCan, lstPar, lstMes);
+            if(vota)edicionDeDatos(lstCan, lstPar, lstMes);
             nuevatarea(continuar);
             break;
         case 2: /*nos lleva al sub menu de votacion e inicia el motor de votacion*/
-            sistemadevotacion(lstCan, lstPar, lstMes);
+            if(vota)sistemadevotacion(lstCan, lstPar, lstMes);
+            vota = false;
             nuevatarea(continuar);
             break;
         case 3: /*Genera Informes de Votacion*/
