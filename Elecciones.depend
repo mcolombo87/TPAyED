@@ -13,7 +13,7 @@
 	<cstdio>
 	"funciones.h"
 
-1435898079 d:\users\romina\documents\git\ayed\funciones.h
+1435903040 d:\users\romina\documents\git\ayed\funciones.h
 	"Lista.h"
 	"Cola.h"
 
@@ -23,7 +23,7 @@
 
 1434749919 d:\users\romina\documents\git\ayed\pila.h
 
-1435898686 source:d:\users\romina\documents\git\ayed\sistemadevotacion.cpp
+1435908580 source:d:\users\romina\documents\git\ayed\sistemadevotacion.cpp
 	<iostream>
 	<cstdio>
 	<cstdlib>
@@ -44,13 +44,14 @@
 	"PartidosXProv.h"
 	"Test.h"
 	"Comparaciones.h"
+	<windows.h>
 
 1435590084 source:d:\users\romina\documents\git\ayed\cola.cpp
 	"Cola.h"
 
 1434600392 d:\users\romina\documents\git\ayed\cola.h
 
-1435896658 source:d:\users\romina\documents\git\ayed\main.cpp
+1435908598 source:d:\users\romina\documents\git\ayed\main.cpp
 	<iostream>
 	<cstdio>
 	<cstdlib>
@@ -164,7 +165,7 @@
 	"Partido.h"
 	"Comparaciones.h"
 
-1435895001 source:d:\users\romina\documents\git\ayed\archivos.cpp
+1435908656 source:d:\users\romina\documents\git\ayed\archivos.cpp
 	<iostream>
 	<cstdio>
 	<cstdlib>
@@ -172,4 +173,7 @@
 	"Mesa.h"
 	"Candidato.h"
 	"Partido.h"
+	<windows.h>
+
+1435903756 source:d:\users\romina\documents\git\ayed\simulacion.cpp
 

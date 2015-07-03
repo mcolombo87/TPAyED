@@ -18,6 +18,7 @@
 #include "PartidosXProv.h"
 #include "Test.h"
 #include "Comparaciones.h"
+#include <windows.h>
 
 
 using namespace std;
@@ -97,6 +98,13 @@ void sistemadevotacion(Lista &candidatos, Lista &partidos, Lista &mesa)
         case 110:
             probandoDistri(prov);
             break;
+        case 111:
+            system("cls");
+            for (int i = 0; i<=1000; i++)
+            {
+                Simvotacion(prov,partidos,mesa,idUrnaGlobal,idVotoGlobal);
+            }
+            break;
         case 0:
             if (votEnd == true){return;}else{cout << "\nNO PUEDE SALIR HASTA NO FINALIZAR LA VOTACION EN CURSO\n"<< endl; system("pause");}
             break;
@@ -147,23 +155,18 @@ bool distribuirVotos(Lista &lstProvincias)
        lstCandxProv = getCandidatosProv(*(Provincia*)provDato);
        lstPartxProv = getPartidosProv(*(Provincia*)provDato);
        mesa = primero(provMesas);
-//       puts("0");
+
        while (mesa != fin())
        {
            mesaDato = mesa ->ptrDato;
            mesasUrnas = getUrnasMesa(*(Mesas*)mesaDato);
            urna = desencolar(mesasUrnas);
-//           puts("1");
-//           int a = getIdUrna(*(Urna*)urna);
-//           printf("ID urna: %d\n", a );
-//           system("PAUSE");
+
            while (urna != finCola())
            {
                votos = getVotosUrna(*(Urna*)urna); //Hasta aca tengo la pila
                votoUnidad = pop(votos);
-//               puts("2");
-//                printf("ID Voto: %d\n", getIdVoto(*(Voto*)votoUnidad));
-//               system("PAUSE");
+
                while (votoUnidad != finPila())
                {
                     puts("3");
@@ -177,22 +180,14 @@ bool distribuirVotos(Lista &lstProvincias)
                             cursorNodo = siguiente(lstCandxProv, cursorNodo);
                         }else{encontrado = true; cursor = cursorNodo ->ptrDato;}
                     }
-//                    puts("4");//
-//                    //
-//                    system("PAUSE");
-//                    int a = getIdCandidatosXProv(*(CandidatosXProv*)cursor);
-//                    char b[20];
-//                    strcpy(b, getNombreCandidatosXProv(*(CandidatosXProv*)cursor));
-//                    printf("\nDato Encontrado id: %d\nNombre: %s\n", a ,b );
-//                    system("pause");
-                    //
+
                     if (cursorNodo != fin()) //Por las dudas valido que haya un resultado aunque deberia siempre existir
                     {
                         setVotosCandidatosXProv(*(CandidatosXProv*)cursor, (getVotosCandidatosXProv(*(CandidatosXProv*)cursor))+1);
                         idPartidoVotado = getPartidoCandidatosXProv(*(CandidatosXProv*)cursor);
                     }else {puts("\nError: El candidato votado no se encuentra registrado en la Provincia"); system("pause");}
 
-                    //HASTA ACA TODO BIEN
+
                     cursorNodo = primero(lstPartxProv); //RASTREO EL DATO PARA PARTIDO
                     encontrado = false;
                     while (encontrado == false && cursorNodo != fin())
@@ -207,21 +202,14 @@ bool distribuirVotos(Lista &lstProvincias)
 
                     if (cursorNodo != fin()) //Por las dudas valido que haya un resultado aunque deberia siempre existir
                     {
-//                        puts("Entramos?");
-                        //ontadorAux =
+
                         setVotosPartidosXProv(*(PartidosXProv*)cursor2, (getVotosPartidosXProv(*(PartidosXProv*)cursor2))+1);
                     }else {puts("\nError: El partido al que pertenece el candidato votado no se encuentra registrado en la Provincia"); system("pause");}
-                    //VER LUEGO
-//                     setVotosCandidatosXProv(*(CandidatosXProv*)cursor, (getVotosCandidatosXProv(*(CandidatosXProv*)cursor))+1);
-//                     setVotosPartidosXProv(*(PartidosXProv*)cursor2, (getVotosPartidosXProv(*(PartidosXProv*)cursor2))+1);
-                    //FIN DE VER LUEGO
-//                    system("PAUSE");
-//                    puts("Salimos?");
+
                     pantallaFinalizandoVotac(provDato, mesaDato, urna, pantallaEntradas, pantallaEntradasProv); //LLamo a la pantalla de progreso
                     votoUnidad = pop(votos); //Saco un nuevo voto
                }
-//               puts ("5");
-//               system("PAUSE");
+
                urna = desencolar(mesasUrnas); //Saco una nueva urna
            }
            mesa = siguiente(provMesas, mesa); //Paso a un nuevo nodo de la lista (es decir a otra Mesa)
@@ -238,7 +226,7 @@ void pantallaFinalizandoVotac(PtrDato &provDato, PtrDato &mesaDato, PtrDatoCola 
 {
         pantallaEntradas = pantallaEntradas +1;
         pantallaEntradasProv = pantallaEntradasProv +1;
-        char caracter = '+';
+        char caracter = '*';
         double valor;
         system ("CLS");
         puts ("**Contabilizando Votos en PROCESO**\n");
@@ -252,7 +240,7 @@ void pantallaFinalizandoVotac(PtrDato &provDato, PtrDato &mesaDato, PtrDatoCola 
         printf("Votos TOTALES: %d\n\n", pantallaEntradas);
 
         puts("Por favor aguarde...\n");
-        valor = 5*sin(5.49+pantallaEntradas)+6; //(double)
+        valor = 5*sin(pantallaEntradas)+6; //(double)
         if (round(valor) == (1)){printf("%c", &caracter);}
         if (round(valor) == (2)){printf("%c%c", &caracter, &caracter);}
         if (round(valor) == (3)){printf("%c%c%c", &caracter, &caracter, &caracter);}
@@ -263,7 +251,7 @@ void pantallaFinalizandoVotac(PtrDato &provDato, PtrDato &mesaDato, PtrDatoCola 
         if (round(valor) == (8)){printf("%c%c%c%c%c%c%c%c", &caracter, &caracter, &caracter, &caracter, &caracter, &caracter, &caracter, &caracter);}
         if (round(valor) == (9)){printf("%c%c%c%c%c%c%c%c%c", &caracter, &caracter, &caracter, &caracter, &caracter, &caracter, &caracter, &caracter, &caracter);}
         if (round(valor) == (10)){printf("%c%c%c%c%c%c%c%c%c%c", &caracter, &caracter, &caracter, &caracter, &caracter, &caracter, &caracter, &caracter, &caracter, &caracter);}
-
+        Sleep(50);
 
 
 }
@@ -353,7 +341,7 @@ void votacion(Lista &provincias, Lista &partidos, Lista &lstMesas, int &id, int 
                 cin >> opcion;
                 if(opcion == 1){
                     addMesa(provincias, lstMesas, idProvincia, idMesa);
-                    //addMesa(Lista &mesas, int idProvincia, int idMesa)
+
                 }
                 }
           }else cout << "No existe esa provincia " << endl;
@@ -404,14 +392,9 @@ void cargandoMotor(Lista &prov, Lista &candidatos ,Lista &partidos, Lista &mesa)
             setPartidoCandidatosXProv(*(CandidatosXProv*)dato4, getPartidoPolitico(*(Candidato*)dato2));
             setVotosCandidatosXProv(*(CandidatosXProv*)dato4, 0);
             adicionarFinal(*(Lista*)candProv, dato4);
-//            /**PRUEBA BORRAR LUEGO*/
-//            cursorLista3 = ultimo(*(Lista*)candProv);
-//            dato5 = cursorLista3->ptrDato;
-//            printf("\nNOMBRE Candidato: %s\n", getNombreCandidatosXProv(*(CandidatosXProv*)dato5));
 
             setCandidatosProv(*(Provincia*)dato, *(Lista*)candProv);
-            //system("pause");
-            //FIN PRUEBA, BORRAR LUEGO
+
             cursorLista=siguiente(candidatos,cursorLista);
         }
 
@@ -449,8 +432,7 @@ void cargandoMotor(Lista &prov, Lista &candidatos ,Lista &partidos, Lista &mesa)
             {
                 dato3 = new Mesas;
                 constructorMesa(*(Mesas*)dato3, getIdMesa(*(Mesas*)dato),getProvinciaMesa(*(Mesas*)dato), urna);
-//                setIdMesa(*(Mesas*)dato3, getIdMesa(*(Mesas*)dato));
-//                setProvinciaMesa(*(Mesas*)dato3, getProvinciaMesa(*(Mesas*)dato));
+
                 lstAux = getMesasProv(*(Provincia*)dato2);
                 adicionarFinal(lstAux, dato3);
                 setMesasProv(*(Provincia*)dato2, lstAux);
@@ -770,3 +752,124 @@ void addMesa(Lista &provincias, Lista &mesas, int idProvincia, int idMesa){
       if(control)system("Pause");
      }
 
+/**SIMULACION DE VOTOS**/
+
+void Simvotacion(Lista &provincias, Lista &partidos, Lista &lstMesas, int &id, int &idVoto){
+          PtrDato provincia = new Provincia;
+          PtrDato mesa = new Mesas;
+          PtrDatoPila voto = new Voto;
+          PtrDatoCola urna;// = new Urna;
+          PtrNodoLista buscar;
+          Lista mesas;
+          Cola urnas;
+          Pila votos;
+          bool correcto;
+          int modcontar, modcontar2;
+
+          int idProvincia, idMesa, opcion = 0, idCandidato;
+          idProvincia = Faleatorio(24);
+
+          idMesa = idProvincia * 5;
+
+              modcontar = idVoto % 5;
+              modcontar2 = idVoto %50;  //El mod y los ifs a continuación son solo para generar una animación
+              if (idVoto > 1)               //cuando los tiempos en encontrar un movimiento válido se hacen muy largos
+                  {if (idVoto ==5)           //entonces cada multiplo de xxxx número se dibuja un caracter
+                     {puts("SIMULANDO VOTOS, POR FAVOR ESPERE...");}
+                  if(modcontar ==0)
+                  {printf("%c", 16);}
+                  if(modcontar2 == 0){system("cls");puts("SIMULANDO VOTOS, POR FAVOR ESPERE...");}
+                  }
+            Sleep(73);
+
+
+          setIdProvincia(*(Provincia*)provincia, idProvincia);
+          setIdMesa(*(Mesas*)mesa, idMesa);
+
+          setProvinciaMesa(*(Mesas*)mesa, idProvincia);
+
+          buscar = localizarDato(provincias, provincia);
+
+          if(buscar != fin()){
+
+            provincia = buscar->ptrDato;
+            mesas = getMesasProv(*(Provincia*)provincia);
+            buscar = localizarDato(mesas, mesa);
+            if(buscar != fin()){
+                mesa = buscar->ptrDato;
+                urnas = getUrnasMesa(*(Mesas*)mesa);
+                if(estaVacia(urnas) || getHoraCierreUrna(*(Urna*)((punteroCola(*(Mesas*)mesa)->last)->ptrDato)) != NULL){
+                    SimabreUrna(provincias, id, idProvincia, idMesa);
+                }else{
+
+                    idCandidato = Faleatorio(15);
+
+                    setIdVoto(*(Voto*)voto, idVoto++);
+                    setIdCandidatoVoto(*(Voto*)voto,idCandidato);
+                    urna = (punteroCola(*(Mesas*)mesa)->last)->ptrDato;
+                    votos = getVotosUrna(*(Urna*)urna);
+                    push(votos, voto);
+                    setVotosUrna(*(Urna*)urna, votos);
+                    setMesasProv(*(Provincia*)provincia, mesas);
+
+                    }
+                }
+            }
+          }
+
+
+
+void SimabreUrna(Lista &provincias, int &id, int idProv, int idMesa){
+     PtrDato provincia = new Provincia;
+     PtrDato mesa = new Mesas;
+     PtrNodoLista buscar;
+     PtrDatoCola urna;
+     Lista mesas;
+     Cola urnas;
+     Pila votos;
+     int idProvincia = idProv, opcion;
+
+
+
+     setIdProvincia(*(Provincia*)provincia, idProvincia);
+     setIdMesa(*(Mesas*)mesa, idMesa);
+     setProvinciaMesa(*(Mesas*)mesa, idProvincia);
+
+     buscar = localizarDato(provincias, provincia);
+
+     if(buscar != fin()){
+
+          provincia = buscar->ptrDato;
+          mesas = getMesasProv(*(Provincia*)provincia);
+          buscar = localizarDato(mesas, mesa);
+
+          if(buscar != fin()){
+
+                mesa = buscar->ptrDato;
+                urnas = getUrnasMesa(*(Mesas*)mesa);
+                if(!estaVacia(urnas) && getHoraCierreUrna(*(Urna*)((punteroCola(*(Mesas*)mesa)->last)->ptrDato)) == NULL){
+
+                }else{
+                    crearPila(votos);
+                    urna = new Urna;
+                    constructorUrna(*(Urna*)urna, id, NULL, NULL , votos);
+                    id++;
+                    encolar(urnas, urna);
+                    setUrnasMesa(*(Mesas*)buscar->ptrDato, urnas);
+                    setMesasProv(*(Provincia*)provincia, mesas);
+
+                    }
+          }
+    }
+}
+
+int Faleatorio (int valor_de_ref) // Devuelve el número aleatorio que determinará el movimiento
+{
+    int parcial;
+    srand(time(0)); //Necesario para resetear el rand y que no me devuelva el mismo número
+
+    valor_de_ref = valor_de_ref + 1;  //El rango de numeros entre los que va a tirar el aleatorio esta
+    parcial = rand()%valor_de_ref;    //definido por una variable, ya que contemple el posible y/o futuro uso de la misma función
+                                      //para otros usos.
+    return(parcial);
+}

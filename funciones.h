@@ -18,4 +18,10 @@ void cargarArcPartidos(Lista &lstPar);
 void cargarArcMesas(Lista &lstMes);
 void guardarEnArchivos(Lista &Candidatos, Lista &Partidos, Lista &Mesa);
 
+//Funciones de simulacion
+
+void Simvotacion(Lista&, Lista&,Lista&, int&, int&);
+void SimabreUrna(Lista&, int&, int idProv, int idMesa);
+int Faleatorio (int valor_de_ref);
+
 #endif // FUNCIONES_H_INCLUDED
