@@ -590,6 +590,8 @@ void reportes(Lista provincia){
 
             double porcTemp;
             int tempInt;
+            auxiliarCandidatos.compara = votosCandidatosXProv;
+            reordenar(auxiliarCandidatos);
             puts("\n***\t***\n\n\nVotos Generales (todas las provincias) por Candidato:\n");
                   cursor = primero(auxiliarCandidatos);
            while(cursor != fin()){
@@ -601,6 +603,8 @@ void reportes(Lista provincia){
                         }
 
             puts("\n***\t***\n\n\nVotos Generales (todas las provincias) por Partido:\n");
+            auxiliarPartidos.compara = votosPartidoXProv;
+            reordenar(auxiliarPartidos);
           cursor = primero(auxiliarPartidos);
            while(cursor != fin()){
                 printf("\n%s\n Votos: %d\n******", getNombrePartidosXProv(*(PartidosXProv*)cursor->ptrDato), getVotosPartidosXProv(*(PartidosXProv*)cursor->ptrDato));
@@ -609,6 +613,43 @@ void reportes(Lista provincia){
                 printf("%2.f%c del Total.\n******", porcTemp, 37);
                 cursor = siguiente(auxiliarPartidos, cursor);
                         }
+          Lista can;
+          cursor = primero(provincia);
+          system("PAUSE");
+          puts("\n***\t***\n\n\nResultados Generales por provincia y candidatos:\n");
+           while(cursor != fin()){
+            can = getCandidatosProv(*(Provincia*)cursor->ptrDato);
+            can.compara = votosCandidatosXProv;
+            reordenar(can);
+            cursor2 = primero(can);
+            if((getIdProvincia(*(Provincia*)cursor->ptrDato)) == 12)system("Pause");
+            printf("ID provincia: %d\n", getIdProvincia(*(Provincia*)cursor->ptrDato));
+            while(cursor2 != fin()){
+                printf("\tNombre: %s  cantidad de votos: %d\n",getNombreCandidatosXProv(*(CandidatosXProv*)cursor2->ptrDato), getVotosCandidatosXProv(*(CandidatosXProv*)cursor2->ptrDato));
+                cursor2 = siguiente(can, cursor2);
+            }
+
+            cursor = siguiente(provincia, cursor);
+           }
+
+           cursor = primero(provincia);
+          system("PAUSE");
+          puts("\n***\t***\n\n\nResultados Generales por provincia y partido:\n");
+           while(cursor != fin()){
+            can = getPartidosProv(*(Provincia*)cursor->ptrDato);
+            can.compara = votosPartidoXProv;
+            reordenar(can);
+            cursor2 = primero(can);
+            if((getIdProvincia(*(Provincia*)cursor->ptrDato)) == 12)system("Pause");
+            printf("ID provincia: %d\n", getIdProvincia(*(Provincia*)cursor->ptrDato));
+            while(cursor2 != fin()){
+                printf("\tNombre: %s  cantidad de votos: %d\n",getNombrePartidosXProv(*(PartidosXProv*)cursor2->ptrDato), getVotosPartidosXProv(*(PartidosXProv*)cursor2->ptrDato));
+                cursor2 = siguiente(can, cursor2);
+            }
+
+            cursor = siguiente(provincia, cursor);
+           }
+
         puts("\n");
         system("Pause");
 

@@ -220,7 +220,7 @@ void imprimirPartidos(Lista &lista){
                   candidatos = getLista(*(Partido*)cursor->ptrDato);
                   cursor2 = primero(candidatos);
                   while(cursor2 != fin()){
-                                   printf("\tID: %d ID partido: %d Nombre: %s \n", getIdCandidato(*(Candidato*)cursor2->ptrDato), getPartidoPolitico(*(Candidato*)cursor2->ptrDato), getNombreCandidato(*(Candidato*)cursor2->ptrDato));
+                                   printf("\tID: %d Nombre: %s \n", getIdCandidato(*(Candidato*)cursor2->ptrDato), getNombreCandidato(*(Candidato*)cursor2->ptrDato));
                                    cursor2=siguiente(candidatos,cursor2);
                                 }
                   cursor=siguiente(lista,cursor);

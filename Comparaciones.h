@@ -9,4 +9,7 @@ ResultadoComparacion compararMesa(PtrDato ptrDato1, PtrDato ptrDato2);
 ResultadoComparacion compararPartidoXProv(PtrDato ptrDato1, PtrDato ptrDato2);
 ResultadoComparacion compararCandidatosXProv(PtrDato ptrDato1, PtrDato ptrDato2);
 
+ResultadoComparacion votosCandidatosXProv(PtrDato , PtrDato );
+ResultadoComparacion votosPartidoXProv(PtrDato , PtrDato );
+
 #endif //
