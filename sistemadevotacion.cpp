@@ -283,12 +283,25 @@ void votacion(Lista &provincias, Lista &partidos, Lista &lstMesas, int &id, int 
           Lista mesas;
           Cola urnas;
           Pila votos;
+          bool correcto;
 
           int idProvincia, idMesa, opcion = 0, idCandidato;
           cout << "Ingrese la provincia donde vota: ";
-          cin >> idProvincia;
+          correcto = scanf("%d",&idProvincia);
+          while(!correcto){
+            fflush(stdin);
+            cout << "Debe ingresar un numero" << endl;
+            correcto = scanf("%d",&idProvincia);
+            fflush(stdin);
+          }
           cout << "Ingrese la mesa donde vota: ";
-          cin >> idMesa;
+          correcto = scanf("%d",&idMesa);
+          while(!correcto){
+            fflush(stdin);
+            cout << "Debe ingresar un numero" << endl;
+            correcto = scanf("%d",&idMesa);
+            fflush(stdin);
+          }
 
           setIdProvincia(*(Provincia*)provincia, idProvincia);
           setIdMesa(*(Mesas*)mesa, idMesa);
@@ -311,7 +324,14 @@ void votacion(Lista &provincias, Lista &partidos, Lista &lstMesas, int &id, int 
                     cout << "Listado de candidatos:" << endl;
                     imprimirPartidos(partidos);
                     cout << "Ingrese el ID del candidato a votar: ";
-                    scanf("%d",&idCandidato);
+                    fflush(stdin);
+                    correcto = scanf("%d",&idCandidato);
+                    while(!correcto){
+                        cout << "Debe ingresar un numero: " << endl;
+                        fflush(stdin);
+                        correcto = scanf("%d",&idCandidato);
+                        fflush(stdin);
+                    }
                     setIdVoto(*(Voto*)voto, idVoto++);
                     setIdCandidatoVoto(*(Voto*)voto,idCandidato);
                     urna = (punteroCola(*(Mesas*)mesa)->last)->ptrDato;
