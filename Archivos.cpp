@@ -5,6 +5,7 @@
 #include "Mesa.h"
 #include "Candidato.h"
 #include "Partido.h"
+#include <windows.h>
 
 
 
@@ -14,12 +15,13 @@ void cargarArcCandidatos(Lista &lstCan, Lista &lstPar)
     Candidato candidato;
     PtrDato dato;
     PtrNodoLista buscar;
+    int modcontar, modcontar2, sumador = 1;
     //Valida
     PtrDato partRef = new Partido;
 
      if((archivo=fopen("candidatos.txt", "r"))!=NULL)
      {
-
+         system("cls");
          while((fscanf(archivo,"%d;%[A-Za-z A-Za-z A-Za-z A-Za-z A-Za-z];%d",&candidato.id, &candidato.nombre, &candidato.PartidoPolitico))!=EOF)
          {
 
@@ -31,8 +33,18 @@ void cargarArcCandidatos(Lista &lstCan, Lista &lstPar)
              buscar = localizarDato(lstCan, dato);
              if(buscar == fin()){
                 adicionarFinal(lstCan, dato);
-                system("cls");
-                printf("Cargando informacion desde archivos, aguarde...");
+
+                modcontar = sumador % 3;
+                modcontar2 = sumador %30;  //El mod y los ifs a continuación son solo para generar una animación
+                if (sumador >= 1)               //cuando los tiempos en encontrar un movimiento válido se hacen muy largos
+                  {if (sumador ==1)           //entonces cada multiplo de xxxx número se dibuja un caracter
+                     {puts("Cargando informacion desde archivos, aguarde...");}
+                  if(modcontar ==0)
+                  {printf("%c", 16);}
+                  if(modcontar2 == 0){system("cls");puts("Cargando informacion desde archivos, aguarde...");}
+                  }sumador = sumador +1;
+                  Sleep(10);
+
                 //Valido referencias.
                 setIdPartido(*(Partido*)partRef, candidato.PartidoPolitico);
                 buscar = localizarDato(lstPar, partRef);
@@ -57,11 +69,14 @@ void cargarArcPartidos(Lista &lstPar)
     PtrDato dato;
     PtrNodoLista buscar;
     Lista candidatos;
+    int modcontar, modcontar2, sumador = 1;
 
      if((archivo3=fopen("partidos.txt", "r"))!=NULL)
      {
+         system("cls");
          while((fscanf(archivo3,"%d;%[A-Za-z A-Za-z A-Za-z A-Za-z A-Za-z]",&partido.id, &partido.nombre))!=EOF)
          {
+
              dato = new Partido;
               /*setIdPartido(*(Partido*)dato, partido.id);
              setNombrePartido(*(Partido*)dato, partido.nombre);*/
@@ -70,8 +85,18 @@ void cargarArcPartidos(Lista &lstPar)
              buscar = localizarDato(lstPar, dato);
              if(buscar == fin()){
                 adicionarFinal(lstPar, dato);
-                system("cls");
-                printf("Cargando informacion desde archivos, aguarde...");
+
+                modcontar = sumador % 3;
+                modcontar2 = sumador %30;  //El mod y los ifs a continuación son solo para generar una animación
+                if (sumador >= 1)               //cuando los tiempos en encontrar un movimiento válido se hacen muy largos
+                  {if (sumador ==1)           //entonces cada multiplo de xxxx número se dibuja un caracter
+                     {puts("Cargando informacion desde archivos, aguarde...");}
+                  if(modcontar ==0)
+                  {printf("%c", 16);}
+                  if(modcontar2 == 0){system("cls");puts("Cargando informacion desde archivos, aguarde...");}
+                  }
+                sumador = sumador +1;
+                Sleep(10);
                        }else{ printf("\n**Se detecto un ID duplicado en los archivos\n**El Partido: %s -SERA OMITIDO-\n**Corrobore la informacion suministrada en los archivos**\n", partido.nombre);
              system("Pause");}
          }
@@ -89,11 +114,13 @@ void cargarArcMesas(Lista &lstMes)
     Mesas mesas;
     PtrDato dato;
     PtrNodoLista buscar;
-
+    int modcontar, modcontar2, sumador = 1;
      if((archivo2=fopen("mesas.txt", "r"))!=NULL)
      {
+         system("cls");
          while((fscanf(archivo2,"%d;%d",&mesas.id, &mesas.provincia))!=EOF)
          {
+
              dato = new Mesas;
              setIdMesa(*(Mesas*)dato, mesas.id);
              setProvinciaMesa(*(Mesas*)dato,mesas.provincia);
@@ -106,8 +133,17 @@ void cargarArcMesas(Lista &lstMes)
                         system("Pause");
                     }else{
                 adicionarFinal(lstMes, dato);
-                system("cls");
-                printf("Cargando informacion desde archivos, aguarde...");}
+                modcontar = sumador % 3;
+                modcontar2 = sumador %30;  //El mod y los ifs a continuación son solo para generar una animación
+                if (sumador >= 1)               //cuando los tiempos en encontrar un movimiento válido se hacen muy largos
+                  {if (sumador ==1)           //entonces cada multiplo de xxxx número se dibuja un caracter
+                     {puts("Cargando informacion desde archivos, aguarde...");}
+                  if(modcontar ==0)
+                  {printf("%c", 16);}
+                  if(modcontar2 == 0){system("cls");puts("Cargando informacion desde archivos, aguarde...");}
+                  }sumador = sumador +1;
+                  Sleep(10);
+                  }
                        }else{ printf("\n**Se detecto un ID duplicado en los archivos\n**La mesa de ID: %d Provincia: %d -SERA OMITIDA-\n**Corrobore la informacion suministrada en los archivos**\n", mesas.id, mesas.provincia);
              system("Pause");}
          }
