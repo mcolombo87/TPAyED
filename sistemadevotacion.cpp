@@ -29,6 +29,7 @@ void cargandoMotor(Lista &prov, Lista &candidatos ,Lista &partidos, Lista &mesa)
 void imprimirMegaEstructura(Lista &);
 void cerrarUrna(Lista&);
 void addMesa(Lista &, Lista &, int , int );
+void cierraTodasUrnas(Lista &);
 
 void sistemadevotacion(Lista &candidatos, Lista &partidos, Lista &mesa)
 {
@@ -87,7 +88,7 @@ void sistemadevotacion(Lista &candidatos, Lista &partidos, Lista &mesa)
             votacion(prov,partidos,mesa,idUrnaGlobal,idVotoGlobal);
             break;
         case 5:
-            if (idVotoGlobal > 1){votEnd = distribuirVotos(prov);}else{cout << "\nNo se realizo ningun voto\n"<< endl; system("pause");}
+            if (idVotoGlobal > 1){cierraTodasUrnas(prov);votEnd = distribuirVotos(prov);}else{cout << "\nNo se realizo ningun voto\n"<< endl; system("pause");}
              break;
         case 6:
             if (votEnd == true){reportes(prov);}else{cout << "\nLa votacion no finalizo o nunca comenzo\n"<< endl; system("pause");}
@@ -571,6 +572,8 @@ void reportes(Lista provincia){
 
             double porcTemp;
             int tempInt;
+            auxiliarCandidatos.compara = votosCandidatosXProv;
+            reordenar(auxiliarCandidatos);
             puts("\n***\t***\n\n\nVotos Generales (todas las provincias) por Candidato:\n");
                   cursor = primero(auxiliarCandidatos);
            while(cursor != fin()){
@@ -582,6 +585,8 @@ void reportes(Lista provincia){
                         }
 
             puts("\n***\t***\n\n\nVotos Generales (todas las provincias) por Partido:\n");
+            auxiliarPartidos.compara = votosPartidoXProv;
+            reordenar(auxiliarPartidos);
           cursor = primero(auxiliarPartidos);
            while(cursor != fin()){
                 printf("\n%s\n Votos: %d\n******", getNombrePartidosXProv(*(PartidosXProv*)cursor->ptrDato), getVotosPartidosXProv(*(PartidosXProv*)cursor->ptrDato));
@@ -590,6 +595,43 @@ void reportes(Lista provincia){
                 printf("%2.f%c del Total.\n******", porcTemp, 37);
                 cursor = siguiente(auxiliarPartidos, cursor);
                         }
+          Lista can;
+          cursor = primero(provincia);
+          system("PAUSE");
+          puts("\n***\t***\n\n\nResultados Generales por provincia y candidatos:\n");
+           while(cursor != fin()){
+            can = getCandidatosProv(*(Provincia*)cursor->ptrDato);
+            can.compara = votosCandidatosXProv;
+            reordenar(can);
+            cursor2 = primero(can);
+            if((getIdProvincia(*(Provincia*)cursor->ptrDato)) == 12)system("Pause");
+            printf("ID provincia: %d\n", getIdProvincia(*(Provincia*)cursor->ptrDato));
+            while(cursor2 != fin()){
+                printf("\tNombre: %s  cantidad de votos: %d\n",getNombreCandidatosXProv(*(CandidatosXProv*)cursor2->ptrDato), getVotosCandidatosXProv(*(CandidatosXProv*)cursor2->ptrDato));
+                cursor2 = siguiente(can, cursor2);
+            }
+
+            cursor = siguiente(provincia, cursor);
+           }
+
+           cursor = primero(provincia);
+          system("PAUSE");
+          puts("\n***\t***\n\n\nResultados Generales por provincia y partido:\n");
+           while(cursor != fin()){
+            can = getPartidosProv(*(Provincia*)cursor->ptrDato);
+            can.compara = votosPartidoXProv;
+            reordenar(can);
+            cursor2 = primero(can);
+            if((getIdProvincia(*(Provincia*)cursor->ptrDato)) == 12)system("Pause");
+            printf("ID provincia: %d\n", getIdProvincia(*(Provincia*)cursor->ptrDato));
+            while(cursor2 != fin()){
+                printf("\tNombre: %s  cantidad de votos: %d\n",getNombrePartidosXProv(*(PartidosXProv*)cursor2->ptrDato), getVotosPartidosXProv(*(PartidosXProv*)cursor2->ptrDato));
+                cursor2 = siguiente(can, cursor2);
+            }
+
+            cursor = siguiente(provincia, cursor);
+           }
+
         puts("\n");
         system("Pause");
 
@@ -872,4 +914,34 @@ int Faleatorio (int valor_de_ref) // Devuelve el número aleatorio que determina
     parcial = rand()%valor_de_ref;    //definido por una variable, ya que contemple el posible y/o futuro uso de la misma función
                                       //para otros usos.
     return(parcial);
+}
+
+void cierraTodasUrnas(Lista &provincias){
+     PtrNodoLista cursor, cursor3;
+     Lista mesas;
+     Cola urnas;
+     PtrDatoCola urna;
+     PtrNodoCola ptrUrna;
+     cursor3 = primero(provincias);
+     int contador = 0;
+
+     while(cursor3 != fin()){
+            mesas = getMesasProv(*(Provincia*)cursor3->ptrDato);
+            cursor = primero(mesas);
+            while(cursor != fin()){
+                  urnas = getUrnasMesa(*(Mesas*)cursor->ptrDato);
+                  if(!estaVacia(urnas) && getHoraCierreUrna(*(Urna*)((punteroCola(*(Mesas*)cursor->ptrDato)->last)->ptrDato)) == NULL){
+                    ptrUrna = urnas.last;
+                    urna = (punteroCola(*(Mesas*)cursor->ptrDato)->last)->ptrDato;
+                    setHoraCierreUrna(*(Urna*)urna, hora());
+                    contador++;
+                    }
+                  cursor=siguiente(mesas,cursor);
+                  }
+             cursor3 = siguiente(provincias, cursor3);
+          }
+    cout << "Cantidad de urnas cerradas: ";
+    cout << contador << endl;
+    system("Pause");
+
 }

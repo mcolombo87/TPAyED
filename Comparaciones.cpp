@@ -86,6 +86,31 @@ if (((CandidatosXProv*)ptrDato1)->id > ((CandidatosXProv*)ptrDato2)->id) { //Com
     }
 }
 
+//Para ordernar en los informes
+ResultadoComparacion votosCandidatosXProv(PtrDato ptrDato1, PtrDato ptrDato2) {
+if (((CandidatosXProv*)ptrDato1)->voto < ((CandidatosXProv*)ptrDato2)->voto) {
+        return MAYOR;
+    }
+    else if (((CandidatosXProv*)ptrDato1)->voto > ((CandidatosXProv*)ptrDato2)->voto){
+        return MENOR;
+    }
+    else {
+        return IGUAL;
+    }
+}
+
+ResultadoComparacion votosPartidoXProv(PtrDato ptrDato1, PtrDato ptrDato2) {
+if (((PartidosXProv*)ptrDato1)->votos < ((PartidosXProv*)ptrDato2)->votos/*PartidoPolitico CAMBIO!!!*/) {
+        return MAYOR;
+    }
+    else if (((PartidosXProv*)ptrDato1)->votos > ((PartidosXProv*)ptrDato2)->votos){
+        return MENOR;
+    }
+    else {
+        return IGUAL;
+    }
+}
+
 /** SE DEJARON COMO SIEMPRE DEBIO SER, ESTO ES LO ANTERIOR... POR LAS DUDAS
 ResultadoComparacion compararPartidoXProv(PtrDato ptrDato1, PtrDato ptrDato2) {
 if (((PartidosXProv*)ptrDato1)->id > ((CandidatosXProv*)ptrDato2)->id) {
