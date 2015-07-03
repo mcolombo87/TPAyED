@@ -28,6 +28,7 @@ void cargandoMotor(Lista &prov, Lista &candidatos ,Lista &partidos, Lista &mesa)
 void imprimirMegaEstructura(Lista &);
 void cerrarUrna(Lista&);
 void addMesa(Lista &, Lista &, int , int );
+void cierraTodasUrnas(Lista &);
 
 void sistemadevotacion(Lista &candidatos, Lista &partidos, Lista &mesa)
 {
@@ -86,7 +87,7 @@ void sistemadevotacion(Lista &candidatos, Lista &partidos, Lista &mesa)
             votacion(prov,partidos,mesa,idUrnaGlobal,idVotoGlobal);
             break;
         case 5:
-            if (idVotoGlobal > 1){votEnd = distribuirVotos(prov);}else{cout << "\nNo se realizo ningun voto\n"<< endl; system("pause");}
+            if (idVotoGlobal > 1){cierraTodasUrnas(prov);votEnd = distribuirVotos(prov);}else{cout << "\nNo se realizo ningun voto\n"<< endl; system("pause");}
              break;
         case 6:
             if (votEnd == true){reportes(prov);}else{cout << "\nLa votacion no finalizo o nunca comenzo\n"<< endl; system("pause");}
@@ -769,4 +770,34 @@ void addMesa(Lista &provincias, Lista &mesas, int idProvincia, int idMesa){
       }else printf("No existe esa provincia.\n");
       if(control)system("Pause");
      }
+
+void cierraTodasUrnas(Lista &provincias){
+     PtrNodoLista cursor, cursor3;
+     Lista mesas;
+     Cola urnas;
+     PtrDatoCola urna;
+     PtrNodoCola ptrUrna;
+     cursor3 = primero(provincias);
+     int contador = 0;
+
+     while(cursor3 != fin()){
+            mesas = getMesasProv(*(Provincia*)cursor3->ptrDato);
+            cursor = primero(mesas);
+            while(cursor != fin()){
+                  urnas = getUrnasMesa(*(Mesas*)cursor->ptrDato);
+                  if(!estaVacia(urnas) && getHoraCierreUrna(*(Urna*)((punteroCola(*(Mesas*)cursor->ptrDato)->last)->ptrDato)) == NULL){
+                    ptrUrna = urnas.last;
+                    urna = (punteroCola(*(Mesas*)cursor->ptrDato)->last)->ptrDato;
+                    setHoraCierreUrna(*(Urna*)urna, hora());
+                    contador++;
+                    }
+                  cursor=siguiente(mesas,cursor);
+                  }
+             cursor3 = siguiente(provincias, cursor3);
+          }
+    cout << "Cantidad de urnas cerradas: ";
+    cout << contador << endl;
+    system("Pause");
+
+}
 
