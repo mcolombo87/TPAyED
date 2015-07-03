@@ -23,10 +23,11 @@
 using namespace std;
 
 void abreUrna(Lista&, int&);
-void votacion(Lista&, Lista&, int&, int&);
+void votacion(Lista&, Lista&,Lista&, int&, int&);
 void cargandoMotor(Lista &prov, Lista &candidatos ,Lista &partidos, Lista &mesa);
 void imprimirMegaEstructura(Lista &);
 void cerrarUrna(Lista&);
+void addMesa(Lista &, Lista &, int , int );
 
 void sistemadevotacion(Lista &candidatos, Lista &partidos, Lista &mesa)
 {
@@ -71,7 +72,7 @@ void sistemadevotacion(Lista &candidatos, Lista &partidos, Lista &mesa)
         switch(opcion)
         {
         case 1: /*funcion de Apertura de Mesas*/
-            agregarMesa(prov);
+            addMesa(prov, mesa, 0, 0);
             break;
         case 2: /*funcion de Apertura de Urnas*/
             abreUrna(prov, idUrnaGlobal);
@@ -80,8 +81,7 @@ void sistemadevotacion(Lista &candidatos, Lista &partidos, Lista &mesa)
             cerrarUrna(prov);
             break;
         case 4: /*Finaliza la votacion*/
-            votacion(prov,partidos,idUrnaGlobal,idVotoGlobal);
-
+            votacion(prov,partidos,mesa,idUrnaGlobal,idVotoGlobal);
             break;
         case 5:
             distribuirVotos(prov);
@@ -274,7 +274,7 @@ char* hora()
       return fechayhora;
       }
 
-void votacion(Lista &provincias, Lista &partidos, int &id, int &idVoto){
+void votacion(Lista &provincias, Lista &partidos, Lista &lstMesas, int &id, int &idVoto){
           PtrDato provincia = new Provincia;
           PtrDato mesa = new Mesas;
           PtrDatoPila voto = new Voto;
@@ -325,7 +325,10 @@ void votacion(Lista &provincias, Lista &partidos, int &id, int &idVoto){
                 cout << "No existe esa mesa " << endl;
                 cout << "Desea agregarla:  1-Si 2-No";
                 cin >> opcion;
-                if(opcion == 1)agregarMesa(provincias);
+                if(opcion == 1){
+                    addMesa(provincias, lstMesas, idProvincia, idMesa);
+                    //addMesa(Lista &mesas, int idProvincia, int idMesa)
+                }
                 }
           }else cout << "No existe esa provincia " << endl;
 
@@ -706,3 +709,35 @@ void cerrarUrna(Lista &provincias){
      }else cout << "La provincia no existe." << endl;
     system("Pause");
 }
+
+void addMesa(Lista &provincias, Lista &mesas, int idProvincia, int idMesa){
+
+     PtrDato mesa = new Mesas;
+     PtrDato provincia = new Provincia;
+     PtrNodoLista buscar,buscar2;
+     Cola urna;
+     Lista lstMesas;
+
+     if(idProvincia == 0){
+        cout << "Ingrese el id de la provincia: " << endl;
+        scanf("%d", &idProvincia);
+        cout << "Ingrese el id de la mesa: " << endl;
+        scanf("%d", &idMesa);
+     }
+
+     constructorMesa(*(Mesas*)mesa, idMesa, idProvincia, urna);
+     setIdProvincia(*(Provincia*)provincia, idProvincia);
+
+     buscar = localizarDato(provincias, provincia);
+     if(buscar != fin()){
+            buscar2 = localizarDato(mesas, mesa);
+            if(buscar2 == fin()){
+                lstMesas = getMesasProv(*(Provincia*)buscar->ptrDato);
+                adicionarFinal(lstMesas, mesa);
+                adicionarFinal(mesas, mesa);
+                setMesasProv(*(Provincia*)buscar->ptrDato, lstMesas);
+                printf("Se ha agregado una mesa con el id %d.\n", idMesa);
+                }else printf("Ya existe una mesa con ese id.\n");
+      }else printf("No existe esa provincia.\n");
+     }
+
