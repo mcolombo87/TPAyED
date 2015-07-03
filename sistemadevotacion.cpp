@@ -717,12 +717,14 @@ void addMesa(Lista &provincias, Lista &mesas, int idProvincia, int idMesa){
      PtrNodoLista buscar,buscar2;
      Cola urna;
      Lista lstMesas;
+     bool control = false;
 
      if(idProvincia == 0){
         cout << "Ingrese el id de la provincia: " << endl;
         scanf("%d", &idProvincia);
         cout << "Ingrese el id de la mesa: " << endl;
         scanf("%d", &idMesa);
+        control = true;
      }
 
      constructorMesa(*(Mesas*)mesa, idMesa, idProvincia, urna);
@@ -739,5 +741,6 @@ void addMesa(Lista &provincias, Lista &mesas, int idProvincia, int idMesa){
                 printf("Se ha agregado una mesa con el id %d.\n", idMesa);
                 }else printf("Ya existe una mesa con ese id.\n");
       }else printf("No existe esa provincia.\n");
+      if(control)system("Pause");
      }
 
