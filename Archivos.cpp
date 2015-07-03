@@ -56,14 +56,16 @@ void cargarArcPartidos(Lista &lstPar)
     Partido partido;
     PtrDato dato;
     PtrNodoLista buscar;
+    Lista candidatos;
 
      if((archivo3=fopen("partidos.txt", "r"))!=NULL)
      {
          while((fscanf(archivo3,"%d;%[A-Za-z A-Za-z A-Za-z A-Za-z A-Za-z]",&partido.id, &partido.nombre))!=EOF)
          {
              dato = new Partido;
-             setIdPartido(*(Partido*)dato, partido.id);
-             setNombrePartido(*(Partido*)dato, partido.nombre);
+              /*setIdPartido(*(Partido*)dato, partido.id);
+             setNombrePartido(*(Partido*)dato, partido.nombre);*/
+             constructorPartido(*(Partido*)dato,partido.id,partido.nombre, candidatos);
             //Corroboro que no exista Ids duplicados durante la carga de los ficheros.
              buscar = localizarDato(lstPar, dato);
              if(buscar == fin()){
