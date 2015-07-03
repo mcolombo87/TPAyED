@@ -60,9 +60,8 @@ int main()
         cout << "'Elecciones'" << endl;
         cout <<"*********************************************"<<endl;
         cout <<"\n"<<endl;
-        cout << "1. Editar informacion almacenada" << endl;
-        cout << "2. Comenzar votacion" << endl;
-        cout << "3. Generar informes de la votacion"<< endl;
+        if (vota){cout << "1. Editar informacion almacenada" << endl;}else{cout << "1. Editar informacion almacenada(No disponible)"<< endl;}
+        if (vota){cout << "2. Comenzar votacion" << endl;}else{cout << "2. Comenzar votacion(No disponible)"<< endl;}
         cout << "\n" << endl;
         cout << "0. Salir" << endl;
 
@@ -84,16 +83,12 @@ int main()
         switch(opcion)
         {
         case 1: /*funcion edicion de datos*/
-            if(vota)edicionDeDatos(lstCan, lstPar, lstMes);
+            if(vota){edicionDeDatos(lstCan, lstPar, lstMes); puts ("\nFuncion ya no disponible\n");system("PAUSE");}
             nuevatarea(continuar);
             break;
         case 2: /*nos lleva al sub menu de votacion e inicia el motor de votacion*/
-            if(vota)sistemadevotacion(lstCan, lstPar, lstMes);
+            if(vota){sistemadevotacion(lstCan, lstPar, lstMes); puts ("\nFuncion ya no disponible\n");system("PAUSE");}
             vota = false;
-            nuevatarea(continuar);
-            break;
-        case 3: /*Genera Informes de Votacion*/
-//            reportes();
             nuevatarea(continuar);
             break;
         case 0:

@@ -13,7 +13,7 @@
 	<cstdio>
 	"funciones.h"
 
-1435848287 d:\users\romina\documents\git\ayed\funciones.h
+1435898079 d:\users\romina\documents\git\ayed\funciones.h
 	"Lista.h"
 	"Cola.h"
 
@@ -23,7 +23,7 @@
 
 1434749919 d:\users\romina\documents\git\ayed\pila.h
 
-1435790267 source:d:\users\romina\documents\git\ayed\sistemadevotacion.cpp
+1435898686 source:d:\users\romina\documents\git\ayed\sistemadevotacion.cpp
 	<iostream>
 	<cstdio>
 	<cstdlib>
@@ -50,7 +50,7 @@
 
 1434600392 d:\users\romina\documents\git\ayed\cola.h
 
-1435848305 source:d:\users\romina\documents\git\ayed\main.cpp
+1435896658 source:d:\users\romina\documents\git\ayed\main.cpp
 	<iostream>
 	<cstdio>
 	<cstdlib>
@@ -148,7 +148,7 @@
 1434983359 d:\users\romina\documents\git\ayed\comparaciones.h
 	"Lista.h"
 
-1435332611 source:d:\users\romina\documents\git\ayed\ediciondedatos.cpp
+1435895001 source:d:\users\romina\documents\git\ayed\ediciondedatos.cpp
 	<iostream>
 	<cstdlib>
 	<cstdio>
@@ -164,7 +164,7 @@
 	"Partido.h"
 	"Comparaciones.h"
 
-1435292366 source:d:\users\romina\documents\git\ayed\archivos.cpp
+1435895001 source:d:\users\romina\documents\git\ayed\archivos.cpp
 	<iostream>
 	<cstdio>
 	<cstdlib>

@@ -45,6 +45,7 @@ void sistemadevotacion(Lista &candidatos, Lista &partidos, Lista &mesa)
     int opcion;
     int idUrnaGlobal = 1;
     int idVotoGlobal = 1;
+    bool votEnd = false;
 
     while(continuar == true)
     {
@@ -56,9 +57,10 @@ void sistemadevotacion(Lista &candidatos, Lista &partidos, Lista &mesa)
         cout << "2. Apertura de Urnas" << endl;
         cout << "3. Cerrar la Urna actual." << endl;
         cout << "4. Registro de Votos"<< endl;
-        cout << "5. Finalizar votacion"<< endl;
+        if (idVotoGlobal > 1){cout << "5. Finalizar votacion"<< endl;}else{cout << "5. Finalizar votacion(No disponible)"<< endl;}
+        if (votEnd == true){cout << "6. Generar informes de la votacion"<< endl;}else{cout << "6. Generar informes de la votacion (No disponible)"<< endl;}
         cout << "\n" << endl;
-        cout << "0. Salir" << endl;
+        if (votEnd == true || idVotoGlobal == 1){cout << "0. Salir" << endl;}else{cout << "0. Salir (No disponible)" << endl;}
 
         if (opcinvalida == true)
         {
@@ -77,26 +79,26 @@ void sistemadevotacion(Lista &candidatos, Lista &partidos, Lista &mesa)
         case 2: /*funcion de Apertura de Urnas*/
             abreUrna(prov, idUrnaGlobal);
             break;
-        case 3: /*Registrar voto*/
+        case 3:
             cerrarUrna(prov);
             break;
-        case 4: /*Finaliza la votacion*/
+        case 4:
             votacion(prov,partidos,mesa,idUrnaGlobal,idVotoGlobal);
             break;
         case 5:
-            distribuirVotos(prov);
+            if (idVotoGlobal > 1){votEnd = distribuirVotos(prov);}else{cout << "\nNo se realizo ningun voto\n"<< endl; system("pause");}
              break;
         case 6:
-            reportes(prov);
+            if (votEnd == true){reportes(prov);}else{cout << "\nLa votacion no finalizo o nunca comenzo\n"<< endl; system("pause");}
             break;
-        case 7:
+        case 100:
             imprimirMegaEstructura(prov);
             break;
-        case 8:
+        case 110:
             probandoDistri(prov);
             break;
         case 0:
-            return;
+            if (votEnd == true){return;}else{cout << "\nNO PUEDE SALIR HASTA NO FINALIZAR LA VOTACION EN CURSO\n"<< endl; system("pause");}
             break;
         default:
             opcinvalida=true ;
@@ -110,8 +112,10 @@ void sistemadevotacion(Lista &candidatos, Lista &partidos, Lista &mesa)
     return;
 }
 
-void distribuirVotos(Lista &lstProvincias)
+bool distribuirVotos(Lista &lstProvincias)
 {
+    bool votEnd;
+
     int pantallaEntradas = 0; //Contar ingresos a funcion
     int pantallaEntradasProv, idPartidoVotado, contadorAux;
     //Para recorrer lista de prov.
@@ -226,6 +230,8 @@ void distribuirVotos(Lista &lstProvincias)
     }
     puts ("\n\n**PROCESO TERMINADO**\n");
     system("PAUSE");
+    votEnd = true;
+    return votEnd;
 }
 
 void pantallaFinalizandoVotac(PtrDato &provDato, PtrDato &mesaDato, PtrDatoCola &urna, int &pantallaEntradas, int &pantallaEntradasProv)
